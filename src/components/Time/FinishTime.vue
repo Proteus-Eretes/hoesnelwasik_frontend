@@ -1,7 +1,6 @@
 <template>
     <div class="FinishTime">
-        <p>Originial time is {{ time }}</p>
-        <p>Computed time is {{prettyTime}}</p>
+        <p>{{prettyTime}}</p>
     </div>
 </template>
 
@@ -14,7 +13,7 @@
             time: Number
         },
         computed: {
-            prettyTime: function() {
+            prettyTime: function () {
                 const momentTime = moment.unix(this.time).utc();
                 if (momentTime.hours()) {
                     return momentTime.format('HH:mm:ss.S');
@@ -23,8 +22,6 @@
             }
         }
     }
-
-
 </script>
 
 <style scoped>
