@@ -5,6 +5,7 @@ export class Regatta extends Service {
 
     /**
      * {@inheritDoc}
+     * @param {string} baseUrl
      * @param {string} match
      * @param {number} year
      */
@@ -29,8 +30,7 @@ export class Regatta extends Service {
         this._clubs = null;
     }
 
-
-    async _getFeilds() {
+    async _getFields() {
         if (this._fields === null) {
             const fields = await this._fetch('velden');
 
