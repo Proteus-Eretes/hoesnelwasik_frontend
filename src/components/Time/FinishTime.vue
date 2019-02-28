@@ -1,7 +1,8 @@
 <template>
-    <div class="FinishTime">
-        <p>{{prettyTime}}</p>
-    </div>
+    <td class="FinishTime">
+        {{prettyTime}}
+        <small v-if="bonusSeconds > 0"> +{{bonusSeconds}}</small>
+    </td>
 </template>
 
 <script>
@@ -10,11 +11,12 @@
     export default {
         name: "FinishTime",
         props: {
-            time: Number
+            time: Number,
+            bonusSeconds: Number,
         },
         computed: {
             prettyTime: function () {
-                const momentTime = moment.unix(this.time).utc();
+                const momentTime = moment.unix(this.time + this.bonusSeconds).utc();
                 if (momentTime.hours()) {
                     return momentTime.format('HH:mm:ss.S');
                 }
