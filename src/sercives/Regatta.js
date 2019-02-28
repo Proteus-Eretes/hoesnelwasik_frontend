@@ -18,7 +18,6 @@ export class Regatta extends Service {
         this.match = false;
     }
 
-
     setYear(year) {
         this._year = year;
         this._clubs = null;
@@ -28,6 +27,25 @@ export class Regatta extends Service {
         this._match = match;
         this._year = year;
         this._clubs = null;
+    }
+
+    async getBlocks() {
+        const fields = JSON.parse(JSON.stringify(await this._getFields()));
+        return fields.reduce((blocks, field) => {
+            if (!blocks[field.blockid]) {
+                blocks[field.blockid] = [];
+            }
+            blocks[field.blockid][field.slotid] = field;
+            return blocks;
+        }, []);
+    }
+
+    async getFields() {
+        const fields = JSON.parse(JSON.stringify(await this._getFields()));
+        return fields.reduce((fieldOrdered, field) => {
+            fieldOrdered[field.numberofrowers] = field;
+            return fieldOrdered;
+        }, []);
     }
 
     async _getFields() {
