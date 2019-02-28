@@ -1,67 +1,20 @@
 <template>
     <div>
-        <nav
-                class="fixed-top navbar navbar-dark navbar-expand-md"
-                style="background-color: black"
-        >
-            <div class="collapse navbar-collapse w-100" id="navbar">
-                <div class="row container-fluid">
-                    <div class="col-4">
-                        <h1 class="row text-white">
-                            HOE SNEL WAS IK?
-                        </h1>
-                        <div class="row">
-                            <div class="navbar-nav nav-item">
-                                <a href="#" class="nav-link active">Head of the river <2017></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <h1 class="row nav-item text-white align-items-center justify-content-center">
-                            ROEIUITSLAGEN
-                        </h1>
-                        <form class="row form-inline align-items-center justify-content-center">
-                            <input
-                                    autocomplete="off"
-                                    class="form-control search"
-                                    id="search-bar"
-                                    placeholder="Zoek op naam, ploeg of vereniging"
-                                    spellcheck="false"
-                                    type="text"
-                            />
-                        </form>
-                    </div>
-                    <div class="col-3 d-flex flex-row">
-                        <ul class="navbar-nav align-self-end w-100 flex-row">
-                            <li class="ml-auto nav-item">
-                                <a href="#" class="nav-link">Uitslagen</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">Live</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">Loting</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-1">
-                        <img alt="logo" class="mx-auto" src="https://images.poweredbyiris.nl/100/logo.png"/>
-                    </div>
-                </div>
-            </div>
-        </nav>
-        <FinishTime time="800.15" bonusSeconds="1"></FinishTime>
+        <NavBar></NavBar>
+        <FinishTime time="800" bonusSeconds="800"></FinishTime>
     </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import FinishTime from '@/components/Time/FinishTime.vue';
-import {Regatta} from '@/sercives/Regatta';
+import { Regatta } from '@/sercives/Regatta';
+import NavBar from '@/components/Navigation/NavBar';
 
 export default {
     name: 'iframe-view',
     components: {
+        NavBar,
         FinishTime
     },
     async mounted() {
