@@ -1,7 +1,7 @@
 <template>
     <td class="FinishTime">
         {{prettyTime}}
-        <small v-if="bonusSeconds > 0"> +{{bonusSeconds}}</small>
+        <span v-if="bonusSeconds > 0" style="font-size: 59%; "> +{{bonusSeconds}}</span>
     </td>
 </template>
 
@@ -11,8 +11,8 @@
     export default {
         name: "FinishTime",
         props: {
-            time: Number,
-            bonusSeconds: Number,
+            time: String,
+            bonusSeconds: String,
         },
         computed: {
             prettyTime: function () {
