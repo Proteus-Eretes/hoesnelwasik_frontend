@@ -19,16 +19,23 @@
                     <h1 class="row nav-item text-white align-items-center justify-content-center">
                         ROEIUITSLAGEN
                     </h1>
-                    <form class="row form-inline align-items-center justify-content-center">
-                        <input
-                                autocomplete="off"
-                                class="form-control search"
-                                id="search-bar"
-                                placeholder="Zoek op naam, ploeg of vereniging"
-                                spellcheck="false"
-                                type="text"
-                        />
-                    </form>
+                    <div class="row">
+                        <div class="align-items-center justify-content-center input-group">
+                            <input
+                                    class="form-control border-0 bg-dark text-white"
+                                    type="search"
+                                    value="search"
+                                    placeholder="Zoek op naam, ploeg of vereniging"
+                                    spellcheck="false"
+                                    id="search-bar"
+                            >
+                            <span class="input-group-append">
+                                <button class="btn btn-outline-secondary bg-dark text-white" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                          </span>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-3 d-flex flex-row">
                     <ul class="navbar-nav align-self-end w-100 flex-row">
