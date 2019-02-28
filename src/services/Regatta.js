@@ -21,12 +21,14 @@ export class Regatta extends Service {
     setYear(year) {
         this._year = year;
         this._clubs = null;
+        this._fields = null;
     }
 
     setMatch(match, year) {
         this._match = match;
         this._year = year;
         this._clubs = null;
+        this._fields = null;
     }
 
     async getBlocks() {

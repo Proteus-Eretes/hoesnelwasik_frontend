@@ -1,21 +1,21 @@
 <template>
     <div>
         <NavBar></NavBar>
-        <FinishTime time="800" bonusSeconds="800"></FinishTime>
+        <FinalTime time="800" bonusSeconds="1" status="1"></FinalTime>
     </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import FinishTime from '@/components/Time/FinishTime.vue';
-import { Regatta } from '@/sercives/Regatta';
+import { Regatta } from '@/services/Regatta';
 import NavBar from '@/components/Navigation/NavBar';
+import FinalTime from '@/components/Time/FinalTime';
 
 export default {
     name: 'iframe-view',
     components: {
-        NavBar,
-        FinishTime
+        FinalTime,
+        NavBar
     },
     async mounted() {
         const regatta = new Regatta(
