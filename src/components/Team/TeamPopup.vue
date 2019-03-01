@@ -1,15 +1,20 @@
 <template>
     <div class='teamPopup'>
+        <div class="modal" ></div>
         <div class="modal-content">
 
             <div class="modal-header">
                 <slot name="header">
-                    <!--{{ team[0].teamname}}-->
+                    {{ team[0].teamname}}
                 </slot>
             </div>
 
             <div class="modal-body">
                 <b-table stacked :items="team" :fields="fields"/>
+            </div>
+
+            <div class="modal-footer">
+                <button >OK</button>
             </div>
 
         </div>
@@ -44,33 +49,30 @@ export default {
                 // console.log(team[element.key]);
                 return element.key in team;
             }),
+            team: [team]
 
-        }
+        };
     },
     methods: {
         getTeam() {
             return {
-                team: [
-                    {
-                        knrbid: '11e8-c5c7-90793314-8c67-525400d1387d',
-                        teamname: 'Aegir 2',
-                        fieldnameshort: 'H C4+ Klassement',
-                        fieldnameshortsub: '0',
-                        clubname: 'Aegir',
-                        clubnameshort: 'AEG',
-                        slotid: '11e8-c5c7-9c854260-8af8-525400d1387d',
-                        raceid: '11e8-c5c8-287e415e-88f9-525400d1387d',
-                        tossorder: '1',
-                        backnumber: '38',
-                        comments: '',
-                        rower1: 'Floris van Lieshout',
-                        rower2: 'Matthias Bork',
-                        rower3: 'Sjoerd Dirkson',
-                        rower8: 'Alistair Cortes',
-                        steername: 'Julia Kleinhuis',
-                        coachnames: 'jari Roest'
-                    }
-                ]
+                knrbid: '11e8-c5c7-90793314-8c67-525400d1387d',
+                teamname: 'Aegir 2',
+                fieldnameshort: 'H C4+ Klassement',
+                fieldnameshortsub: '0',
+                clubname: 'Aegir',
+                clubnameshort: 'AEG',
+                slotid: '11e8-c5c7-9c854260-8af8-525400d1387d',
+                raceid: '11e8-c5c8-287e415e-88f9-525400d1387d',
+                tossorder: '1',
+                backnumber: '38',
+                comments: '',
+                rower1: 'Floris van Lieshout',
+                rower2: 'Matthias Bork',
+                rower3: 'Sjoerd Dirkson',
+                rower8: 'Alistair Cortes',
+                steername: 'Julia Kleinhuis',
+                coachnames: 'jari Roest'
             };
         }
     }
