@@ -1,23 +1,26 @@
 <template>
     <div class='teamPopup'>
-        <div class="modal" ></div>
-        <div class="modal-content">
+        <b-button @click="showModal">Show Team</b-button>
 
-            <div class="modal-header">
-                <slot name="header">
-                    {{ team[0].teamname}}
-                </slot>
+
+        <b-modal ref="teamModalRef" hide-footer hide-header id="TeamPopup" >
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                            {{ team[0].teamname}}
+                    </h5>
+                </div>
+
+                <div class="modal-body">
+                    <b-table stacked :items="team" :fields="fields"/>
+                </div>
+
+                <div class="modal-footer">
+                    <b-button block @click="hideModal">Close</b-button>
+                </div>
             </div>
+        </b-modal>
 
-            <div class="modal-body">
-                <b-table stacked :items="team" :fields="fields"/>
-            </div>
-
-            <div class="modal-footer">
-                <button >OK</button>
-            </div>
-
-        </div>
     </div>
 </template>
 
@@ -74,7 +77,14 @@ export default {
                 steername: 'Julia Kleinhuis',
                 coachnames: 'jari Roest'
             };
+        },
+        showModal() {
+            this.$refs.teamModalRef.show()
+        },
+        hideModal() {
+            this.$refs.teamModalRef.hide()
         }
+
     }
 }
 </script>
