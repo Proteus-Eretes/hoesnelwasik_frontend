@@ -1,25 +1,30 @@
 <template>
     <div>
         <NavBar></NavBar>
-        <FinalTime time="800" bonusSeconds="1" status="1"></FinalTime>
+        <clubs-overview :clubs="clubs"> </clubs-overview>
     </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import NavBar from '@/components/Navigation/NavBar';
-import FinalTime from '@/components/Time/FinalTime';
 import {Regatta} from "../services/Regatta";
+import ClubsOverview from "../components/Clubs/ClubsOverview";
 
 export default {
-    name: 'iframe-view',
+    name: 'iframe-club-view',
     components: {
-        FinalTime,
+        ClubsOverview,
         NavBar
     },
     props: {
         match: String,
         year: String
+    },
+    data() {
+        return {
+            clubs: []
+        };
     },
     async mounted() {
         const regatta = new Regatta(
@@ -27,9 +32,7 @@ export default {
             this.match,
             this.year
         );
-        console.log(await regatta.getClubs());
-        console.log(await regatta.getBlocks());
-        console.log(await regatta.getFields());
+        this.clubs = await regatta.getClubs();
     }
 };
 </script>

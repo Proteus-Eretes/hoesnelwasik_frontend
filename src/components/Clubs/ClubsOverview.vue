@@ -1,5 +1,5 @@
 <template>
-    <div class="clubs">
+    <div class="clubs" v-if="clubs">
         <b-table hover :items="prepareItems(clubs)" :fields="fields">
             <template slot="oarImage" slot-scope="item">
                 <div class="oar">
@@ -14,7 +14,7 @@
 export default {
     name: 'ClubsOverview',
     props: {
-        clubs: Array
+        clubs: Array,
     },
     data() {
         return {
