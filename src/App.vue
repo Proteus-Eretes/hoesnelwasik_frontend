@@ -1,20 +1,8 @@
 <template>
-  <div id="app">
-    <FinishTime time=500.15 bonusSeconds="15"></FinishTime>
-  </div>
+    <div id="app">
+        <router-view/>
+    </div>
 </template>
-
-<script>
-    // @ is an alias to /src
-    import FinishTime from "@/components/Time/FinishTime.vue";
-
-    export default {
-        name: "home",
-        components: {
-            FinishTime
-        }
-    };
-</script>
 
 <style lang="scss">
 
