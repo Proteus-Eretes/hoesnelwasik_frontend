@@ -7,8 +7,8 @@
 
 <script>
 import NavBar from '@/components/Navigation/NavBar';
-import DrawOverview from "../components/Crews/DrawOverview";
-import {Crews} from "../services/Crews";
+import DrawOverview from "@/components/Crews/DrawOverview";
+import {Crews} from "@/services/Crews";
 
 export default {
     name: 'IframeCrewDrawView',
