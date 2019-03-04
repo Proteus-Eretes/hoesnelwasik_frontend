@@ -1,18 +1,18 @@
 <template>
     <td class="FinishTime" :class="styling">
         {{prettyTime}}
-        <span v-if="bonusSeconds > 0" style="font-size: 59%; "> +{{bonusSeconds}}</span>
+        <span v-if="bonusSeconds > 0" style="font-size: 59%; ">+{{bonusSeconds}}</span>
     </td>
 </template>
 
 <script>
-import moment from "moment";
+import moment from 'moment';
 
 export default {
-    name: "FinishTime",
+    name: 'FinishTime',
     props: {
         time: String,
-        bonusSeconds: String,
+        bonusSeconds: String
     },
     computed: {
         prettyTime() {
@@ -29,7 +29,7 @@ export default {
             return '';
         }
     }
-}
+};
 </script>
 
 <style scoped>
