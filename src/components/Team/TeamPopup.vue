@@ -2,13 +2,8 @@
     <div class='teamPopup'>
         <b-button @click="showModal">Show Team</b-button>
 
-        <b-modal ref="teamModalRef" hide-footer hide-header id="TeamPopup" >
+        <b-modal :title=team[0].teamname ref="teamModalRef" hide-footer id="TeamPopup" >
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">
-                        {{ team[0].teamname}}
-                    </h5>
-                </div>
 
                 <div class="modal-body">
                     <b-table stacked :items="team" :fields="fields"/>

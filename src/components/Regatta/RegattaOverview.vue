@@ -4,7 +4,9 @@
             <b-tab no-body title-link-class="link-unstyled" title-item-class="text-uppercase" title="Veld"
                    href="#velden"></b-tab>
             <b-tab no-body title-link-class="link-unstyled" title-item-class="text-uppercase" title="Blok"
-                   href="#blocks"></b-tab>
+                   href="#blocks">
+                <block-overview :blocks="blocks"></block-overview>
+            </b-tab>
             <b-tab no-body title-link-class="link-unstyled" title-item-class="text-uppercase" title="Vereniging" href="#clubs">
                 <clubs-overview :clubs="clubs"></clubs-overview>
             </b-tab>
@@ -15,10 +17,12 @@
 <script>
 import {Regatta} from '@/services/Regatta';
 import ClubsOverview from '@/components/Clubs/ClubsOverview';
+import BlockOverview from "../Blocks/BlockOverview";
 
 export default {
     name: 'RegattaOverview',
     components: {
+        BlockOverview,
         ClubsOverview
     },
     props: {
@@ -28,6 +32,7 @@ export default {
     data() {
         return {
             clubs: [],
+            blocks: [],
             tabIndex: 0,
             tabs: ['#velden', '#blocks', '#clubs']
         };
@@ -39,6 +44,7 @@ export default {
             this.year
         );
         this.clubs = await regatta.getClubs();
+        this.blocks = await regatta.getBlocks();
         this.tabIndex = this.tabs.findIndex(tab => tab === this.$route.hash);
     }
 };
