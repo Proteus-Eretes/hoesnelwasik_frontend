@@ -46,7 +46,6 @@ export class Regatta extends Service {
         for (let block in blockList) {
             blocks.push(blockList[block]);
         }
-        console.log(blocks);
         return blocks;
     }
 
