@@ -1,19 +1,19 @@
 <template>
     <div>
         <NavBar></NavBar>
-        <DrawOverview :draw="draw"></DrawOverview>
+        <DrawOverview :crews="crews"></DrawOverview>
     </div>
 </template>
 
 <script>
-import DrawOverview from '@/components/Crews/DrawOverview.vue';
 import NavBar from '@/components/Navigation/NavBar';
-import { Regatta } from '../services/Regatta';
+import DrawOverview from "../components/Crews/DrawOverview";
+import {Crews} from "../services/Crews";
 
 export default {
     name: 'IframeCrewDrawView',
     props: {
-        fieldId: Number,
+        field: String,
         match: String,
         year: String
     },
@@ -23,18 +23,19 @@ export default {
     },
     data() {
         return {
-            draw: []
+            crews: []
         };
     },
     async mounted() {
-        console.log('hello world');
-        const regatta = new Regatta(
+        const crews = new Crews(
             'https://beta.hoesnelwasik.nl/api',
             this.match,
-            this.year
+            this.year,
+            this.field,
+            'loting'
         );
-        this.draw = await regatta.getFields();
-        console.log(this.draw);
+
+        this.crews = await crews.getCrews();
     }
 };
 </script>

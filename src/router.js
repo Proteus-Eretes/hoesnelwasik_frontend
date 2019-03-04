@@ -22,9 +22,9 @@ export default new Router({
             props: true
         },
         {
-            path: '/iframe/:match/:year/:fieldId/loting',
+            path: '/iframe/:match/:year/:field/loting',
             name: 'IframeCrewDrawView',
-            comp: IframeCrewDrawView,
+            component: IframeCrewDrawView,
             props: true
         }
     ]
