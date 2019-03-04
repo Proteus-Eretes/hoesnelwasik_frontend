@@ -19,7 +19,7 @@ export class Crews extends Regatta {
 
     async getCrews() {
         if (this.crews === null) {
-            const crews = await this._fetch('');
+            const crews = await this._fetch(this.getCrewUrl());
             if (crews.error) {
                 return [];
             }
@@ -28,7 +28,7 @@ export class Crews extends Regatta {
         return this.crews;
     }
 
-    async _fetch(url) {
-        return super._fetch( `${this._field}/${this._endpoint}`);
+    getCrewUrl() {
+        return this.genRegattaUrl(`${this._field}/${this._endpoint}`);
     }
 }

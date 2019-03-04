@@ -1,6 +1,6 @@
 <template>
     <div>
-        <NavBar></NavBar>
+        <NavBar :regatta="regatta" :regattas="regattas"></NavBar>
         <DrawOverview :crews="crews"></DrawOverview>
     </div>
 </template>
@@ -23,7 +23,9 @@ export default {
     },
     data() {
         return {
-            crews: []
+            crews: [],
+            regatta: {},
+            regattas: []
         };
     },
     async mounted() {
@@ -36,6 +38,9 @@ export default {
         );
 
         this.crews = await crews.getCrews();
+        this.regattas = await crews.getEditions(this.match);
+        this.regatta = await crews.getEdition();
+        console.log(this.regatta);
     }
 };
 </script>

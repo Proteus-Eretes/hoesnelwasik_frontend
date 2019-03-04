@@ -52,7 +52,7 @@ export class Regatta extends Service {
 
     async _getFields() {
         if (this._fields === null) {
-            const fields = await this._fetch('velden/');
+            const fields = await this._fetch(this.genRegattaUrl('velden/'));
 
             if (fields.error) {
                 return [];
@@ -65,7 +65,7 @@ export class Regatta extends Service {
 
     async getClubs() {
         if (this._clubs === null) {
-            const clubs = await this._fetch('clublist/');
+            const clubs = await this._fetch(this.genRegattaUrl('clublist/'));
             if (clubs.error) {
                 return [];
             }
@@ -76,8 +76,28 @@ export class Regatta extends Service {
     }
 
     async _fetch(url) {
-        const data = await super._fetch(`/wd/${this._match}/${this._year}/${url}`);
+        const data = await super._fetch(url);
         this.match = !data.error;
         return data;
+    }
+
+    genRegattaUrl(url) {
+        return `/wd/${this._match}/${this._year}/${url}`;
+    }
+
+    async getEditions(regattaName) {
+        const regattas = await this.getRegattas();
+
+        return regattas.filter(regatta => {
+            return regatta.shortname === regattaName;
+        });
+    }
+
+    async getEdition() {
+        const regattas = await this.getEditions(this._match);
+
+        return regattas.filter(regatta => {
+            return regatta.jaar === this._year;
+        })[0];
     }
 }

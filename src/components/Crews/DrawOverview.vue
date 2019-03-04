@@ -59,7 +59,7 @@ export default {
                     key: 'rower8',
                     label: 'Slag',
                     thClass: 'font-italic',
-                    class: 'text-center'
+                    class: 'text-center d-none d-sm-block'
                 }
             ]
         };

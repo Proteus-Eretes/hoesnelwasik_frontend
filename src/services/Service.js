@@ -20,7 +20,7 @@ export class Service {
         });
     }
 
-    async getRetgattas() {
+    async getRegattas() {
         if (this.regattas === null) {
             this.regattas = (await this._fetch('/')).regattas;
         }
