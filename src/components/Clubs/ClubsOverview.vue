@@ -14,20 +14,26 @@
 export default {
     name: 'ClubsOverview',
     props: {
-        clubs: Array,
+        clubs: Array
     },
     data() {
         return {
             fields: {
                 blad: {
                     key: 'oarImage',
-                    label: 'blad'
+                    label: 'Blad',
+                    thClass: 'font-italic',
+                    class: 'text-center'
                 },
                 clubshort: {
-                    label: 'code'
+                    label: 'Code',
+                    thClass: 'font-italic',
+                    class: 'text-center'
                 },
                 clubname: {
-                    label: 'vereniging'
+                    label: 'Vereniging',
+                    thClass: 'font-italic',
+                    class: 'text-center'
                 }
             }
         };

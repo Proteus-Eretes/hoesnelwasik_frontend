@@ -2,12 +2,11 @@
     <div class='teamPopup'>
         <b-button @click="showModal">Show Team</b-button>
 
-
         <b-modal ref="teamModalRef" hide-footer hide-header id="TeamPopup" >
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">
-                            {{ team[0].teamname}}
+                        {{ team[0].teamname}}
                     </h5>
                 </div>
 
@@ -20,7 +19,6 @@
                 </div>
             </div>
         </b-modal>
-
     </div>
 </template>
 
@@ -47,13 +45,9 @@ export default {
         ];
         return {
             fields: attributes.filter(element => {
-                // console.log(element);
-                // console.log(element.key);
-                // console.log(team[element.key]);
                 return element.key in team;
             }),
             team: [team]
-
         };
     },
     methods: {
@@ -79,14 +73,13 @@ export default {
             };
         },
         showModal() {
-            this.$refs.teamModalRef.show()
+            this.$refs.teamModalRef.show();
         },
         hideModal() {
-            this.$refs.teamModalRef.hide()
+            this.$refs.teamModalRef.hide();
         }
-
     }
-}
+};
 </script>
 
 <style scoped>
