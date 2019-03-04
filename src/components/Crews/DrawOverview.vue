@@ -1,6 +1,6 @@
 <template>
-    <div class="clubs" v-if="clubs">
-        <b-table hover :items="clubs" :fields="fields">
+    <div class="crew-draw-overview">
+        <b-table hover :items="draw" :fields="fields">
             <template slot="OarImage" slot-scope="row">
                 <OarImage :club="row.item.clubshort"></OarImage>
             </template>
@@ -9,14 +9,15 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import OarImage from '@/components/Clubs/OarImage.vue';
 
 export default {
-    name: 'ClubsOverview',
-    components: { OarImage },
+    name: 'DrawOverview',
     props: {
-        clubs: Array
+        draw: Array
+    },
+    components: {
+        OarImage
     },
     data() {
         return {
@@ -24,17 +25,11 @@ export default {
                 blad: {
                     key: 'OarImage',
                     label: 'blad'
-                },
-                clubshort: {
-                    label: 'code'
-                },
-                clubname: {
-                    label: 'vereniging'
                 }
             }
         };
     }
-};
+}
 </script>
 
 <style scoped></style>
