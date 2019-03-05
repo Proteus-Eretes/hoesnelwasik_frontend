@@ -66,13 +66,19 @@ export default {
     },
     computed: {
         hasNext() {
+            if (this.regatta.jaar === 0) {
+                return false;
+            }
             return this.regattas.filter(regatta => {
-                return regatta.jaar > regatta.jaar;
+                return regatta.jaar > this.regatta.jaar;
             }).length;
         },
         hasPrev() {
+            if (this.regatta.jaar === 0 && this.regattas.length > 1) {
+                return true;
+            }
             return this.regattas.filter(regatta => {
-                return regatta.jaar < regatta.jaar;
+                return regatta.jaar < this.regatta.jaar;
             }).length;
         }
     }

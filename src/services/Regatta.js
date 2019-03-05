@@ -52,7 +52,7 @@ export class Regatta extends Service {
 
     async _getFields() {
         if (this._fields === null) {
-            const fields = await this._fetch(this.genRegattaUrl('velden/'));
+            const fields = await this._fetch(this._genRegattaUrl('velden/'));
 
             if (fields.error) {
                 return [];
@@ -65,7 +65,7 @@ export class Regatta extends Service {
 
     async getClubs() {
         if (this._clubs === null) {
-            const clubs = await this._fetch(this.genRegattaUrl('clublist/'));
+            const clubs = await this._fetch(this._genRegattaUrl('clublist/'));
             if (clubs.error) {
                 return [];
             }
@@ -81,7 +81,12 @@ export class Regatta extends Service {
         return data;
     }
 
-    genRegattaUrl(url) {
+    /**
+     * @param {string} url
+     * @return {string}
+     * @protected
+     */
+    _genRegattaUrl(url) {
         return `/wd/${this._match}/${this._year}/${url}`;
     }
 

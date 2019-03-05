@@ -40,7 +40,6 @@ export default {
         this.crews = await crews.getCrews();
         this.regattas = await crews.getEditions(this.match);
         this.regatta = await crews.getEdition();
-        console.log(this.regatta);
     }
 };
 </script>
