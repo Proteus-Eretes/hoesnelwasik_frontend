@@ -33,13 +33,20 @@ export class Regatta extends Service {
 
     async getBlocks() {
         const fields = JSON.parse(JSON.stringify(await this._getFields()));
-        return fields.reduce((blocks, field) => {
+        const blockList = fields.reduce((blocks, field) => {
             if (!blocks[field.blockid]) {
                 blocks[field.blockid] = [];
             }
-            blocks[field.blockid][field.slotid] = field;
+            blocks[field.blockid].push(field);
             return blocks;
         }, []);
+
+        const blocks = [];
+
+        for (let block in blockList) {
+            blocks.push(blockList[block]);
+        }
+        return blocks;
     }
 
     async getFields() {

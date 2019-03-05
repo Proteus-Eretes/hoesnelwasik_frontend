@@ -1,12 +1,6 @@
 <template>
-    <b-modal ref="teamModalRef" hide-footer hide-header id="TeamPopup">
+    <b-modal :title=team.teamname ref="teamModalRef" hide-footer id="TeamPopup">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">
-                    {{ team.teamname }}
-                </h5>
-            </div>
-
             <div class="modal-body">
                 <b-table stacked :items="items" :fields="fields" />
             </div>

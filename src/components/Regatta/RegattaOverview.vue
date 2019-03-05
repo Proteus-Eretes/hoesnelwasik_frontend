@@ -4,7 +4,9 @@
             <b-tab no-body title-link-class="link-unstyled" title-item-class="text-uppercase" title="Veld"
                    href="#velden"></b-tab>
             <b-tab no-body title-link-class="link-unstyled" title-item-class="text-uppercase" title="Blok"
-                   href="#blocks"></b-tab>
+                   href="#blocks">
+                <block-overview :blocks="blocks"></block-overview>
+            </b-tab>
             <b-tab no-body title-link-class="link-unstyled" title-item-class="text-uppercase" title="Vereniging" href="#clubs">
                 <clubs-overview :clubs="clubs"></clubs-overview>
             </b-tab>
@@ -13,33 +15,24 @@
 </template>
 
 <script>
-import {Regatta} from '@/services/Regatta';
 import ClubsOverview from '@/components/Clubs/ClubsOverview';
+import BlockOverview from "@/components/Blocks/BlockOverview";
 
 export default {
     name: 'RegattaOverview',
     components: {
+        BlockOverview,
         ClubsOverview
     },
     props: {
-        match: String,
-        year: String
+        clubs: Array,
+        blocks: Array
     },
     data() {
         return {
-            clubs: [],
             tabIndex: 0,
             tabs: ['#velden', '#blocks', '#clubs']
         };
-    },
-    async mounted() {
-        const regatta = new Regatta(
-            'https://beta.hoesnelwasik.nl/api',
-            this.match,
-            this.year
-        );
-        this.clubs = await regatta.getClubs();
-        this.tabIndex = this.tabs.findIndex(tab => tab === this.$route.hash);
     }
 };
 </script>
