@@ -2,7 +2,9 @@
     <b-card no-body header-class="p-0">
         <b-tabs card v-model="tabIndex" class="full-width">
             <b-tab no-body title-link-class="link-unstyled" title-item-class="text-uppercase" title="Veld"
-                   href="#velden"></b-tab>
+                   href="#velden">
+                <EventsOverview :events="events"></EventsOverview>
+            </b-tab>
             <b-tab no-body title-link-class="link-unstyled" title-item-class="text-uppercase" title="Blok"
                    href="#blocks">
                 <block-overview :blocks="blocks"></block-overview>
@@ -17,16 +19,19 @@
 <script>
 import ClubsOverview from '@/components/Clubs/ClubsOverview';
 import BlockOverview from "@/components/Blocks/BlockOverview";
+import EventsOverview from "../Events/EventsOverview";
 
 export default {
     name: 'RegattaOverview',
     components: {
+        EventsOverview,
         BlockOverview,
         ClubsOverview
     },
     props: {
         clubs: Array,
-        blocks: Array
+        blocks: Array,
+        events: Array
     },
     data() {
         return {
@@ -50,15 +55,5 @@ export default {
         background-color: transparent;
         font-size: inherit;
     }
-}
-.full-width .card-header-tabs {
-    margin-right: -21px;
-    margin-left: -21px;
-}
-
-.full-width .nav-tabs .nav-item {
-    margin-bottom: -1px;
-    flex-grow: 1;
-    text-align: center;
 }
 </style>
