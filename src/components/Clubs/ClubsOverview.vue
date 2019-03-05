@@ -1,5 +1,5 @@
 <template>
-    <div class="clubs" v-if="clubs">
+    <div v-if="clubs">
         <b-table hover :items="clubs" :fields="fields">
             <template slot="OarImage" slot-scope="row">
                 <OarImage :club="row.item.clubshort"></OarImage>
