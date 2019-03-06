@@ -1,18 +1,20 @@
 <template>
-    <div class="clubs" v-if="clubs">
-        <b-table hover :items="prepareItems(clubs)" :fields="fields">
-            <template slot="oarImage" slot-scope="item">
-                <div class="oar">
-                    <b-img :src="item.item.blad" fluid alt="verenigings blad" />
-                </div>
+    <div v-if="clubs">
+        <b-table hover :items="clubs" :fields="fields">
+            <template slot="OarImage" slot-scope="row">
+                <OarImage :club="row.item.clubshort"></OarImage>
             </template>
         </b-table>
     </div>
 </template>
 
 <script>
+// @ is an alias to /src
+import OarImage from '@/components/Clubs/OarImage.vue';
+
 export default {
     name: 'ClubsOverview',
+    components: { OarImage },
     props: {
         clubs: Array
     },
@@ -20,7 +22,7 @@ export default {
         return {
             fields: {
                 blad: {
-                    key: 'oarImage',
+                    key: 'OarImage',
                     label: 'Blad',
                     thClass: 'font-italic',
                     class: 'text-center'
@@ -37,20 +39,6 @@ export default {
                 }
             }
         };
-    },
-    methods: {
-        prepareItems(clubs) {
-            let res = clubs;
-
-            res.forEach(function(club) {
-                club.blad =
-                    'https://images.poweredbyiris.nl/0/30/cluboars/' +
-                    club.clubshort.toLowerCase() +
-                    '.png';
-            });
-
-            return res;
-        }
     }
 };
 </script>

@@ -2,6 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
 import IframeView from "./views/IframeView";
+import IframeCrewDrawView from "./views/IframeCrewDrawView";
 
 Vue.use(Router);
 
@@ -18,6 +19,12 @@ export default new Router({
             path: '/iframe/:match/:year?/(uitslagen)?',
             name: 'IframeView',
             component: IframeView,
+            props: true
+        },
+        {
+            path: '/iframe/:match/:year/:field/loting',
+            name: 'IframeCrewDrawView',
+            component: IframeCrewDrawView,
             props: true
         }
     ]

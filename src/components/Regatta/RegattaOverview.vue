@@ -15,9 +15,8 @@
 </template>
 
 <script>
-import {Regatta} from '@/services/Regatta';
 import ClubsOverview from '@/components/Clubs/ClubsOverview';
-import BlockOverview from "../Blocks/BlockOverview";
+import BlockOverview from "@/components/Blocks/BlockOverview";
 
 export default {
     name: 'RegattaOverview',
@@ -26,26 +25,14 @@ export default {
         ClubsOverview
     },
     props: {
-        match: String,
-        year: String
+        clubs: Array,
+        blocks: Array
     },
     data() {
         return {
-            clubs: [],
-            blocks: [],
             tabIndex: 0,
             tabs: ['#velden', '#blocks', '#clubs']
         };
-    },
-    async mounted() {
-        const regatta = new Regatta(
-            'https://beta.hoesnelwasik.nl/api',
-            this.match,
-            this.year
-        );
-        this.clubs = await regatta.getClubs();
-        this.blocks = await regatta.getBlocks();
-        this.tabIndex = this.tabs.findIndex(tab => tab === this.$route.hash);
     }
 };
 </script>
