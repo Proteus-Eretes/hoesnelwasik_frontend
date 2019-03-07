@@ -1,10 +1,10 @@
 <template>
-    <td>
+    <div>
         <FinishTime :time="time" :bonus-seconds="bonusSeconds"></FinishTime>
         <template v-if="inValidTime">
             {{displayStatus}}
         </template>
-    </td>
+    </div>
 </template>
 
 <script>

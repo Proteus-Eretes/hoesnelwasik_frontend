@@ -1,7 +1,7 @@
 <template>
-    <td class="time">
+    <div>
         {{ prettyTime }}
-    </td>
+    </div>
 </template>
 
 <script>
