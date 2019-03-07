@@ -1,6 +1,6 @@
 <template>
     <div v-if="clubs">
-        <b-table hover :items="clubs" :fields="fields">
+        <b-table class="ClubTable" hover striped head-variant="dark" :items="clubs" :fields="fields" @row-clicked="rowClicked" >
             <template slot="OarImage" slot-scope="row">
                 <OarImage :club="row.item.clubshort"></OarImage>
             </template>
@@ -39,8 +39,23 @@ export default {
                 }
             }
         };
+    },
+    methods: {
+        rowClicked(record) {
+            const par = this.$router.currentRoute.params;
+            const year = par.year;
+            const match = par.match;
+            this.$router.push({
+                path:
+                    '/iframe/' + match + '/' + year + '/club/' + record.clubname
+            })
+        }
     }
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.ClubTable {
+    cursor: pointer;
+}
+</style>

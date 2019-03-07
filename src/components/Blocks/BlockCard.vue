@@ -41,7 +41,6 @@ export default {
             return starttime.slice(0, starttime.lastIndexOf(':'));
         },
         rowClicked(record) {
-            console.log(record);
             this.$router.push({
                 path:
                     this.$router.currentRoute.path + '/' + record.fieldnameshort
