@@ -10,7 +10,7 @@ import moment from 'moment';
 export default {
     name: 'Time',
     props: {
-        time: String
+        time: Number
     },
     computed: {
         prettyTime() {

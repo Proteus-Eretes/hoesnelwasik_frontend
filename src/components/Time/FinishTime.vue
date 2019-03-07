@@ -11,7 +11,7 @@ import moment from 'moment';
 export default {
     name: 'FinishTime',
     props: {
-        time: String,
+        time: Number,
         bonusSeconds: String
     },
     computed: {

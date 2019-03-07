@@ -33,7 +33,7 @@ import TeamPopup from '@/components/Team/TeamPopup.vue';
 import FinalTime from '../Time/FinalTime';
 
 export default {
-    name: 'ResultOverview',
+    name: 'SearchOverview',
     props: {
         crews: Array
     },
@@ -49,12 +49,6 @@ export default {
                 {
                     key: 'OarImage',
                     label: 'Blad',
-                    thClass: 'font-italic',
-                    class: 'text-center'
-                },
-                {
-                    key: 'times.0.rank',
-                    label: 'Pos#',
                     thClass: 'font-italic',
                     class: 'text-center'
                 },
