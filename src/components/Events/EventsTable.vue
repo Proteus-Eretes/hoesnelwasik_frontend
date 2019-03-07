@@ -1,0 +1,23 @@
+<template>
+    <b-table :items="events" :fields="fields" head-variant="dark"></b-table>
+</template>
+
+<script>
+export default {
+    name: 'EventsTable',
+    props: {
+        events: Array,
+        title: String
+    },
+    data() {
+        return {
+            fields: [
+                {
+                    key: 'fieldnameshort',
+                    label: this.title
+                }
+            ]
+        };
+    }
+};
+</script>

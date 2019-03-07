@@ -52,7 +52,10 @@ export class Regatta extends Service {
     async getFields() {
         const fields = JSON.parse(JSON.stringify(await this._getFields()));
         return fields.reduce((fieldOrdered, field) => {
-            fieldOrdered[field.numberofrowers] = field;
+            if (!fieldOrdered[field.numberofrowers]) {
+                fieldOrdered[field.numberofrowers] = [];
+            }
+            fieldOrdered[field.numberofrowers].push(field);
             return fieldOrdered;
         }, []);
     }
