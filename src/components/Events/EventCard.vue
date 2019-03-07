@@ -1,5 +1,6 @@
 <template>
     <b-card
+        v-if="events.length"
         header-tag="header"
         header-bg-variant="dark"
         header-text-variant="white"

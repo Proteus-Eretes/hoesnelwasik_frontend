@@ -12,10 +12,26 @@
                 </template>
                 <b-container class="mt-3">
                     <b-card-group columns style="column-count: 2">
-                        <EventCard :events="events[n]" title="Aapjes"></EventCard>
-                        <EventCard :events="events[n]" title="Aapjes"></EventCard>
-                        <EventCard :events="events[n]" title="Aapjes"></EventCard>
-                        <EventCard :events="events[n]" title="Aapjes"></EventCard>
+                        <EventCard
+                            :events="getFilteredEvents(n, true, false)"
+                            title="Heren"
+                        >
+                        </EventCard>
+                        <EventCard
+                            :events="getFilteredEvents(n, true, true)"
+                            title="Lichte Heren"
+                        >
+                        </EventCard>
+                        <EventCard
+                            :events="getFilteredEvents(n, false, false)"
+                            title="Dames"
+                        >
+                        </EventCard>
+                        <EventCard
+                            :events="getFilteredEvents(n, false, true)"
+                            title="Lichte Dames"
+                        >
+                        </EventCard>
                     </b-card-group>
                 </b-container>
             </b-tab>
@@ -38,6 +54,14 @@ export default {
                 rowers.push(n);
                 return rowers;
             }, []);
+        }
+    },
+    methods: {
+        getFilteredEvents(n, isMan, isLight) {
+            // noinspection EqualityComparisonWithCoercionJS
+            return this.events[n].filter(
+                event => event.isman == isMan && event.islight == isLight
+            );
         }
     }
 };

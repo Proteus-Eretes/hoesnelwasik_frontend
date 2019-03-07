@@ -14,8 +14,7 @@ export default {
             fields: [
                 {
                     key: 'fieldnameshort',
-                    label: this.title,
-                    thClass: 'view',
+                    label: this.title
                 }
             ]
         };
