@@ -1,7 +1,7 @@
 <template>
-    <b-modal :title=team.teamname ref="teamModalRef" hide-footer id="TeamPopup">
+    <b-modal :title=team.teamname ref="teamModalRef" hide-footer header-bg-variant="dark" header-text-variant="white" id="TeamPopup">
         <div class="modal-content">
-            <div class="modal-body">
+            <div class="modal-body" style="padding: 0rem">
                 <b-table stacked :items="items" :fields="fields" />
             </div>
 
