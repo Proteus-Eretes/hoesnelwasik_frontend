@@ -54,6 +54,9 @@ export default {
             tabIndex: 0,
             tabs: ['#velden', '#blocks', '#clubs']
         };
+    },
+    mounted() {
+        this.tabIndex = this.tabs.findIndex(tab => tab === this.$route.hash);
     }
 };
 </script>
