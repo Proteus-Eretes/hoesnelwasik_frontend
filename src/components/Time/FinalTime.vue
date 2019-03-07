@@ -15,7 +15,7 @@ export default {
     name: 'FinalTime',
     components: {FinishTime},
     props: {
-        time: String,
+        time: Number,
         bonusSeconds: String,
         status: String
     },
