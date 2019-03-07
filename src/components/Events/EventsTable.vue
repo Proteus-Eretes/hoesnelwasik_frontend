@@ -23,10 +23,7 @@ export default {
         rowClicked(record) {
             this.$router.push({
                 path:
-                    this.$router.currentRoute.path +
-                    '/' +
-                    record.fieldnameshort +
-                    '/loting'
+                    this.$router.currentRoute.path + '/' + record.fieldnameshort
             });
         }
     }

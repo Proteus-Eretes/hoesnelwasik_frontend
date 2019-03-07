@@ -6,7 +6,7 @@
         no-body
     >
         <h2 slot="header">{{ blockTitle }}</h2>
-        <b-table striped head-variant="dark" :items="block" :fields="fields">
+        <b-table class="FieldTable" striped hover head-variant="dark" :items="block" :fields="fields" @row-clicked="rowClicked" >
         </b-table>
     </b-card>
 </template>
@@ -39,7 +39,21 @@ export default {
     methods: {
         removeSeconds(starttime) {
             return starttime.slice(0, starttime.lastIndexOf(':'));
+        },
+        rowClicked(record) {
+            console.log(record);
+            this.$router.push({
+                path:
+                    this.$router.currentRoute.path + '/' + record.fieldnameshort
+            });
         }
     }
+
 };
 </script>
+
+<style scoped>
+.FieldTable {
+    cursor: pointer;
+}
+</style>
