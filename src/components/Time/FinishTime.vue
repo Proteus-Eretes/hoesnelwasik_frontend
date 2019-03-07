@@ -1,8 +1,8 @@
 <template>
-    <td class="FinishTime" :class="styling">
+    <div class="FinishTime" :class="styling">
         {{prettyTime}}
         <span v-if="bonusSeconds > 0" style="font-size: 59%; ">+{{bonusSeconds}}</span>
-    </td>
+    </div>
 </template>
 
 <script>
