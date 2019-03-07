@@ -13,7 +13,7 @@ export class Crews extends Regatta {
     constructor(baseUrl, match, year, field, endpoint) {
         super(baseUrl, match, year);
         this._endpoint = endpoint;
-        this._field = field;
+        this._field = field.replace(/\+/g, '%2B');
         this.crews = null;
     }
 
