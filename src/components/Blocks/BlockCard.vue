@@ -13,9 +13,9 @@
 
 <script>
 export default {
-    name: "BlockCard",
+    name: 'BlockCard',
     props: {
-        block: Array,
+        block: Array
     },
     data() {
         return {
@@ -39,11 +39,6 @@ export default {
     methods: {
         removeSeconds(starttime) {
             return starttime.slice(0, starttime.lastIndexOf(':'));
-        },
-        getBlockTitle(blocknumber, starttime) {
-            return (
-                'Block ' + blocknumber + ':  ' + this.removeSeconds(starttime)
-            );
         }
     }
 };
