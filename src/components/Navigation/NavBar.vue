@@ -1,6 +1,6 @@
 <template>
     <nav
-        class="navbar navbar-dark navbar-expand-md"
+        class= "navbar navbar-dark navbar-expand-md d-sm-block d-none"
         style="background-color: black"
     >
         <div class="collapse navbar-collapse w-100" id="navbar">
