@@ -136,10 +136,10 @@ export default {
             const match = par.match;
             const year = par.year;
             const field = par.field;
-            if(field != undefined) {
-                this.$router.push('/iframe/' + match + '/' + year + '/' + type + '/' + field);
+            if (field !== undefined) {
+                this.$router.push(`/iframe/${match}/${year}/${type}/${field}`);
             } else {
-                this.$router.push('/iframe/' + match + '/' + year + '/' + type);
+                this.$router.push(`/iframe/${match}/${year}/${type}`);
             }
         }
     }
