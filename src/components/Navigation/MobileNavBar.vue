@@ -39,32 +39,6 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item text-white">
-                    <h3>Weergave</h3>
-                    <ul class="list-unstyled">
-                        <li class="nav-item">
-                            <h3>
-                                <a class="nav-link text-white" :href="homeUrl"
-                                    >Velden</a
-                                >
-                            </h3>
-                        </li>
-                        <li class="nav-item">
-                            <h3>
-                                <a class="nav-link text-white" :href="homeUrl"
-                                    >Blok</a
-                                >
-                            </h3>
-                        </li>
-                        <li class="nav-item">
-                            <h3>
-                                <a class="nav-link text-white" :href="homeUrl"
-                                    >Vereniging</a
-                                >
-                            </h3>
-                        </li>
-                    </ul>
-                </li>
             </ul>
         </Slide>
         <nav class="navbar navbar-dark" style="background-color: black">

@@ -29,7 +29,7 @@ export default {
             }
 
             this.$router.push({
-                path: `/iframe/${this.$router.currentRoute.params.match}/${this.$router.currentRoute.params.jaar}/${target}/${record.fieldnameshort}`
+                path: `/iframe/${this.$router.currentRoute.params.match}/${this.$router.currentRoute.params.year}/${target}/${record.fieldnameshort}`
             });
         }
     }
