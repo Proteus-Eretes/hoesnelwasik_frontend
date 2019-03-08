@@ -4,4 +4,14 @@
     </div>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+.ploeg {
+    max-width: 150px;
+}
+@media (max-width: 350px) {
+    .ploeg {
+        max-width: 100px;
+        overflow-x: hidden;
+    }
+}
+</style>

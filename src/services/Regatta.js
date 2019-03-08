@@ -111,8 +111,17 @@ export class Regatta extends Service {
     async getEdition() {
         const regattas = await this.getEditions(this._match);
 
-        return regattas.filter(regatta => {
-            return regatta.jaar === this._year;
-        })[0];
+        if (this._year > 0) {
+            return regattas.filter(regatta => {
+                return regatta.jaar === this._year;
+            })[0];
+        }
+
+        return regattas.reduce((lastestRegatta, regatta) => {
+            if (lastestRegatta.jaar < regatta.jaar) {
+                return regatta;
+            }
+            return lastestRegatta;
+        })
     }
 }

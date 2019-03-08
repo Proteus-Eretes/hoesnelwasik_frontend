@@ -3,25 +3,27 @@
         <div class="text-center mt-3">
             <h3 class="text-secondary">{{ fieldName }}</h3>
         </div>
-        <b-row class="mt-2">
-            <b-table
-                hover
-                :items="crews"
-                :fields="fields"
-                thead-class="thead-dark"
-                @row-clicked="openTeamDialog"
-            >
-                <template slot="OarImage" slot-scope="row">
-                    <OarImage :club="row.item.clubnameshort"></OarImage>
-                </template>
-                <template slot="FinishTime" slot-scope="row">
-                    <FinalTime
-                        :time="row.item.times[0].times[0].time"
-                        :bonus-seconds="row.item.times[0].bonussecond"
-                        :status="row.item.times[0].status"
-                    ></FinalTime>
-                </template>
-            </b-table>
+        <b-row>
+            <div class="table-responsive">
+                <b-table
+                    hover
+                    :items="crews"
+                    :fields="fields"
+                    thead-class="thead-dark"
+                    @row-clicked="openTeamDialog"
+                >
+                    <template slot="OarImage" slot-scope="row">
+                        <OarImage :club="row.item.clubnameshort"></OarImage>
+                    </template>
+                    <template slot="FinishTime" slot-scope="row">
+                        <FinalTime
+                            :time="row.item.times[0].times[0].time"
+                            :bonus-seconds="row.item.times[0].bonussecond"
+                            :status="row.item.times[0].status"
+                        ></FinalTime>
+                    </template>
+                </b-table>
+            </div>
         </b-row>
         <team-popup :team="team"></team-popup>
     </b-container>
@@ -56,7 +58,7 @@ export default {
                     key: 'fieldnameshort',
                     label: 'Veld',
                     thClass: 'font-italic',
-                    class: 'text-center'
+                    class: 'text-center d-none d-sm-table-cell'
                 },
                 {
                     key: 'times.0.backnumber',
@@ -68,18 +70,25 @@ export default {
                     key: 'teamname',
                     label: 'Ploeg',
                     thClass: 'font-italic',
-                    class: 'text-center font-weight-bold'
+                    class: 'text-center font-weight-bold ploeg'
                 },
                 {
                     key: 'rower8',
                     label: 'Slag',
                     thClass: 'font-italic',
-                    class: 'text-center d-none d-sm-block'
+                    class: 'text-center d-none d-sm-table-cell'
                 },
                 {
                     key: 'FinishTime',
                     label: 'Finish tijd',
-                    thClass: 'font-italic'
+                    thClass: 'font-italic',
+                    class: 'd-none d-sm-table-cell'
+                },
+                {
+                    key: 'FinishTimeSmall',
+                    label: 'Tijd',
+                    thClass: 'font-italic',
+                    class: 'd-table-cell d-sm-none'
                 }
             ]
         };
