@@ -25,14 +25,14 @@
                     <ul class="list-unstyled">
                         <li class="nav-item">
                             <h3>
-                                <a class="nav-link text-white" :href="homeUrl"
+                                <a class="nav-link text-white" :href="homeUrl('uitslagen')"
                                     >Uitslagen</a
                                 >
                             </h3>
                         </li>
                         <li class="nav-item">
                             <h3>
-                                <a class="nav-link text-white" :href="homeUrl"
+                                <a class="nav-link text-white" :href="homeUrl('loting')"
                                     >Loting</a
                                 >
                             </h3>
@@ -86,9 +86,6 @@ export default {
                 return regatta.jaar < this.regatta.jaar;
             }).length;
         },
-        homeUrl() {
-            return `/iframe/${this.regatta.shortname}/${this.regatta.jaar}`;
-        },
         regattasOrder() {
             return this.regattas
                 .map(regatta => +regatta.jaar)
@@ -122,6 +119,9 @@ export default {
             this.$router.push({
                 path: `/iframe/${this.regatta.shortname}/${year}`
             });
+        },
+        homeUrl(type) {
+            return `/iframe/${this.regatta.shortname}/${this.regatta.jaar}/${type}`;
         }
     }
 };

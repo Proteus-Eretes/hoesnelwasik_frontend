@@ -26,21 +26,38 @@ export default {
         return {
             crews: [],
             regatta: {},
-            regattas: []
+            regattas: [],
+            crewService: {}
         };
     },
-    async mounted() {
-        const crews = new Crews(
+    methods: {
+        async init() {
+            this.crews = await this.crewService.getCrews();
+            this.regattas = await this.crewService.getEditions(this.match);
+            this.regatta = await this.crewService.getEdition();
+        }
+    },
+    watch: {
+        field: function() {
+            this.crewService.setField(this.field);
+            this.init();
+        }
+    },
+    mounted() {
+        let target;
+        if (this.target === 'clubs') {
+            target = 'vereniging';
+        } else {
+            target = 'search';
+        }
+        this.crewService = new Crews(
             'https://beta.hoesnelwasik.nl/api',
             this.match,
             this.year,
             this.field,
-            'search'
+            target
         );
-
-        this.crews = await crews.getCrews();
-        this.regattas = await crews.getEditions(this.match);
-        this.regatta = await crews.getEdition();
+        this.init();
     }
 };
 </script>

@@ -5,12 +5,15 @@
             type="search"
             placeholder="Zoek op naam, ploeg of vereniging"
             spellcheck="false"
-            id="search-bar"
+            ref="searchBar"
+            v-model="searchString"
+            v-on:keyup.enter="search()"
         />
         <span class="input-group-append">
             <button
                 class="btn btn-outline-secondary bg-dark text-white"
                 type="button"
+                v-on:click="search()"
             >
                 <i class="fa fa-search"></i>
             </button>
@@ -20,7 +23,19 @@
 
 <script>
 export default {
-    name: 'SearchBar'
+    name: 'SearchBar',
+    data() {
+        return {
+            searchString: ''
+        };
+    },
+    methods: {
+        search() {
+            this.$router.push({
+                path: `/iframe/${this.$router.currentRoute.params.match}/${this.$router.currentRoute.params.year}/search/${this.searchString}`
+            });
+        }
+    }
 };
 </script>
 

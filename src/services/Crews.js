@@ -28,6 +28,11 @@ export class Crews extends Regatta {
         return this.crews;
     }
 
+    setField(field) {
+        this._field = field;
+        this.crews = null;
+    }
+
     /**
      * @return {string}
      * @protected
