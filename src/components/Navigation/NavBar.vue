@@ -23,7 +23,7 @@
                                 <span
                                     v-on:click="openMatch(false)"
                                     v-if="hasPrev"
-                                    class="pl-2"
+                                    class="pl-2 clickable"
                                 >
                                     &lt;
                                 </span>
@@ -31,7 +31,7 @@
                                 <span
                                     v-on:click="openMatch(true)"
                                     v-if="hasNext"
-                                    class="pr-2"
+                                    class="pr-2 clickable"
                                 >
                                     &gt;
                                 </span>
@@ -53,16 +53,17 @@
                             class="navbar-nav align-self-end w-100 flex-row font-weight-bold"
                         >
                             <li class="ml-auto nav-item">
-                                <a href="#" class="nav-link text-white"
-                                    >Uitslagen</a
+                                <a v-on:click="switchType('loting')" href="#" class="nav-link text-white"
+                                    >Loting</a
                                 >
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link text-white">Live</a>
+                                <a v-on:click="switchType('uitslagen')" href="#" class="nav-link text-white"
+                                    >Uitslagen</a>
                             </li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link text-white"
-                                    >Loting</a
+                                    >Live</a
                                 >
                             </li>
                         </ul>
@@ -105,20 +106,34 @@ export default {
     },
     methods: {
         openMatch(next) {
+            const match = this.$router.currentRoute.params.match;
             if (next) {
                 const years = this.regattas
                     .filter(regatta => regatta.jaar > this.regatta.jaar)
                     .map(regatta => +regatta.jaar)
                     .sort();
-                this.$router.push({ path: `/iframe/ww/${years[0]}` });
+                this.$router.push({
+                    path: '/iframe/' + match + `/${years[0]}`
+                });
             } else {
                 const years = this.regattas
                     .filter(regatta => regatta.jaar < this.regatta.jaar)
                     .map(regatta => +regatta.jaar)
                     .sort();
                 this.$router.push({
-                    path: `/iframe/ww/${years[years.length - 1]}`
+                    path: '/iframe/' + match + `/${years[years.length - 1]}`
                 });
+            }
+        },
+        switchType(type) {
+            const par = this.$router.currentRoute.params;
+            const match = par.match;
+            const year = par.year;
+            const field = par.field;
+            if (field !== undefined) {
+                this.$router.push(`/iframe/${match}/${year}/${type}/${field}`);
+            } else {
+                this.$router.push(`/iframe/${match}/${year}/${type}`);
             }
         }
     }
