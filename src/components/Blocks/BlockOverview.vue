@@ -1,6 +1,6 @@
 <template>
     <b-container class="mt-3">
-        <b-card-group columns style="column-count: 2">
+        <b-card-group columns class="columns">
             <block-card
                 v-for="block in blocks"
                 :key="block[0].blockid"
@@ -20,3 +20,14 @@ export default {
     }
 };
 </script>
+
+<style type="scss">
+.columns {
+    column-count: 2 !important;
+}
+@media (max-width: 575.98px) {
+    .columns {
+        column-count: 1 !important;
+    }
+}
+</style>

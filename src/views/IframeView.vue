@@ -1,14 +1,18 @@
 <template>
     <div>
         <NavBar :regatta="regatta" :regattas="regattas"></NavBar>
-        <RegattaOverview :blocks="blocks" :clubs="clubs" :events="events"></RegattaOverview>
+        <RegattaOverview
+            :blocks="blocks"
+            :clubs="clubs"
+            :events="events"
+        ></RegattaOverview>
     </div>
 </template>
 
 <script>
 import NavBar from '@/components/Navigation/NavBar';
 import RegattaOverview from '@/components/Regatta/RegattaOverview';
-import { Regatta } from "../services/Regatta";
+import { Regatta } from '../services/Regatta';
 
 export default {
     name: 'iframe-view',
@@ -24,22 +28,34 @@ export default {
         return {
             clubs: [],
             regatta: {},
+            regattaService: null,
             regattas: [],
             blocks: [],
             events: []
         };
     },
-    async mounted() {
-        const regatta = new Regatta(
+    methods: {
+        init: async function() {
+            this.clubs = await this.regattaService.getClubs();
+            this.blocks = await this.regattaService.getBlocks();
+            this.events = await this.regattaService.getFields();
+            this.regattas = await this.regattaService.getEditions(this.match);
+            this.regatta = await this.regattaService.getEdition();
+        }
+    },
+    mounted() {
+        this.regattaService = new Regatta(
             'https://beta.hoesnelwasik.nl/api',
             this.match,
             this.year
         );
-        this.clubs = await regatta.getClubs();
-        this.blocks = await regatta.getBlocks();
-        this.events = await regatta.getFields();
-        this.regattas = await regatta.getEditions(this.match);
-        this.regatta = await regatta.getEdition();
+        this.init();
+    },
+    watch: {
+        year: function() {
+            this.regattaService.setYear(this.year);
+            this.init();
+        }
     }
 };
 </script>

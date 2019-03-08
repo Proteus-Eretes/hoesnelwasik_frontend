@@ -3,12 +3,14 @@
         <div class="text-center mt-3">
             <h3 class="text-secondary">{{ fieldName }}</h3>
         </div>
-        <b-row class="mt-2">
-            <b-table hover :items="crews" :fields="fields" thead-class="thead-dark" @row-clicked="openTeamDialog">
-                <template slot="OarImage" slot-scope="row">
-                    <OarImage :club="row.item.clubnameshort"></OarImage>
-                </template>
-            </b-table>
+        <b-row>
+            <div class="table-responsive">
+                <b-table hover :items="crews" :fields="fields" thead-class="thead-dark" @row-clicked="openTeamDialog">
+                    <template slot="OarImage" slot-scope="row">
+                        <OarImage :club="row.item.clubnameshort"></OarImage>
+                    </template>
+                </b-table>
+            </div>
         </b-row>
         <team-popup :team="team"></team-popup>
     </b-container>
@@ -41,7 +43,7 @@ export default {
                     key: 'fieldnameshort',
                     label: 'Veld',
                     thClass: 'font-italic',
-                    class: 'text-center'
+                    class: 'text-center d-none d-sm-table-cell'
                 },
                 {
                     key: 'backnumber',
@@ -53,13 +55,13 @@ export default {
                     key: 'teamname',
                     label: 'Ploeg',
                     thClass: 'font-italic',
-                    class: 'text-center font-weight-bold'
+                    class: 'text-center font-weight-bold ploeg'
                 },
                 {
                     key: 'rower8',
                     label: 'Slag',
                     thClass: 'font-italic',
-                    class: 'text-center d-none d-sm-block'
+                    class: 'text-center d-none d-sm-table-cell'
                 }
             ]
         };

@@ -30,12 +30,14 @@ export default {
                 clubshort: {
                     label: 'Code',
                     thClass: 'font-italic',
-                    class: 'text-center'
+                    class: 'text-center',
+                    sortable: true
                 },
                 clubname: {
                     label: 'Vereniging',
                     thClass: 'font-italic',
-                    class: 'text-center'
+                    class: 'text-center',
+                    sortable: true
                 }
             }
         };
