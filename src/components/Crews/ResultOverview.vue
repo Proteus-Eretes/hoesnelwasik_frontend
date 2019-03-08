@@ -14,6 +14,9 @@
                         thead-class="thead-dark"
                         @row-clicked="openTeamDialog"
                     >
+                        <template slot="smallRank" slot-scope="row">
+                            {{ row.item.times[0].rank }}
+                        </template>
                         <template slot="OarImage" slot-scope="row">
                             <OarImage :club="row.item.clubnameshort"></OarImage>
                         </template>
@@ -61,7 +64,7 @@ export default {
             team: {},
             fields: [
                 {
-                    key: 'times.0.rank',
+                    key: 'smallRank',
                     label: '',
                     thClass: 'font-italic',
                     class: 'd-table-cell d-sm-none pl-1 pr-0'
