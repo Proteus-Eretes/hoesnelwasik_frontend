@@ -1,7 +1,7 @@
 <template>
     <div>
         <NavBar :regatta="regatta" :regattas="regattas"></NavBar>
-        <ResultOverview :crews="crews"> </ResultOverview>
+        <SearchOverview :crews="crews"> </SearchOverview>
     </div>
 </template>
 
@@ -9,6 +9,7 @@
 import NavBar from '@/components/Navigation/NavBar';
 import { Crews } from '@/services/Crews';
 import ResultOverview from '../components/Crews/ResultOverview';
+import SearchOverview from "../components/Crews/SearchOverview";
 
 export default {
     name: 'IframeCrewSearchView',
@@ -19,6 +20,7 @@ export default {
         target: String
     },
     components: {
+        SearchOverview,
         ResultOverview,
         NavBar
     },
