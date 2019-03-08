@@ -26,8 +26,8 @@ export default {
     name: 'SearchBar',
     data() {
         return {
-            searchString: '',
-        }
+            searchString: ''
+        };
     },
     methods: {
         search() {
