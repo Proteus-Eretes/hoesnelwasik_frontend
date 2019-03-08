@@ -1,6 +1,6 @@
 <template>
     <nav
-        class="navbar navbar-dark navbar-expand-md"
+        class="navbar navbar-dark navbar-expand-sm"
         style="background-color: black"
     >
         <div class="collapse navbar-collapse w-100" id="navbar">
@@ -130,14 +130,12 @@ export default {
                     .map(regatta => +regatta.jaar)
                     .sort();
                 this.$router.push({ path: `/iframe/ww/${years[0]}` });
-                // this.$router.go(0);
             } else {
                 const years = this.regattas
                     .filter(regatta => regatta.jaar < this.regatta.jaar)
                     .map(regatta => +regatta.jaar)
                     .sort();
                 this.$router.push({ path: `/iframe/ww/${years[years.length - 1]}` });
-                // this.$router.go(0);
             }
         }
     }
