@@ -30,12 +30,18 @@ export default {
         };
     },
     async mounted() {
+        let target;
+        if (this.target === 'clubs') {
+            target = 'vereniging';
+        } else {
+            target = 'search';
+        }
         const crews = new Crews(
             'https://beta.hoesnelwasik.nl/api',
             this.match,
             this.year,
             this.field,
-            'search'
+            target
         );
 
         this.crews = await crews.getCrews();
