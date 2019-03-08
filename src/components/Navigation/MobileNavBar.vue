@@ -1,0 +1,177 @@
+<template>
+    <div class="d-block d-sm-none">
+        <Slide>
+            <ul class="pt-3 navbar list-unstyled">
+                <li class="nav-item text-white">
+                    <h3>
+                        <a class="p-0 text-white" :href="homeUrl">{{
+                            regatta.regattaname
+                        }}</a>
+                    </h3>
+                </li>
+                <li class="nav-item text-white w-100">
+                    <b-dropdown :text="regatta.jaar" style="background-color: black" class="black">
+                        <b-dropdown-item
+                            v-for="edition in regattasOrder"
+                            :key="edition"
+                            v-on:click="openEdition(edition)"
+                        >
+                            {{ edition }}
+                        </b-dropdown-item>
+                    </b-dropdown>
+                </li>
+                <li class="nav-item text-white">
+                    <h3>Bekijk</h3>
+                    <ul class="list-unstyled">
+                        <li class="nav-item">
+                            <h3>
+                                <a class="nav-link text-white" :href="homeUrl"
+                                    >Uitslagen</a
+                                >
+                            </h3>
+                        </li>
+                        <li class="nav-item">
+                            <h3>
+                                <a class="nav-link text-white" :href="homeUrl"
+                                    >Loting</a
+                                >
+                            </h3>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item text-white">
+                    <h3>Weergave</h3>
+                    <ul class="list-unstyled">
+                        <li class="nav-item">
+                            <h3>
+                                <a class="nav-link text-white" :href="homeUrl"
+                                    >Velden</a
+                                >
+                            </h3>
+                        </li>
+                        <li class="nav-item">
+                            <h3>
+                                <a class="nav-link text-white" :href="homeUrl"
+                                    >Blok</a
+                                >
+                            </h3>
+                        </li>
+                        <li class="nav-item">
+                            <h3>
+                                <a class="nav-link text-white" :href="homeUrl"
+                                    >Vereniging</a
+                                >
+                            </h3>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </Slide>
+        <nav class="navbar navbar-dark" style="background-color: black">
+            <h1 class="pl-5 text-white text-uppercase">IRIS - HSWI</h1>
+            <h3 class="navbar-nav text-white">
+                {{ regatta.regattaname }} {{ regatta.jaar }}
+            </h3>
+            <SearchBar></SearchBar>
+        </nav>
+    </div>
+</template>
+
+<script>
+import SearchBar from './SearchBar';
+import { Slide } from 'vue-burger-menu';
+export default {
+    name: 'MobileNavBar',
+    components: {
+        SearchBar,
+        Slide
+    },
+    props: {
+        regattas: Array,
+        regatta: Object
+    },
+    data() {
+        return {
+            menu: [
+                {
+                    href: '/',
+                    title: 'Dashboard',
+                    icon: 'fa fa-user'
+                }
+            ]
+        };
+    },
+    computed: {
+        hasNext() {
+            if (this.regatta.jaar === 0) {
+                return false;
+            }
+            return this.regattas.filter(
+                regatta => regatta.jaar > this.regatta.jaar
+            ).length;
+        },
+        hasPrev() {
+            if (this.regatta.jaar === 0 && this.regattas.length > 1) {
+                return true;
+            }
+            return this.regattas.filter(regatta => {
+                return regatta.jaar < this.regatta.jaar;
+            }).length;
+        },
+        homeUrl() {
+            return `/iframe/${this.regatta.shortname}/${this.regatta.jaar}`;
+        },
+        regattasOrder() {
+            return this.regattas
+                .map(regatta => +regatta.jaar)
+                .sort()
+                .reverse();
+        }
+    },
+    methods: {
+        openMatch(next) {
+            if (next) {
+                const years = this.regattas
+                    .filter(regatta => regatta.jaar > this.regatta.jaar)
+                    .map(regatta => +regatta.jaar)
+                    .sort();
+                this.$router.push({
+                    path: `/iframe/${this.regatta.shortname}/${years[0]}`
+                });
+            } else {
+                const years = this.regattas
+                    .filter(regatta => regatta.jaar < this.regatta.jaar)
+                    .map(regatta => +regatta.jaar)
+                    .sort();
+                this.$router.push({
+                    path: `/iframe/${this.regatta.shortname}/${
+                        years[years.length - 1]
+                    }`
+                });
+            }
+        },
+        openEdition(year) {
+            this.$router.push({
+                path: `/iframe/${this.regatta.shortname}/${year}`
+            });
+        }
+    }
+};
+</script>
+
+<style type="scss">
+.bm-burger-bars {
+    background-color: white;
+}
+.bm-burger-button {
+    z-index: 9000;
+    top: 18px;
+    left: 18px;
+}
+.bm-menu {
+    background-color: black;
+}
+.black button {
+    background-color: black;
+}
+</style>
