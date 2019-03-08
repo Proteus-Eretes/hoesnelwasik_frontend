@@ -41,9 +41,14 @@ export default {
             return starttime.slice(0, starttime.lastIndexOf(':'));
         },
         rowClicked(record) {
+            let target;
+            if (this.$router.currentRoute.fullPath.includes('loting')) {
+                target = 'loting';
+            } else {
+                target = 'uitslagen';
+            }
             this.$router.push({
-                path:
-                    this.$router.currentRoute.path + '/' + record.fieldnameshort
+                path: `/iframe/${this.$router.currentRoute.params.match}/${this.$router.currentRoute.params.jaar}/${target}/${record.fieldnameshort}`
             });
         }
     }

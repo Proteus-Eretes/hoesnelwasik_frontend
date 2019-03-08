@@ -24,7 +24,7 @@ export default new Router({
             component: Home
         },
         {
-            path: '/iframe/:match/:year?/:type?',
+            path: '/iframe/:match/:year?/:target?',
             name: 'IframeView',
             component: IframeView,
             props: true
