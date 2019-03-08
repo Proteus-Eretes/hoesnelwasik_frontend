@@ -52,7 +52,7 @@ export default {
         this.init();
     },
     watch: {
-        year: function () {
+        year: function() {
             this.regattaService.setYear(this.year);
             this.init();
         }
