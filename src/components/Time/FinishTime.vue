@@ -16,7 +16,7 @@ export default {
     },
     computed: {
         prettyTime() {
-            const momentTime = moment.unix(this.time + this.bonusSeconds).utc();
+            const momentTime = moment.unix(this.time + +this.bonusSeconds).utc();
             if (momentTime.hours()) {
                 return momentTime.format('HH:mm:ss.S');
             }
