@@ -30,25 +30,31 @@ export default new Router({
             props: true
         },
         {
-            path: '/iframe/:match/:year/:field/loting',
+            path: '/iframe/:match/:year?/(loting)?',
+            name: 'IframeView',
+            component: IframeView,
+            props: true
+        },
+        {
+            path: '/iframe/:match/:year/loting/:field',
             name: 'IframeCrewDrawView',
             component: IframeCrewDrawView,
             props: true
         },
         {
-            path: '/iframe/:match/:year/:field/uitslagen',
+            path: '/iframe/:match/:year/uitslagen/:field',
             name: 'IframeCrewResultsView',
             component: IframeCrewResultsView,
             props: true
         },
         {
-            path: '/iframe/:match/:year/:field/search',
+            path: '/iframe/:match/:year/search/:field',
             name: 'IframeCrewSearchView',
             component: IframeCrewSearchView,
             props: customProps('search')
         },
         {
-            path: '/iframe/:match/:year/:field/club',
+            path: '/iframe/:match/:year/club/:field',
             name: 'IframeCrewClubView',
             component: IframeCrewSearchView,
             props: customProps('club')

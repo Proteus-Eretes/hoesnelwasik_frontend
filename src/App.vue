@@ -14,4 +14,7 @@
         overflow-x: hidden;
     }
 }
+.clickable {
+    cursor: pointer;
+}
 </style>
