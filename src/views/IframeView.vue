@@ -1,6 +1,7 @@
 <template>
     <div>
         <NavBar :regatta="regatta" :regattas="regattas"></NavBar>
+        <MobileNavBar :regatta="regatta" :regattas="regattas"></MobileNavBar>
         <RegattaOverview
             :blocks="blocks"
             :clubs="clubs"
@@ -13,10 +14,12 @@
 import NavBar from '@/components/Navigation/NavBar';
 import RegattaOverview from '@/components/Regatta/RegattaOverview';
 import { Regatta } from '../services/Regatta';
+import MobileNavBar from "../components/Navigation/MobileNavBar";
 
 export default {
     name: 'iframe-view',
     components: {
+        MobileNavBar,
         RegattaOverview,
         NavBar
     },

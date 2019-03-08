@@ -1,6 +1,6 @@
 <template>
     <nav
-        class="navbar navbar-dark navbar-expand-sm"
+        class="navbar navbar-dark navbar-expand-sm d-none d-sm-block"
         style="background-color: black"
     >
         <div class="collapse navbar-collapse w-100" id="navbar">
@@ -15,7 +15,7 @@
                         <h1 class="d-xl-none row text-white text-uppercase">
                             HSWI
                         </h1>
-                        <div class="row">
+                        <b-row>
                             <div
                                 class="navbar-nav nav-item nav-link text-white"
                             >
@@ -32,10 +32,11 @@
                                     v-on:click="openMatch(true)"
                                     v-if="hasNext"
                                     class="pr-2"
-                                    >&gt;</span
                                 >
+                                    &gt;
+                                </span>
                             </div>
-                        </div>
+                        </b-row>
                     </div>
                     <div class="col-4">
                         <h1
@@ -44,25 +45,7 @@
                             Roeiuitslagen
                         </h1>
                         <b-row>
-                            <div
-                                class="align-items-center justify-content-center input-group"
-                            >
-                                <input
-                                    class="form-control border-0 bg-dark text-white"
-                                    type="search"
-                                    placeholder="Zoek op naam, ploeg of vereniging"
-                                    spellcheck="false"
-                                    id="search-bar"
-                                />
-                                <span class="input-group-append">
-                                    <button
-                                        class="btn btn-outline-secondary bg-dark text-white"
-                                        type="button"
-                                    >
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </span>
-                            </div>
+                            <SearchBar></SearchBar>
                         </b-row>
                     </div>
                     <div class="col-3 d-flex flex-row">
@@ -98,8 +81,12 @@
 </template>
 
 <script>
+import SearchBar from "./SearchBar";
 export default {
     name: 'NavBar',
+    components: {
+        SearchBar
+    },
     props: {
         regattas: Array,
         regatta: Object
@@ -135,7 +122,9 @@ export default {
                     .filter(regatta => regatta.jaar < this.regatta.jaar)
                     .map(regatta => +regatta.jaar)
                     .sort();
-                this.$router.push({ path: `/iframe/ww/${years[years.length - 1]}` });
+                this.$router.push({
+                    path: `/iframe/ww/${years[years.length - 1]}`
+                });
             }
         }
     }
