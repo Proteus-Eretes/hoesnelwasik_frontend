@@ -11,7 +11,7 @@
                     <RowerImage :n="n"></RowerImage>
                 </template>
                 <b-container class="mt-3">
-                    <b-card-group columns style="column-count: 2">
+                    <b-card-group columns class="columns">
                         <EventCard
                             :events="getFilteredEvents(n, true, false)"
                             title="Heren"

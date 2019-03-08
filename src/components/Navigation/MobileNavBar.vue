@@ -1,32 +1,77 @@
 <template>
     <div class="d-block d-sm-none">
         <Slide>
-            <ul>
-                <li>
-                    <a id="home" :href=homeUrl>{{regatta.regattaname}}</a>
+            <ul class="pt-3 navbar list-unstyled">
+                <li class="nav-item text-white">
+                    <h3>
+                        <a class="p-0 text-white" :href="homeUrl">{{
+                            regatta.regattaname
+                        }}</a>
+                    </h3>
                 </li>
-                <ul class="navbar-nav align-self-end w-100 flex-row font-weight-bold">
-
-                </ul>
+                <li class="nav-item text-white w-100">
+                    <b-dropdown :text="regatta.jaar" style="background-color: black" class="black">
+                        <b-dropdown-item
+                            v-for="edition in regattasOrder"
+                            :key="edition"
+                            v-on:click="openEdition(edition)"
+                        >
+                            {{ edition }}
+                        </b-dropdown-item>
+                    </b-dropdown>
+                </li>
+                <li class="nav-item text-white">
+                    <h3>Bekijk</h3>
+                    <ul class="list-unstyled">
+                        <li class="nav-item">
+                            <h3>
+                                <a class="nav-link text-white" :href="homeUrl"
+                                    >Uitslagen</a
+                                >
+                            </h3>
+                        </li>
+                        <li class="nav-item">
+                            <h3>
+                                <a class="nav-link text-white" :href="homeUrl"
+                                    >Loting</a
+                                >
+                            </h3>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item text-white">
+                    <h3>Weergave</h3>
+                    <ul class="list-unstyled">
+                        <li class="nav-item">
+                            <h3>
+                                <a class="nav-link text-white" :href="homeUrl"
+                                    >Velden</a
+                                >
+                            </h3>
+                        </li>
+                        <li class="nav-item">
+                            <h3>
+                                <a class="nav-link text-white" :href="homeUrl"
+                                    >Blok</a
+                                >
+                            </h3>
+                        </li>
+                        <li class="nav-item">
+                            <h3>
+                                <a class="nav-link text-white" :href="homeUrl"
+                                    >Vereniging</a
+                                >
+                            </h3>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </Slide>
-        <nav
-            class="navbar navbar-dark"
-            style="background-color: black"
-        >
-            <h1 class="text-white text-uppercase">IRIS - HSWI</h1>
-            <div
-                class="navbar-nav d-flex flex-row nav-item nav-link text-white"
-            >
-                {{ regatta.regattaname }}
-                <span v-on:click="openMatch(false)" v-if="hasPrev" class="pl-2">
-                    &lt;
-                </span>
-                {{ regatta.jaar }}
-                <span v-on:click="openMatch(true)" v-if="hasNext" class="pr-2">
-                    &gt;
-                </span>
-            </div>
+        <nav class="navbar navbar-dark" style="background-color: black">
+            <h1 class="pl-5 text-white text-uppercase">IRIS - HSWI</h1>
+            <h3 class="navbar-nav text-white">
+                {{ regatta.regattaname }} {{ regatta.jaar }}
+            </h3>
             <SearchBar></SearchBar>
         </nav>
     </div>
@@ -75,6 +120,12 @@ export default {
         },
         homeUrl() {
             return `/iframe/${this.regatta.shortname}/${this.regatta.jaar}`;
+        },
+        regattasOrder() {
+            return this.regattas
+                .map(regatta => +regatta.jaar)
+                .sort()
+                .reverse();
         }
     },
     methods: {
@@ -84,23 +135,43 @@ export default {
                     .filter(regatta => regatta.jaar > this.regatta.jaar)
                     .map(regatta => +regatta.jaar)
                     .sort();
-                this.$router.push({ path: `/iframe/ww/${years[0]}` });
+                this.$router.push({
+                    path: `/iframe/${this.regatta.shortname}/${years[0]}`
+                });
             } else {
                 const years = this.regattas
                     .filter(regatta => regatta.jaar < this.regatta.jaar)
                     .map(regatta => +regatta.jaar)
                     .sort();
                 this.$router.push({
-                    path: `/iframe/ww/${years[years.length - 1]}`
+                    path: `/iframe/${this.regatta.shortname}/${
+                        years[years.length - 1]
+                    }`
                 });
             }
+        },
+        openEdition(year) {
+            this.$router.push({
+                path: `/iframe/${this.regatta.shortname}/${year}`
+            });
         }
     }
 };
 </script>
 
-<style>
-/*.vsm-collapsed {*/
-    /*display: none;*/
-/*}*/
+<style type="scss">
+.bm-burger-bars {
+    background-color: white;
+}
+.bm-burger-button {
+    z-index: 9000;
+    top: 18px;
+    left: 18px;
+}
+.bm-menu {
+    background-color: black;
+}
+.black button {
+    background-color: black;
+}
 </style>
