@@ -1,14 +1,19 @@
 <template>
     <nav
-        class= "navbar navbar-dark navbar-expand-md d-sm-block d-none"
+        class="navbar navbar-dark navbar-expand-md"
         style="background-color: black"
     >
         <div class="collapse navbar-collapse w-100" id="navbar">
             <b-container fluid>
                 <b-row>
                     <div class="col-4">
-                        <h1 class="row text-white text-capitalize">
+                        <h1
+                            class="d-none d-xl-flex row text-white text-uppercase"
+                        >
                             Hoe snel was ik?
+                        </h1>
+                        <h1 class="d-xl-none row text-white text-uppercase" >
+                            HSWI
                         </h1>
                         <div class="row">
                             <div class="navbar-nav nav-item">
@@ -21,7 +26,7 @@
                     </div>
                     <div class="col-4">
                         <h1
-                            class="row nav-item text-white align-items-center justify-content-center text-capitalize"
+                            class="row nav-item text-white align-items-center justify-content-center text-uppercase"
                         >
                             Roeiuitslagen
                         </h1>
@@ -66,10 +71,10 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="col-1">
+                    <div class="col-1 flex-row">
                         <img
                             alt="logo"
-                            class="mx-auto"
+                            class="mx-auto header-img"
                             src="https://images.poweredbyiris.nl/100/logo.png"
                         />
                     </div>
@@ -107,4 +112,12 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped type="scss">
+.header-img {
+    height: auto;
+    width: 100%;
+    max-height: 100px;
+    max-width: 100px;
+    float: right;
+}
+</style>
