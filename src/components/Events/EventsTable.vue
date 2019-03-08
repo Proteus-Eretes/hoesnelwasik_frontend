@@ -1,5 +1,5 @@
 <template>
-    <b-table class="FieldTable" hover  :items="events" :fields="fields" head-variant="dark" @row-clicked="rowClicked" ></b-table>
+    <b-table class="clickable" hover  :items="events" :fields="fields" head-variant="dark" @row-clicked="rowClicked" ></b-table>
 </template>
 
 <script>
@@ -31,7 +31,4 @@ export default {
 </script>
 
 <style scoped>
-.FieldTable {
-    cursor: pointer;
-}
 </style>

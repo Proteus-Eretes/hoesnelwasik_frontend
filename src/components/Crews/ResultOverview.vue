@@ -6,6 +6,7 @@
         <b-row>
             <div class="table-responsive">
                 <b-table
+                    class="clickable"
                     hover
                     :items="crews"
                     :fields="fields"

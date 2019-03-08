@@ -6,7 +6,7 @@
         no-body
     >
         <h2 slot="header">{{ blockTitle }}</h2>
-        <b-table class="FieldTable" striped hover head-variant="dark" :items="block" :fields="fields" @row-clicked="rowClicked" >
+        <b-table class="clickable" striped hover head-variant="dark" :items="block" :fields="fields" @row-clicked="rowClicked" >
         </b-table>
     </b-card>
 </template>
@@ -52,7 +52,4 @@ export default {
 </script>
 
 <style scoped>
-.FieldTable {
-    cursor: pointer;
-}
 </style>

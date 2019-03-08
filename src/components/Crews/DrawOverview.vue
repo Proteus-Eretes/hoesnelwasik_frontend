@@ -5,7 +5,7 @@
         </div>
         <b-row>
             <div class="table-responsive">
-                <b-table hover :items="crews" :fields="fields" thead-class="thead-dark" @row-clicked="openTeamDialog">
+                <b-table class="clickable" hover :items="crews" :fields="fields" thead-class="thead-dark" @row-clicked="openTeamDialog">
                     <template slot="OarImage" slot-scope="row">
                         <OarImage :club="row.item.clubnameshort"></OarImage>
                     </template>
