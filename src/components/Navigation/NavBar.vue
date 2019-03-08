@@ -12,7 +12,7 @@
                         >
                             Hoe snel was ik?
                         </h1>
-                        <h1 class="d-xl-none row text-white text-uppercase" >
+                        <h1 class="d-xl-none row text-white text-uppercase">
                             HSWI
                         </h1>
                         <div class="row">

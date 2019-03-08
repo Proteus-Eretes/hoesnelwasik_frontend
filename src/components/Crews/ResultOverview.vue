@@ -3,25 +3,34 @@
         <div class="text-center mt-3">
             <h3 class="text-secondary">{{ fieldName }}</h3>
         </div>
-        <b-row class="mt-2">
-            <b-table
-                hover
-                :items="crews"
-                :fields="fields"
-                thead-class="thead-dark"
-                @row-clicked="openTeamDialog"
-            >
-                <template slot="OarImage" slot-scope="row">
-                    <OarImage :club="row.item.clubnameshort"></OarImage>
-                </template>
-                <template slot="FinishTime" slot-scope="row">
-                    <FinalTime
-                        :time="row.item.times[0].times[0].time"
-                        :bonus-seconds="row.item.times[0].bonussecond"
-                        :status="row.item.times[0].status"
-                    ></FinalTime>
-                </template>
-            </b-table>
+        <b-row>
+            <div class="table-responsive">
+                <b-table
+                    hover
+                    :items="crews"
+                    :fields="fields"
+                    thead-class="thead-dark"
+                    @row-clicked="openTeamDialog"
+                >
+                    <template slot="OarImage" slot-scope="row">
+                        <OarImage :club="row.item.clubnameshort"></OarImage>
+                    </template>
+                    <template slot="FinishTime" slot-scope="row">
+                        <FinalTime
+                            :time="row.item.times[0].times[0].time"
+                            :bonus-seconds="row.item.times[0].bonussecond"
+                            :status="row.item.times[0].status"
+                        ></FinalTime>
+                    </template>
+                    <template slot="FinishTimeSmall" slot-scope="row">
+                        <FinalTime
+                            :time="row.item.times[0].times[0].time"
+                            :bonus-seconds="row.item.times[0].bonussecond"
+                            :status="row.item.times[0].status"
+                        ></FinalTime>
+                    </template>
+                </b-table>
+            </div>
         </b-row>
         <team-popup :team="team"></team-popup>
     </b-container>
@@ -47,6 +56,12 @@ export default {
             team: {},
             fields: [
                 {
+                    key: 'times.0.rank',
+                    label: '',
+                    thClass: 'font-italic',
+                    class: 'd-table-cell d-sm-none pl-1 pr-0'
+                },
+                {
                     key: 'OarImage',
                     label: 'Blad',
                     thClass: 'font-italic',
@@ -54,15 +69,15 @@ export default {
                 },
                 {
                     key: 'times.0.rank',
-                    label: 'Pos#',
+                    label: 'Pos',
                     thClass: 'font-italic',
-                    class: 'text-center'
+                    class: 'text-center d-none d-sm-table-cell'
                 },
                 {
                     key: 'fieldnameshort',
                     label: 'Veld',
                     thClass: 'font-italic',
-                    class: 'text-center'
+                    class: 'text-center d-none d-sm-table-cell'
                 },
                 {
                     key: 'times.0.backnumber',
@@ -74,7 +89,7 @@ export default {
                     key: 'teamname',
                     label: 'Ploeg',
                     thClass: 'font-italic',
-                    class: 'text-center font-weight-bold'
+                    class: 'text-center font-weight-bold ploeg'
                 },
                 {
                     key: 'rower8',
@@ -85,7 +100,14 @@ export default {
                 {
                     key: 'FinishTime',
                     label: 'Finish tijd',
-                    thClass: 'font-italic'
+                    thClass: 'font-italic',
+                    class: 'd-none d-sm-table-cell'
+                },
+                {
+                    key: 'FinishTimeSmall',
+                    label: 'Tijd',
+                    thClass: 'font-italic',
+                    class: 'd-table-cell d-sm-none'
                 }
             ]
         };
@@ -103,5 +125,3 @@ export default {
     }
 };
 </script>
-
-<style scoped></style>
