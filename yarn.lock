@@ -5053,6 +5053,11 @@ icss-utils@^2.1.0:
   dependencies:
     postcss "^6.0.1"
 
+idevice@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/idevice/-/idevice-2.0.0.tgz#8a2cf35b8342dfb912c4f2942fa5515090826daf"
+  integrity sha512-b4xCwwz0apHBOnZ8UeWw8uclXWzXtd2X6JtCRIjH/A6jdqmOycwynvC9F1ustGlMgV9JQaGqQ1UttmPUno19DA==
+
 ieee754@^1.1.4:
   version "1.1.12"
   resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.1.12.tgz#50bf24e5b9c8bb98af4964c941cdb0918da7b60b"

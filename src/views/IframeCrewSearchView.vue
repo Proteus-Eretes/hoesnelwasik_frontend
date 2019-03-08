@@ -41,6 +41,9 @@ export default {
         field: function() {
             this.crewService.setField(this.field);
             this.init();
+        },
+        $route: function(to, from) {
+            window.ga('send', 'pageview', window.location);
         }
     },
     mounted() {

@@ -28,6 +28,11 @@ export default {
             regattas: []
         };
     },
+    watch: {
+        $route: function(to, from) {
+            window.ga('send', 'pageview', window.location);
+        }
+    },
     async mounted() {
         const crews = new Crews(
             'https://beta.hoesnelwasik.nl/api',
