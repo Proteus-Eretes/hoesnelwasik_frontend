@@ -16,11 +16,24 @@
                             HSWI
                         </h1>
                         <div class="row">
-                            <div class="navbar-nav nav-item">
-                                <a href="#" class="nav-link text-white">
-                                    {{ regatta.regattaname }} &lt;
-                                    {{ regatta.jaar }} &gt;
-                                </a>
+                            <div
+                                class="navbar-nav nav-item nav-link text-white"
+                            >
+                                {{ regatta.regattaname }}
+                                <span
+                                    v-on:click="openMatch(false)"
+                                    v-if="hasPrev"
+                                    class="pl-2"
+                                >
+                                    &lt;
+                                </span>
+                                {{ regatta.jaar }}
+                                <span
+                                    v-on:click="openMatch(true)"
+                                    v-if="hasNext"
+                                    class="pr-2"
+                                    >&gt;</span
+                                >
                             </div>
                         </div>
                     </div>
@@ -96,9 +109,9 @@ export default {
             if (this.regatta.jaar === 0) {
                 return false;
             }
-            return this.regattas.filter(regatta => {
-                return regatta.jaar > this.regatta.jaar;
-            }).length;
+            return this.regattas.filter(
+                regatta => regatta.jaar > this.regatta.jaar
+            ).length;
         },
         hasPrev() {
             if (this.regatta.jaar === 0 && this.regattas.length > 1) {
@@ -107,6 +120,25 @@ export default {
             return this.regattas.filter(regatta => {
                 return regatta.jaar < this.regatta.jaar;
             }).length;
+        }
+    },
+    methods: {
+        openMatch(next) {
+            if (next) {
+                const years = this.regattas
+                    .filter(regatta => regatta.jaar > this.regatta.jaar)
+                    .map(regatta => +regatta.jaar)
+                    .sort();
+                this.$router.push({ path: `/iframe/ww/${years[0]}` });
+                // this.$router.go(0);
+            } else {
+                const years = this.regattas
+                    .filter(regatta => regatta.jaar < this.regatta.jaar)
+                    .map(regatta => +regatta.jaar)
+                    .sort();
+                this.$router.push({ path: `/iframe/ww/${years[years.length - 1]}` });
+                // this.$router.go(0);
+            }
         }
     }
 };
