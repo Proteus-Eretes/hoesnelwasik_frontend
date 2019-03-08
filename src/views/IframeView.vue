@@ -55,6 +55,9 @@ export default {
         year: function() {
             this.regattaService.setYear(this.year);
             this.init();
+        },
+        $route: function(to, from) {
+            window.ga('send', 'pageview', window.location);
         }
     }
 };
