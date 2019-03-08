@@ -1,6 +1,6 @@
 <template>
     <b-container class="mt-3">
-        <b-card-group columns >
+        <b-card-group columns class="columns">
             <block-card
                 v-for="block in blocks"
                 :key="block[0].blockid"
