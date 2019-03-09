@@ -33,6 +33,16 @@ export class Crews extends Regatta {
         this.crews = null;
     }
 
+    setYear(year) {
+        super.setYear(year);
+        this.crews = null;
+    }
+
+    setMatch(match, year) {
+        super.setMatch(match, year);
+        this.crews = null;
+    }
+
     /**
      * @return {string}
      * @protected

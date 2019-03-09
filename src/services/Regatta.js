@@ -1,4 +1,4 @@
-import {Service} from "./Service";
+import { Service } from "./Service";
 
 
 export class Regatta extends Service {
@@ -122,6 +122,6 @@ export class Regatta extends Service {
                 return regatta;
             }
             return lastestRegatta;
-        })
+        });
     }
 }
