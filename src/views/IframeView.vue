@@ -57,7 +57,7 @@ export default {
             this.init();
         },
         $route: function(to, from) {
-            window.ga('send', 'pageview', window.location);
+            window.gtag('event', 'page_view', { send_to: 'UA-92572628-1' });
         }
     }
 };
