@@ -36,7 +36,6 @@ export default {
     },
     methods: {
         init: async function() {
-            console.log('a');
             this.clubs = await this.regattaService.getClubs();
             this.blocks = await this.regattaService.getBlocks();
             this.events = await this.regattaService.getFields();
