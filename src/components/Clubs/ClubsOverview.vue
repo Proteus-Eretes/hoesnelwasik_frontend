@@ -49,8 +49,8 @@ export default {
             const match = par.match;
             this.$router.push({
                 path:
-                    '/iframe/' + match + '/' + year + '/club/' + record.clubname
-            })
+                    '/iframe/' + match + '/' + year + '/club/' + record.clubshort
+            });
         }
     }
 };

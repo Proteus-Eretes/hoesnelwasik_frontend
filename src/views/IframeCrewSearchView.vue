@@ -48,7 +48,7 @@ export default {
     },
     mounted() {
         let target;
-        if (this.target === 'clubs') {
+        if (this.$router.currentRoute.fullPath.includes('club')) {
             target = 'vereniging';
         } else {
             target = 'search';

@@ -106,7 +106,10 @@ export default {
     },
     computed: {
         fieldName() {
-            return this.crews[0].fieldnameshort;
+            if (this.$router.currentRoute.fullPath.includes('club')) {
+                return this.crews[0].clubname;
+            }
+            return `Zoekresultaten voor: ${this.$router.currentRoute.params.field}`;
         }
     }
 };
