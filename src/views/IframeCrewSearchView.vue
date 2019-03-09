@@ -8,7 +8,6 @@
 <script>
 import NavBar from '@/components/Navigation/NavBar';
 import { Crews } from '@/services/Crews';
-import ResultOverview from '../components/Crews/ResultOverview';
 import SearchOverview from "../components/Crews/SearchOverview";
 
 export default {
@@ -21,7 +20,6 @@ export default {
     },
     components: {
         SearchOverview,
-        ResultOverview,
         NavBar
     },
     data() {
@@ -45,12 +43,12 @@ export default {
             this.init();
         },
         $route: function(to, from) {
-            window.ga('send', 'pageview', window.location);
+            window.gtag('event', 'page_view', { send_to: 'UA-92572628-1' });
         }
     },
     mounted() {
         let target;
-        if (this.target === 'clubs') {
+        if (this.$router.currentRoute.fullPath.includes('club')) {
             target = 'vereniging';
         } else {
             target = 'search';
