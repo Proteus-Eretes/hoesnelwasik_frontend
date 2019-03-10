@@ -42,8 +42,7 @@
             </ul>
         </Slide>
         <nav class="navbar navbar-dark" style="background-color: black">
-            <h1 class="pl-5 text-white text-uppercase">IRIS - HSWI</h1>
-            <h3 class="navbar-nav text-white">
+            <h3 class="pl-5 navbar-nav text-white">
                 {{ regatta.regattaname }} {{ regatta.jaar }}
             </h3>
             <SearchBar></SearchBar>
@@ -132,8 +131,8 @@ export default {
     background-color: white;
 }
 .bm-burger-button {
-    z-index: 9000;
-    top: 18px;
+    z-index: 5;
+    top: 8px;
     left: 18px;
 }
 .bm-menu {
