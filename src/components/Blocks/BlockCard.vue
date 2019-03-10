@@ -6,7 +6,15 @@
         no-body
     >
         <h2 slot="header">{{ blockTitle }}</h2>
-        <b-table class="clickable" striped hover head-variant="dark" :items="getFixedField(block)" :fields="fields" @row-clicked="rowClicked" >
+        <b-table
+            class="clickable"
+            striped
+            hover
+            head-variant="dark"
+            :items="block"
+            :fields="fields"
+            @row-clicked="rowClicked"
+        >
         </b-table>
     </b-card>
 </template>
@@ -22,7 +30,11 @@ export default {
             fields: [
                 { key: 'fieldnameshort', label: 'Veld' },
                 { key: 'numberofteams', label: 'Aantal ploegen' },
-                { key: 'starttime', label: 'Starttijd' }
+                {
+                    key: 'starttime',
+                    label: 'Starttijd',
+                    formatter: this.removeSeconds
+                }
             ]
         };
     },
@@ -31,23 +43,12 @@ export default {
             return (
                 'Block ' +
                 this.block[0].blocknumber +
-                ':  ' +
+                ': ' +
                 this.removeSeconds(this.block[0].starttime)
             );
         }
     },
     methods: {
-        getFixedField(block) {
-            console.log(block[0].blocknumber);
-            for (let i = 0; i < block.length; i++) {
-                let newtime = this.removeSeconds(block[i].starttime);
-                console.log(newtime);
-                block[i].starttime = newtime;
-                // block[i].starttime = this.removeSeconds(block[i].starttime);
-            }
-            console.log(block);
-            return block;
-        },
         removeSeconds(starttime) {
             return starttime.slice(0, starttime.lastIndexOf(':'));
         },
@@ -59,12 +60,11 @@ export default {
                 target = 'uitslagen';
             }
             this.$router.push({
-                path: `/iframe/${this.$router.currentRoute.params.match}/${this.$router.currentRoute.params.year}/${target}/${record.fieldnameshort}`
+                path: `/iframe/${this.$router.currentRoute.params.match}/${
+                    this.$router.currentRoute.params.year
+                }/${target}/${record.fieldnameshort}`
             });
         }
     }
 };
 </script>
-
-<style scoped>
-</style>
