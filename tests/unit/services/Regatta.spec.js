@@ -1,4 +1,3 @@
-import { Service } from '../../../src/services/Service';
 import { Regatta } from '../../../src/services/Regatta';
 
 describe('Service', () => {
