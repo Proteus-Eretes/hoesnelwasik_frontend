@@ -6,7 +6,7 @@
         no-body
     >
         <h2 slot="header">{{ blockTitle }}</h2>
-        <b-table class="clickable" striped hover head-variant="dark" :items="block" :fields="fields" @row-clicked="rowClicked" >
+        <b-table class="clickable" striped hover head-variant="dark" :items="getFixedField(block)" :fields="fields" @row-clicked="rowClicked" >
         </b-table>
     </b-card>
 </template>
@@ -37,6 +37,17 @@ export default {
         }
     },
     methods: {
+        getFixedField(block) {
+            console.log(block[0].blocknumber);
+            for (let i = 0; i < block.length; i++) {
+                let newtime = this.removeSeconds(block[i].starttime);
+                console.log(newtime);
+                block[i].starttime = newtime;
+                // block[i].starttime = this.removeSeconds(block[i].starttime);
+            }
+            console.log(block);
+            return block;
+        },
         removeSeconds(starttime) {
             return starttime.slice(0, starttime.lastIndexOf(':'));
         },
