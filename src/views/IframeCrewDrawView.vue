@@ -30,7 +30,7 @@ export default {
     },
     watch: {
         $route: function(to, from) {
-            window.gtag('event', 'page_view', { send_to: 'UA-92572628-1' });
+            window.gtag('event', 'page_view', { send_to: 'UA-92572628-2' });
         }
     },
     async mounted() {

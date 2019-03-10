@@ -14,9 +14,11 @@
                             >
                                 Hoe snel was ik?
                             </h1>
-                            <h1 class="d-xl-none row text-white text-uppercase">
-                                HSWI
-                            </h1>
+                            <h6
+                                class="h-50 align-items-center d-xl-none row text-white text-uppercase"
+                            >
+                                Hoe snel was ik?
+                            </h6>
                             <b-row>
                                 <div
                                     class="navbar-nav nav-item nav-link text-white"
