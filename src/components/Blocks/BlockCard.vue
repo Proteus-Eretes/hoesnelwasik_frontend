@@ -6,7 +6,15 @@
         no-body
     >
         <h2 slot="header">{{ blockTitle }}</h2>
-        <b-table class="clickable" striped hover head-variant="dark" :items="block" :fields="fields" @row-clicked="rowClicked" >
+        <b-table
+            class="clickable"
+            striped
+            hover
+            head-variant="dark"
+            :items="block"
+            :fields="fields"
+            @row-clicked="rowClicked"
+        >
         </b-table>
     </b-card>
 </template>
@@ -22,7 +30,11 @@ export default {
             fields: [
                 { key: 'fieldnameshort', label: 'Veld' },
                 { key: 'numberofteams', label: 'Aantal ploegen' },
-                { key: 'starttime', label: 'Starttijd' }
+                {
+                    key: 'starttime',
+                    label: 'Starttijd',
+                    formatter: this.removeSeconds
+                }
             ]
         };
     },
@@ -31,7 +43,7 @@ export default {
             return (
                 'Block ' +
                 this.block[0].blocknumber +
-                ':  ' +
+                ': ' +
                 this.removeSeconds(this.block[0].starttime)
             );
         }
@@ -48,12 +60,11 @@ export default {
                 target = 'uitslagen';
             }
             this.$router.push({
-                path: `/iframe/${this.$router.currentRoute.params.match}/${this.$router.currentRoute.params.year}/${target}/${record.fieldnameshort}`
+                path: `/iframe/${this.$router.currentRoute.params.match}/${
+                    this.$router.currentRoute.params.year
+                }/${target}/${record.fieldnameshort}`
             });
         }
     }
 };
 </script>
-
-<style scoped>
-</style>
