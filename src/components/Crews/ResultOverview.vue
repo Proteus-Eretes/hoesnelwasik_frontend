@@ -22,7 +22,7 @@
                         </template>
                         <template slot="FinishTime" slot-scope="row">
                             <FinalTime
-                                :time="row.item.times[0].times[0].time"
+                                :time="row.item.times[0].times[row.item.times[0].times.length - 1].time"
                                 :bonus-seconds="row.item.times[0].bonussecond"
                                 :status="row.item.times[0].status"
                             ></FinalTime>
