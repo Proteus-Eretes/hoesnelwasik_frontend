@@ -22,14 +22,14 @@
                         </template>
                         <template slot="FinishTime" slot-scope="row">
                             <FinalTime
-                                :time= "getFinishTimeMethod(row.item.times[0].times)"
+                                :time= "getFinishTime(row.item.times[0].times)"
                                 :bonus-seconds="row.item.times[0].bonussecond"
                                 :status="row.item.times[0].status"
                             ></FinalTime>
                         </template>
                         <template slot="FinishTimeSmall" slot-scope="row">
                             <FinalTime
-                                :time= "getFinishTimeMethod(row.item.times[0].times)"
+                                :time= "getFinishTime(row.item.times[0].times)"
                                 :bonus-seconds="row.item.times[0].bonussecond"
                                 :status="row.item.times[0].status"
                             ></FinalTime>
@@ -126,7 +126,7 @@ export default {
             this.team = team;
             this.$root.$emit('bv::show::modal', 'TeamPopup', button);
         },
-        getFinishTimeMethod(times) {
+        getFinishTime(times) {
             return getFinishTime(times);
         }
     },
