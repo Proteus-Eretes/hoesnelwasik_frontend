@@ -19,7 +19,7 @@
                         </template>
                         <template slot="FinishTime" slot-scope="row">
                             <FinalTime
-                                :time="row.item.times[0].times[row.item.times[0].times.length - 1].time"
+                                :time= "getFinishTimeMethod(row.item.times[0].times)"
                                 :bonus-seconds="row.item.times[0].bonussecond"
                                 :status="row.item.times[0].status"
                             ></FinalTime>
@@ -37,6 +37,7 @@ import OarImage from '@/components/Clubs/OarImage.vue';
 import TeamPopup from '@/components/Team/TeamPopup.vue';
 import FinalTime from '../Time/FinalTime';
 import ViewNavigationBar from '../Navigation/ViewNavigationBar';
+import {getFinishTime} from "../Time/Time";
 
 export default {
     name: 'SearchOverview',
@@ -102,6 +103,9 @@ export default {
         openTeamDialog(team, index, button) {
             this.team = team;
             this.$root.$emit('bv::show::modal', 'TeamPopup', button);
+        },
+        getFinishTimeMethod(times) {
+            return getFinishTime(times);
         }
     },
     computed: {
