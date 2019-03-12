@@ -99,6 +99,7 @@
 <script>
 import SearchBar from './SearchBar';
 import MobileNavBar from './MobileNavBar';
+import {highlightLink} from "./navigation";
 export default {
     name: 'NavBar',
     components: {
@@ -122,9 +123,7 @@ export default {
         }
     },
     methods: {
-        highlightLink(linkText) {
-            return this.$router.currentRoute.fullPath.includes(linkText);
-        },
+        highlightLink: highlightLink(this.$router),
         openMatch(next) {
             const match = this.$router.currentRoute.params.match;
             if (next) {

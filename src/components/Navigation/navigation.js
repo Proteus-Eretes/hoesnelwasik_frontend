@@ -1,0 +1,1 @@
+export const highlightLink = $router => linkText => $router.currentRoute.fullPath.includes(linkText);

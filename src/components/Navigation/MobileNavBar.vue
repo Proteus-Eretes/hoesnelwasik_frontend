@@ -59,6 +59,7 @@
 <script>
 import SearchBar from './SearchBar';
 import { Slide } from 'vue-burger-menu';
+import {highlightLink} from "./navigation";
 export default {
     name: 'MobileNavBar',
     components: {
@@ -99,9 +100,7 @@ export default {
         }
     },
     methods: {
-        highlightLink(linkText) {
-            return this.$router.currentRoute.fullPath.includes(linkText);
-        },
+        highlightLink: highlightLink(this.$router),
         openMatch(next) {
             if (next) {
                 const years = this.regattas
