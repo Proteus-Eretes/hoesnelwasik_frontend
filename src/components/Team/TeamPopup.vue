@@ -1,5 +1,12 @@
 <template>
-    <b-modal :title=team.teamname ref="teamModalRef" hide-footer header-bg-variant="dark" header-text-variant="white" id="TeamPopup">
+    <b-modal
+        :title="team.teamname"
+        ref="teamModalRef"
+        hide-footer
+        header-bg-variant="dark"
+        header-text-variant="white"
+        id="TeamPopup"
+    >
         <div class="modal-content">
             <div class="modal-body" style="padding: 0rem">
                 <b-table stacked :items="items" :fields="fields" />
@@ -28,10 +35,12 @@ export default {
     },
     computed: {
         fields() {
-            const attributes = [
+            let attributes = [
                 { key: 'clubname', label: 'Club' },
                 { key: 'backnumber', label: 'Rugnummer' },
-                { key: 'fieldnameshort', label: 'Veld' },
+                { key: 'fieldnameshort', label: 'Veld' }
+            ];
+            let additionalAtt = [
                 { key: 'rower8', label: 'Slag' },
                 { key: 'rower7', label: '7' },
                 { key: 'rower6', label: '6' },
@@ -39,14 +48,29 @@ export default {
                 { key: 'rower4', label: '4' },
                 { key: 'rower3', label: '3' },
                 { key: 'rower2', label: '2' },
-                { key: 'rower1', label: 'Boeg' },
-                { key: 'steername', label: 'Stuur' },
-                { key: 'coachnames', label: 'Coach' },
-                { key: 'comments', label: 'Commentaar' }
+                { key: 'rower1', label: 'Boeg' }
             ];
-            return attributes.filter(element => {
-                return this.team[element.key];
-            });
+            let commentsField = { key: 'times.0.comments', label: 'Commentaar' };
+            let subveldField = { key: 'fieldnameshortsub', label: 'Subveld' };
+
+            if (this.team.fieldnameshortsub !== '0') {
+                attributes.push(subveldField);
+            }
+
+            attributes = attributes
+                .concat(
+                    additionalAtt.filter(el => {
+                        return this.team[el.key];
+                    })
+                )
+                .concat([
+                    { key: 'steername', label: 'Stuur' },
+                    { key: 'coachnames', label: 'Coach' }
+                ]);
+            if (this.team.times !== undefined && this.team.times[0].comments) {
+                attributes.push(commentsField);
+            }
+            return attributes;
         },
         items() {
             return [this.team];
