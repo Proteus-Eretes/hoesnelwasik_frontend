@@ -24,6 +24,13 @@
                                 :status="row.item.times[0].status"
                             ></FinalTime>
                         </template>
+                        <template slot="FinishTimeSmall" slot-scope="row">
+                            <FinalTime
+                                :time="row.item.times[0].times[0].time"
+                                :bonus-seconds="row.item.times[0].bonussecond"
+                                :status="row.item.times[0].status"
+                            ></FinalTime>
+                        </template>
                     </b-table>
                 </div>
             </b-row>
@@ -113,7 +120,9 @@ export default {
             if (this.$router.currentRoute.fullPath.includes('club')) {
                 return this.crews[0].clubname;
             }
-            return `Zoekresultaten voor: ${this.$router.currentRoute.params.field}`;
+            return `Zoekresultaten voor: ${
+                this.$router.currentRoute.params.field
+            }`;
         }
     }
 };
