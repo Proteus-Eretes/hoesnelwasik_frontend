@@ -61,7 +61,12 @@
                                         v-on:click="switchType('uitslagen')"
                                         href="#"
                                         class="nav-link text-white"
-                                    >Uitslagen</a
+                                        ><strong
+                                            v-if="highlightLink('uitslagen')"
+                                        >
+                                            Uitslagen</strong
+                                        >
+                                        <div v-else>Uitslagen</div></a
                                     >
                                 </li>
                                 <li class="nav-item">
@@ -69,7 +74,10 @@
                                         v-on:click="switchType('loting')"
                                         href="#"
                                         class="nav-link text-white"
-                                        >Loting</a
+                                        ><strong v-if="highlightLink('loting')">
+                                            Loting</strong
+                                        >
+                                        <div v-else>Loting</div></a
                                     >
                                 </li>
                             </ul>
@@ -90,7 +98,7 @@
 
 <script>
 import SearchBar from './SearchBar';
-import MobileNavBar from "./MobileNavBar";
+import MobileNavBar from './MobileNavBar';
 export default {
     name: 'NavBar',
     components: {
@@ -114,6 +122,9 @@ export default {
         }
     },
     methods: {
+        highlightLink(linkText) {
+            return this.$router.currentRoute.fullPath.includes(linkText);
+        },
         openMatch(next) {
             const match = this.$router.currentRoute.params.match;
             if (next) {
@@ -160,5 +171,9 @@ export default {
     max-height: 100px;
     max-width: 100px;
     float: right;
+}
+
+.nav-link strong {
+    text-decoration: underline;
 }
 </style>
