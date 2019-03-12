@@ -26,14 +26,20 @@
                         <li class="nav-item">
                             <h3>
                                 <a class="nav-link text-white" :href="homeUrl('uitslagen')"
-                                    >Uitslagen</a
+                                    ><strong v-if="highlightLink('uitslagen')">
+                                        Uitslagen</strong
+                                    >
+                                    <div v-else>Uitslagen</div></a
                                 >
                             </h3>
                         </li>
                         <li class="nav-item">
                             <h3>
                                 <a class="nav-link text-white" :href="homeUrl('loting')"
-                                    >Loting</a
+                                    ><strong v-if="highlightLink('loting')">
+                                        Loting</strong
+                                    >
+                                    <div v-else>Loting</div></a
                                 >
                             </h3>
                         </li>
@@ -93,6 +99,9 @@ export default {
         }
     },
     methods: {
+        highlightLink(linkText) {
+            return this.$router.currentRoute.fullPath.includes(linkText);
+        },
         openMatch(next) {
             if (next) {
                 const years = this.regattas
@@ -134,6 +143,9 @@ export default {
     z-index: 5;
     top: 8px;
     left: 18px;
+}
+.nav-link strong {
+    text-decoration: underline;
 }
 .bm-menu {
     background-color: black;
