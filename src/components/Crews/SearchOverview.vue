@@ -65,13 +65,13 @@ export default {
                     key: 'OarImage',
                     label: 'Blad',
                     thClass: 'font-italic',
-                    class: 'text-center'
+                    class: 'text-center d-none d-sm-table-cell'
                 },
                 {
                     key: 'fieldnameshort',
                     label: 'Veld',
                     thClass: 'font-italic',
-                    class: 'text-center d-none d-sm-table-cell'
+                    class: 'text-center'
                 },
                 {
                     key: 'times.0.backnumber',
