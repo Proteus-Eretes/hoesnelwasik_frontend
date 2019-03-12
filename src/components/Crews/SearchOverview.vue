@@ -13,13 +13,22 @@
                         :fields="fields"
                         thead-class="thead-dark"
                         @row-clicked="openTeamDialog"
+                        :sort-by.sync="sortBy"
+                        :sort-desc.sync="sortDesc"
                     >
                         <template slot="OarImage" slot-scope="row">
                             <OarImage :club="row.item.clubnameshort"></OarImage>
                         </template>
                         <template slot="FinishTime" slot-scope="row">
                             <FinalTime
-                                :time= "getFinishTime(row.item.times[0].times)"
+                                :time="getFinishTime(row.item.times[0].times)"
+                                :bonus-seconds="row.item.times[0].bonussecond"
+                                :status="row.item.times[0].status"
+                            ></FinalTime>
+                        </template>
+                        <template slot="FinishTimeSmall" slot-scope="row">
+                            <FinalTime
+                                :time="getFinishTime(row.item.times[0].times)"
                                 :bonus-seconds="row.item.times[0].bonussecond"
                                 :status="row.item.times[0].status"
                             ></FinalTime>
@@ -37,7 +46,7 @@ import OarImage from '@/components/Clubs/OarImage.vue';
 import TeamPopup from '@/components/Team/TeamPopup.vue';
 import FinalTime from '../Time/FinalTime';
 import ViewNavigationBar from '../Navigation/ViewNavigationBar';
-import {getFinishTime} from "../Time/Time";
+import { getFinishTime } from '../Time/Time';
 
 export default {
     name: 'SearchOverview',
@@ -52,19 +61,21 @@ export default {
     },
     data() {
         return {
+            sortBy: 'times.0.backnumber',
+            sortDesc: false,
             team: {},
             fields: [
                 {
                     key: 'OarImage',
                     label: 'Blad',
                     thClass: 'font-italic',
-                    class: 'text-center'
+                    class: 'text-center d-none d-sm-table-cell'
                 },
                 {
                     key: 'fieldnameshort',
                     label: 'Veld',
                     thClass: 'font-italic',
-                    class: 'text-center d-none d-sm-table-cell'
+                    class: 'text-center'
                 },
                 {
                     key: 'times.0.backnumber',
@@ -104,16 +115,16 @@ export default {
             this.team = team;
             this.$root.$emit('bv::show::modal', 'TeamPopup', button);
         },
-        getFinishTime(times) {
-            return getFinishTime(times);
-        }
+        getFinishTime
     },
     computed: {
         fieldName() {
             if (this.$router.currentRoute.fullPath.includes('club')) {
                 return this.crews[0].clubname;
             }
-            return `Zoekresultaten voor: ${this.$router.currentRoute.params.field}`;
+            return `Zoekresultaten voor: ${
+                this.$router.currentRoute.params.field
+            }`;
         }
     }
 };
