@@ -13,20 +13,22 @@
                         :fields="fields"
                         thead-class="thead-dark"
                         @row-clicked="openTeamDialog"
+                        :sort-by.sync="sortBy"
+                        :sort-desc.sync="sortDesc"
                     >
                         <template slot="OarImage" slot-scope="row">
                             <OarImage :club="row.item.clubnameshort"></OarImage>
                         </template>
                         <template slot="FinishTime" slot-scope="row">
                             <FinalTime
-                                :time= "getFinishTime(row.item.times[0].times)"
+                                :time="getFinishTime(row.item.times[0].times)"
                                 :bonus-seconds="row.item.times[0].bonussecond"
                                 :status="row.item.times[0].status"
                             ></FinalTime>
                         </template>
                         <template slot="FinishTimeSmall" slot-scope="row">
                             <FinalTime
-                                :time="row.item.times[0].times[0].time"
+                                :time="getFinishTime(row.item.times[0].times)"
                                 :bonus-seconds="row.item.times[0].bonussecond"
                                 :status="row.item.times[0].status"
                             ></FinalTime>
@@ -44,7 +46,7 @@ import OarImage from '@/components/Clubs/OarImage.vue';
 import TeamPopup from '@/components/Team/TeamPopup.vue';
 import FinalTime from '../Time/FinalTime';
 import ViewNavigationBar from '../Navigation/ViewNavigationBar';
-import {getFinishTime} from "../Time/Time";
+import { getFinishTime } from '../Time/Time';
 
 export default {
     name: 'SearchOverview',
@@ -59,6 +61,8 @@ export default {
     },
     data() {
         return {
+            sortBy: 'times.0.backnumber',
+            sortDesc: false,
             team: {},
             fields: [
                 {
