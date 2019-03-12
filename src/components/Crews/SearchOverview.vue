@@ -115,9 +115,7 @@ export default {
             this.team = team;
             this.$root.$emit('bv::show::modal', 'TeamPopup', button);
         },
-        getFinishTime(times) {
-            return getFinishTime(times);
-        }
+        getFinishTime
     },
     computed: {
         fieldName() {
