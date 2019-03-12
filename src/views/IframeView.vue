@@ -13,6 +13,7 @@
 import NavBar from '@/components/Navigation/NavBar';
 import RegattaOverview from '@/components/Regatta/RegattaOverview';
 import { Regatta } from '../services/Regatta';
+import {sendPageView} from "./analytics";
 
 export default {
     name: 'iframe-view',
@@ -41,6 +42,7 @@ export default {
             this.events = await this.regattaService.getFields();
             this.regattas = await this.regattaService.getEditions(this.match);
             this.regatta = await this.regattaService.getEdition();
+            sendPageView();
         }
     },
     mounted() {
@@ -55,9 +57,6 @@ export default {
         year: function() {
             this.regattaService.setYear(this.year);
             this.init();
-        },
-        $route: function(to, from) {
-            window.gtag('event', 'page_view', { send_to: 'UA-92572628-1' });
         }
     }
 };
