@@ -9,6 +9,7 @@
 import NavBar from '@/components/Navigation/NavBar';
 import { Crews } from '@/services/Crews';
 import ResultOverview from '../components/Crews/ResultOverview';
+import {sendPageView} from "./analytics";
 
 export default {
     name: 'IframeCrewResultsView',
@@ -28,11 +29,6 @@ export default {
             regattas: []
         };
     },
-    watch: {
-        $route: function(to, from) {
-            window.gtag('event', 'page_view', { send_to: 'UA-92572628-2' });
-        }
-    },
     async mounted() {
         const crews = new Crews(
             'https://beta.hoesnelwasik.nl/api',
@@ -41,6 +37,7 @@ export default {
             this.field,
             'uitslagen'
         );
+        sendPageView();
 
         this.crews = await crews.getCrews();
         this.regattas = await crews.getEditions(this.match);
