@@ -9,6 +9,7 @@
 import NavBar from '@/components/Navigation/NavBar';
 import { Crews } from '@/services/Crews';
 import SearchOverview from "../components/Crews/SearchOverview";
+import {sendPageView} from "./analytics";
 
 export default {
     name: 'IframeCrewSearchView',
@@ -35,15 +36,13 @@ export default {
             this.crews = await this.crewService.getCrews();
             this.regattas = await this.crewService.getEditions(this.match);
             this.regatta = await this.crewService.getEdition();
+            sendPageView();
         }
     },
     watch: {
         field: function() {
             this.crewService.setField(this.field);
             this.init();
-        },
-        $route: function(to, from) {
-            window.gtag('event', 'page_view', { send_to: 'UA-92572628-2' });
         }
     },
     mounted() {
