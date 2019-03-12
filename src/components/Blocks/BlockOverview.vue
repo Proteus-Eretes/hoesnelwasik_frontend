@@ -1,8 +1,8 @@
 <template>
     <b-container class="mt-3">
-        <b-card-group columns class="columns">
+        <b-card-group deck class="columns">
             <block-card
-                v-for="block in blocks"
+                v-for="block in sortedBlocks"
                 :key="block[0].blockid"
                 :block="block"
             />
@@ -17,17 +17,25 @@ export default {
     components: { BlockCard },
     props: {
         blocks: Array
+    },
+    computed: {
+        sortedBlocks() {
+            let copy = this.blocks;
+            return copy.sort(function(a, b) {
+                return a[0].blocknumber - b[0].blocknumber;
+            });
+        }
     }
 };
 </script>
 
 <style type="scss">
 .columns {
-    column-count: 2 !important;
+    flex-wrap: wrap !important;
+    flex-grow: 1 !important;
 }
-@media (max-width: 575.98px) {
-    .columns {
-        column-count: 1 !important;
-    }
+.columns .card {
+    flex-basis: 40% !important;
+    margin: 15px 0 15px;
 }
 </style>
