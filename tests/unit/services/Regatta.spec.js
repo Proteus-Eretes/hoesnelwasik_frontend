@@ -16,11 +16,13 @@ describe('Service', () => {
             fields: [
                 {
                     blockid: 'aa',
-                    field: '1'
+                    field: '1',
+                    startorder: '2'
                 },
                 {
                     blockid: 'aa',
-                    field: '2'
+                    field: '2',
+                    startorder: '1'
                 },
                 {
                     blockid: 'ab',
@@ -37,11 +39,13 @@ describe('Service', () => {
             [
                 {
                     blockid: 'aa',
-                    field: '1'
+                    field: '2',
+                    startorder: '1'
                 },
                 {
                     blockid: 'aa',
-                    field: '2'
+                    field: '1',
+                    startorder: '2'
                 }
             ],
             [
