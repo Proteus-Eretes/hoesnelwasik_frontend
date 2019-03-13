@@ -44,6 +44,10 @@ export class Regatta extends Service {
         const blocks = [];
 
         for (let block in blockList) {
+            blockList[block].sort((a, b) => {
+                return a.startorder - b.startorder;
+            });
+
             blocks.push(blockList[block]);
         }
         return blocks;
