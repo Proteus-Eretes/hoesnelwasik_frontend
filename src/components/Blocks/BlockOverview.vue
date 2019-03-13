@@ -2,7 +2,7 @@
     <b-container class="mt-3">
         <b-card-group deck class="blokDeck">
             <block-card
-                v-for="block in sortedBlocks"
+                v-for="block in blocks"
                 :key="block[0].blockid"
                 :block="block"
             />
@@ -17,14 +17,6 @@ export default {
     components: { BlockCard },
     props: {
         blocks: Array
-    },
-    computed: {
-        sortedBlocks() {
-            let copy = this.blocks;
-            return copy.sort(function(a, b) {
-                return a[0].blocknumber - b[0].blocknumber;
-            });
-        }
     }
 };
 </script>
