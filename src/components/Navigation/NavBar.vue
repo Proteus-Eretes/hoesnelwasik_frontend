@@ -61,24 +61,40 @@
                                         v-on:click="switchType('uitslagen')"
                                         href="#"
                                         class="nav-link text-white"
-                                        ><strong
-                                            v-if="highlightLink('uitslagen')"
-                                        >
-                                            Uitslagen</strong
-                                        >
-                                        <div v-else>Uitslagen</div></a
                                     >
+                                        <strong
+                                            v-if="
+                                                highlightLink(
+                                                    this.$router.currentRoute
+                                                        .fullPath,
+                                                    'uitslagen'
+                                                )
+                                            "
+                                        >
+                                            Uitslagen
+                                        </strong>
+                                        <div v-else>Uitslagen</div>
+                                    </a>
                                 </li>
                                 <li class="nav-item">
                                     <a
                                         v-on:click="switchType('loting')"
                                         href="#"
                                         class="nav-link text-white"
-                                        ><strong v-if="highlightLink('loting')">
-                                            Loting</strong
-                                        >
-                                        <div v-else>Loting</div></a
                                     >
+                                        <strong
+                                            v-if="
+                                                highlightLink(
+                                                    $router.currentRoute
+                                                        .fullPath,
+                                                    'loting'
+                                                )
+                                            "
+                                        >
+                                            Loting
+                                        </strong>
+                                        <div v-else>Loting</div>
+                                    </a>
                                 </li>
                             </ul>
                         </div>
@@ -99,7 +115,7 @@
 <script>
 import SearchBar from './SearchBar';
 import MobileNavBar from './MobileNavBar';
-import {highlightLink} from "./navigation";
+import { highlightLink } from './navigation';
 export default {
     name: 'NavBar',
     components: {
@@ -123,7 +139,7 @@ export default {
         }
     },
     methods: {
-        highlightLink: highlightLink(this.$router),
+        highlightLink,
         openMatch(next) {
             const match = this.$router.currentRoute.params.match;
             if (next) {
@@ -170,9 +186,5 @@ export default {
     max-height: 100px;
     max-width: 100px;
     float: right;
-}
-
-.nav-link strong {
-    text-decoration: underline;
 }
 </style>

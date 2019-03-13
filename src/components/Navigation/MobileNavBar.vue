@@ -4,13 +4,17 @@
             <ul class="pt-3 navbar list-unstyled">
                 <li class="nav-item text-white">
                     <h3>
-                        <a class="p-0 text-white" :href="homeUrl">{{
-                            regatta.regattaname
-                        }}</a>
+                        <a class="p-0 text-white" :href="homeUrl">
+                            {{ regatta.regattaname }}
+                        </a>
                     </h3>
                 </li>
                 <li class="nav-item text-white w-100">
-                    <b-dropdown :text="regatta.jaar" style="background-color: black" class="black">
+                    <b-dropdown
+                        :text="regatta.jaar"
+                        style="background-color: black"
+                        class="black"
+                    >
                         <b-dropdown-item
                             v-for="edition in regattasOrder"
                             :key="edition"
@@ -25,22 +29,41 @@
                     <ul class="list-unstyled">
                         <li class="nav-item">
                             <h3>
-                                <a class="nav-link text-white" :href="homeUrl('uitslagen')"
-                                    ><strong v-if="highlightLink('uitslagen')">
+                                <a
+                                    class="nav-link text-white"
+                                    :href="homeUrl('uitslagen')"
+                                    ><strong
+                                        v-if="
+                                            highlightLink(
+                                                $router.currentRoute.fullPath,
+                                                'uitslagen'
+                                            )
+                                        "
+                                    >
                                         Uitslagen</strong
                                     >
-                                    <div v-else>Uitslagen</div></a
-                                >
+                                    <div v-else>Uitslagen</div>
+                                </a>
                             </h3>
                         </li>
                         <li class="nav-item">
                             <h3>
-                                <a class="nav-link text-white" :href="homeUrl('loting')"
-                                    ><strong v-if="highlightLink('loting')">
-                                        Loting</strong
-                                    >
-                                    <div v-else>Loting</div></a
+                                <a
+                                    class="nav-link text-white"
+                                    :href="homeUrl('loting')"
                                 >
+                                    <strong
+                                        v-if="
+                                            highlightLink(
+                                                $router.currentRoute.fullPath,
+                                                'loting'
+                                            )
+                                        "
+                                    >
+                                        Loting
+                                    </strong>
+                                    <div v-else>Loting</div>
+                                </a>
                             </h3>
                         </li>
                     </ul>
@@ -59,7 +82,7 @@
 <script>
 import SearchBar from './SearchBar';
 import { Slide } from 'vue-burger-menu';
-import {highlightLink} from "./navigation";
+import { highlightLink } from './navigation';
 export default {
     name: 'MobileNavBar',
     components: {
@@ -100,7 +123,7 @@ export default {
         }
     },
     methods: {
-        highlightLink: highlightLink(this.$router),
+        highlightLink,
         openMatch(next) {
             if (next) {
                 const years = this.regattas
@@ -128,7 +151,9 @@ export default {
             });
         },
         homeUrl(type) {
-            return `/iframe/${this.regatta.shortname}/${this.regatta.jaar}/${type}`;
+            return `/iframe/${this.regatta.shortname}/${
+                this.regatta.jaar
+            }/${type}`;
         }
     }
 };
@@ -142,9 +167,6 @@ export default {
     z-index: 5;
     top: 8px;
     left: 18px;
-}
-.nav-link strong {
-    text-decoration: underline;
 }
 .bm-menu {
     background-color: black;
