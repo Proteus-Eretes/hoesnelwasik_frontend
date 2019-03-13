@@ -48,15 +48,15 @@ export class Regatta extends Service {
         }
 
         blocks.sort((a, b) => {
-            let dateA = moment(a[0].daydate, 'YYYY-MM-DD');
-            let dateB = moment(b[0].daydate, 'YYYY-MM-DD');
+            const dateA = moment(a[0].daydate, 'YYYY-MM-DD');
+            const dateB = moment(b[0].daydate, 'YYYY-MM-DD');
             if (dateA.isAfter(dateB)) {
                 return 1;
             } else if (dateA.isBefore(dateB)) {
                 return -1;
             } else if (dateA.isSame(dateB)) {
-                let timeA = moment(a[0].starttime, 'HH:mm:ss');
-                let timeB = moment(b[0].starttime, 'HH:mm:ss');
+                const timeA = moment(a[0].starttime, 'HH:mm:ss');
+                const timeB = moment(b[0].starttime, 'HH:mm:ss');
 
                 if (timeA.isAfter(timeB)) {
                     return 1;
@@ -69,8 +69,6 @@ export class Regatta extends Service {
                 return 0;
             }
         });
-
-        console.log(blocks);
 
         return blocks;
     }
