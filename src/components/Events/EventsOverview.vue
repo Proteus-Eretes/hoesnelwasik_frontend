@@ -32,6 +32,11 @@
                             title="Lichte Dames"
                         >
                         </EventCard>
+                        <EventCard
+                            :events="getFilteredEvents(n, false, false, true)"
+                            title="Mix"
+                        >
+                        </EventCard>
                     </b-card-group>
                 </b-container>
             </b-tab>
@@ -57,10 +62,14 @@ export default {
         }
     },
     methods: {
-        getFilteredEvents(n, isMan, isLight) {
+        getFilteredEvents(n, isMan, isLight, isMix = false) {
             // noinspection EqualityComparisonWithCoercionJS
             return this.events[n].filter(
-                event => event.isman == isMan && event.islight == isLight
+                event =>
+                    event.isman == isMan &&
+                    event.islight == isLight &&
+                    ((event.fieldnameshort.includes('Mix') && isMix) ||
+                        (!event.fieldnameshort.includes('Mix') && !isMix))
             );
         }
     }

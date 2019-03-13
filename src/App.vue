@@ -17,4 +17,7 @@
 .clickable {
     cursor: pointer;
 }
+.nav-link strong {
+    text-decoration: underline;
+}
 </style>

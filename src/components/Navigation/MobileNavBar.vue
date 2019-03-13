@@ -4,13 +4,17 @@
             <ul class="pt-3 navbar list-unstyled">
                 <li class="nav-item text-white">
                     <h3>
-                        <a class="p-0 text-white" :href="homeUrl">{{
-                            regatta.regattaname
-                        }}</a>
+                        <a class="p-0 text-white" :href="homeUrl">
+                            {{ regatta.regattaname }}
+                        </a>
                     </h3>
                 </li>
                 <li class="nav-item text-white w-100">
-                    <b-dropdown :text="regatta.jaar" style="background-color: black" class="black">
+                    <b-dropdown
+                        :text="regatta.jaar"
+                        style="background-color: black"
+                        class="black"
+                    >
                         <b-dropdown-item
                             v-for="edition in regattasOrder"
                             :key="edition"
@@ -25,16 +29,43 @@
                     <ul class="list-unstyled">
                         <li class="nav-item">
                             <h3>
-                                <a class="nav-link text-white" :href="homeUrl('uitslagen')"
-                                    >Uitslagen</a
-                                >
+                                <a
+                                    class="nav-link text-white"
+                                    v-on:click="$router.push(switchType($router.currentRoute, 'uitslagen'))"
+                                    href="#"
+                                    ><strong
+                                        v-if="
+                                            highlightLink(
+                                                $router.currentRoute.fullPath,
+                                                'uitslagen'
+                                            )
+                                        "
+                                    >
+                                        Uitslagen</strong
+                                    >
+                                    <div v-else>Uitslagen</div>
+                                </a>
                             </h3>
                         </li>
                         <li class="nav-item">
                             <h3>
-                                <a class="nav-link text-white" :href="homeUrl('loting')"
-                                    >Loting</a
+                                <a
+                                    class="nav-link text-white"
+                                    v-on:click="$router.push(switchType($router.currentRoute, 'loting'))"
+                                    href="#"
                                 >
+                                    <strong
+                                        v-if="
+                                            highlightLink(
+                                                $router.currentRoute.fullPath,
+                                                'loting'
+                                            )
+                                        "
+                                    >
+                                        Loting
+                                    </strong>
+                                    <div v-else>Loting</div>
+                                </a>
                             </h3>
                         </li>
                     </ul>
@@ -53,6 +84,7 @@
 <script>
 import SearchBar from './SearchBar';
 import { Slide } from 'vue-burger-menu';
+import { highlightLink, switchType } from './navigation';
 export default {
     name: 'MobileNavBar',
     components: {
@@ -93,6 +125,8 @@ export default {
         }
     },
     methods: {
+        highlightLink,
+        switchType,
         openMatch(next) {
             if (next) {
                 const years = this.regattas
@@ -120,7 +154,9 @@ export default {
             });
         },
         homeUrl(type) {
-            return `/iframe/${this.regatta.shortname}/${this.regatta.jaar}/${type}`;
+            return `/iframe/${this.regatta.shortname}/${
+                this.regatta.jaar
+            }/${type}`;
         }
     }
 };
