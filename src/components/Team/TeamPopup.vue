@@ -57,13 +57,13 @@ export default {
                 return this.team[el.key];
             });
 
-            if (this.team.fieldnameshortsub !== '0') {
-                attributes.splice(3, 0, subveldField);
-            }
-
             if (this.team.backnumber === undefined) {
                 backnumberField.key = 'times.0.backnumber';
                 attributes.splice(1, 0, backnumberField);
+            }
+
+            if (this.team.fieldnameshortsub !== '0') {
+                attributes.splice(3, 0, subveldField);
             }
 
             if (this.team.times !== undefined && this.team.times[0].comments) {
