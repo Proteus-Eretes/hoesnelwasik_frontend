@@ -31,7 +31,8 @@
                             <h3>
                                 <a
                                     class="nav-link text-white"
-                                    :href="homeUrl('uitslagen')"
+                                    v-on:click="$router.push(switchType($router.currentRoute, 'uitslagen'))"
+                                    href="#"
                                     ><strong
                                         v-if="
                                             highlightLink(
@@ -50,7 +51,8 @@
                             <h3>
                                 <a
                                     class="nav-link text-white"
-                                    :href="homeUrl('loting')"
+                                    v-on:click="$router.push(switchType($router.currentRoute, 'loting'))"
+                                    href="#"
                                 >
                                     <strong
                                         v-if="
@@ -82,7 +84,7 @@
 <script>
 import SearchBar from './SearchBar';
 import { Slide } from 'vue-burger-menu';
-import { highlightLink } from './navigation';
+import { highlightLink, switchType } from './navigation';
 export default {
     name: 'MobileNavBar',
     components: {
@@ -124,6 +126,7 @@ export default {
     },
     methods: {
         highlightLink,
+        switchType,
         openMatch(next) {
             if (next) {
                 const years = this.regattas
