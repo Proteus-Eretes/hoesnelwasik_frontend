@@ -58,19 +58,43 @@
                             >
                                 <li class="ml-auto nav-item">
                                     <a
-                                        v-on:click="switchType('uitslagen')"
+                                        v-on:click="$router.push(switchType($router.currentRoute, 'uitslagen'))"
                                         href="#"
                                         class="nav-link text-white"
-                                    >Uitslagen</a
                                     >
+                                        <strong
+                                            v-if="
+                                                highlightLink(
+                                                    this.$router.currentRoute
+                                                        .fullPath,
+                                                    'uitslagen'
+                                                )
+                                            "
+                                        >
+                                            Uitslagen
+                                        </strong>
+                                        <div v-else>Uitslagen</div>
+                                    </a>
                                 </li>
                                 <li class="nav-item">
                                     <a
-                                        v-on:click="switchType('loting')"
+                                        v-on:click="$router.push(switchType($router.currentRoute,'loting'))"
                                         href="#"
                                         class="nav-link text-white"
-                                        >Loting</a
                                     >
+                                        <strong
+                                            v-if="
+                                                highlightLink(
+                                                    $router.currentRoute
+                                                        .fullPath,
+                                                    'loting'
+                                                )
+                                            "
+                                        >
+                                            Loting
+                                        </strong>
+                                        <div v-else>Loting</div>
+                                    </a>
                                 </li>
                             </ul>
                         </div>
@@ -90,7 +114,8 @@
 
 <script>
 import SearchBar from './SearchBar';
-import MobileNavBar from "./MobileNavBar";
+import MobileNavBar from './MobileNavBar';
+import { highlightLink, switchType } from './navigation';
 export default {
     name: 'NavBar',
     components: {
@@ -114,6 +139,8 @@ export default {
         }
     },
     methods: {
+        highlightLink,
+        switchType,
         openMatch(next) {
             const match = this.$router.currentRoute.params.match;
             if (next) {
@@ -132,21 +159,6 @@ export default {
                 this.$router.push({
                     path: '/iframe/' + match + `/${years[years.length - 1]}`
                 });
-            }
-        },
-        switchType(type) {
-            const par = this.$router.currentRoute.params;
-            const match = par.match;
-            const year = par.year;
-            const field = par.field;
-            if (
-                field !== undefined &&
-                !this.$router.currentRoute.fullPath.includes('club') &&
-                !this.$router.currentRoute.fullPath.includes('search')
-            ) {
-                this.$router.push(`/iframe/${match}/${year}/${type}/${field}`);
-            } else {
-                this.$router.push(`/iframe/${match}/${year}/${type}`);
             }
         }
     }
