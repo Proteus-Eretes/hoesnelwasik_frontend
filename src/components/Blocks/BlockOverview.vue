@@ -1,6 +1,6 @@
 <template>
     <b-container class="mt-3">
-        <b-card-group deck class="columns">
+        <b-card-group deck class="blokDeck">
             <block-card
                 v-for="block in sortedBlocks"
                 :key="block[0].blockid"
@@ -30,12 +30,15 @@ export default {
 </script>
 
 <style type="scss">
-.columns {
+.blokDeck {
     flex-wrap: wrap !important;
     flex-grow: 1 !important;
+    justify-content: space-evenly;
+    align-items: flex-start;
 }
-.columns .card {
+.blokDeck .card {
     flex-basis: 40% !important;
     margin: 15px 0 15px;
+    max-width: 50%;
 }
 </style>
