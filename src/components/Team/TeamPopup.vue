@@ -35,9 +35,13 @@ export default {
     },
     computed: {
         fields() {
+            const backnumberField = { key: 'backnumber', label: 'Rugnummer' };
+            const commentsField = { key: 'times.0.comments', label: 'Commentaar' };
+            const subveldField = { key: 'fieldnameshortsub', label: 'Subveld' };
+
             const attributes = [
                 { key: 'clubname', label: 'Club' },
-                { key: 'backnumber', label: 'Rugnummer' },
+                backnumberField,
                 { key: 'fieldnameshort', label: 'Veld' },
                 { key: 'rower8', label: 'Slag' },
                 { key: 'rower7', label: '7' },
@@ -53,11 +57,13 @@ export default {
                 return this.team[el.key];
             });
 
-            const commentsField = { key: 'times.0.comments', label: 'Commentaar' };
-            const subveldField = { key: 'fieldnameshortsub', label: 'Subveld' };
-
             if (this.team.fieldnameshortsub !== '0') {
                 attributes.splice(3, 0, subveldField);
+            }
+
+            if (this.team.backnumber === undefined) {
+                backnumberField.key = 'times.0.backnumber';
+                attributes.splice(1, 0, backnumberField);
             }
 
             if (this.team.times !== undefined && this.team.times[0].comments) {
