@@ -76,4 +76,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style type="text/scss">
+.columns {
+    column-count: 2 !important;
+}
+</style>
