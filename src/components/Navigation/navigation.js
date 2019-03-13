@@ -1,0 +1,1 @@
+export const highlightLink = (fullPath, linkText) => fullPath.includes(linkText);

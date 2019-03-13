@@ -61,16 +61,40 @@
                                         v-on:click="switchType('uitslagen')"
                                         href="#"
                                         class="nav-link text-white"
-                                    >Uitslagen</a
                                     >
+                                        <strong
+                                            v-if="
+                                                highlightLink(
+                                                    this.$router.currentRoute
+                                                        .fullPath,
+                                                    'uitslagen'
+                                                )
+                                            "
+                                        >
+                                            Uitslagen
+                                        </strong>
+                                        <div v-else>Uitslagen</div>
+                                    </a>
                                 </li>
                                 <li class="nav-item">
                                     <a
                                         v-on:click="switchType('loting')"
                                         href="#"
                                         class="nav-link text-white"
-                                        >Loting</a
                                     >
+                                        <strong
+                                            v-if="
+                                                highlightLink(
+                                                    $router.currentRoute
+                                                        .fullPath,
+                                                    'loting'
+                                                )
+                                            "
+                                        >
+                                            Loting
+                                        </strong>
+                                        <div v-else>Loting</div>
+                                    </a>
                                 </li>
                             </ul>
                         </div>
@@ -90,7 +114,8 @@
 
 <script>
 import SearchBar from './SearchBar';
-import MobileNavBar from "./MobileNavBar";
+import MobileNavBar from './MobileNavBar';
+import { highlightLink } from './navigation';
 export default {
     name: 'NavBar',
     components: {
@@ -114,6 +139,7 @@ export default {
         }
     },
     methods: {
+        highlightLink,
         openMatch(next) {
             const match = this.$router.currentRoute.params.match;
             if (next) {
