@@ -28,8 +28,8 @@ describe('BlockCard', () => {
                 ]
             }
         });
-        expect(wrapper.html()).toMatch('Block 5: 11:00');
-        expect(wrapper.html()).not.toMatch('Block 5: 11:00:01');
+        expect(wrapper.html()).toMatch('Blok 5: 11:00');
+        expect(wrapper.html()).not.toMatch('Blok 5: 11:00:01');
 
         expect(wrapper.html()).toMatch(/H 1x.*6.*11:00/);
         expect(wrapper.html()).not.toMatch(/H 1x.*6.*11:00:01/);
