@@ -1,5 +1,5 @@
-import { Service } from "./Service";
-
+import { Service } from './Service';
+import moment from 'moment';
 
 export class Regatta extends Service {
 
@@ -44,8 +44,36 @@ export class Regatta extends Service {
         const blocks = [];
 
         for (let block in blockList) {
+            blockList[block].sort((a, b) => {
+                return a.startorder - b.startorder;
+            });
+
             blocks.push(blockList[block]);
         }
+
+        blocks.sort((a, b) => {
+            const dateA = moment(a[0].daydate, 'YYYY-MM-DD');
+            const dateB = moment(b[0].daydate, 'YYYY-MM-DD');
+            if (dateA.isAfter(dateB)) {
+                return 1;
+            } else if (dateA.isBefore(dateB)) {
+                return -1;
+            } else if (dateA.isSame(dateB)) {
+                const timeA = moment(a[0].starttime, 'HH:mm:ss');
+                const timeB = moment(b[0].starttime, 'HH:mm:ss');
+
+                if (timeA.isAfter(timeB)) {
+                    return 1;
+                } else if (timeA.isBefore(timeB)) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            } else {
+                return 0;
+            }
+        });
+
         return blocks;
     }
 

@@ -4,13 +4,17 @@
             <ul class="pt-3 navbar list-unstyled">
                 <li class="nav-item text-white">
                     <h3>
-                        <a class="p-0 text-white" :href="homeUrl">{{
-                            regatta.regattaname
-                        }}</a>
+                        <a class="p-0 text-white" :href="homeUrl">
+                            {{ regatta.regattaname }}
+                        </a>
                     </h3>
                 </li>
                 <li class="nav-item text-white w-100">
-                    <b-dropdown :text="regatta.jaar" style="background-color: black" class="black">
+                    <b-dropdown
+                        :text="regatta.jaar"
+                        style="background-color: black"
+                        class="black"
+                    >
                         <b-dropdown-item
                             v-for="edition in regattasOrder"
                             :key="edition"
@@ -25,16 +29,18 @@
                     <ul class="list-unstyled">
                         <li class="nav-item">
                             <h3>
-                                <a class="nav-link text-white" :href="homeUrl('uitslagen')"
-                                    >Uitslagen</a
-                                >
+                                <SwitchElement
+                                    linkClass="nav-link text-white"
+                                    target="uitslagen"
+                                ></SwitchElement>
                             </h3>
                         </li>
                         <li class="nav-item">
                             <h3>
-                                <a class="nav-link text-white" :href="homeUrl('loting')"
-                                    >Loting</a
-                                >
+                                <SwitchElement
+                                    linkClass="nav-link text-white"
+                                    target="loting"
+                                ></SwitchElement>
                             </h3>
                         </li>
                     </ul>
@@ -53,9 +59,11 @@
 <script>
 import SearchBar from './SearchBar';
 import { Slide } from 'vue-burger-menu';
+import SwitchElement from './SwitchElement';
 export default {
     name: 'MobileNavBar',
     components: {
+        SwitchElement,
         SearchBar,
         Slide
     },
@@ -120,7 +128,9 @@ export default {
             });
         },
         homeUrl(type) {
-            return `/iframe/${this.regatta.shortname}/${this.regatta.jaar}/${type}`;
+            return `/iframe/${this.regatta.shortname}/${
+                this.regatta.jaar
+            }/${type}`;
         }
     }
 };

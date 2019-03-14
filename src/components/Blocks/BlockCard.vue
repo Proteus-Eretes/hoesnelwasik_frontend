@@ -4,6 +4,7 @@
         header-bg-variant="dark"
         header-text-variant="white"
         no-body
+        class="table-responsive"
     >
         <h2 slot="header">{{ blockTitle }}</h2>
         <b-table
@@ -41,7 +42,7 @@ export default {
     computed: {
         blockTitle() {
             return (
-                'Block ' +
+                'Blok ' +
                 this.block[0].blocknumber +
                 ': ' +
                 this.removeSeconds(this.block[0].starttime)

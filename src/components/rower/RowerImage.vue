@@ -1,6 +1,6 @@
 <template>
     <div>
-        {{ n }}x
+        {{ n }}
         <b-img class="card-img-header" src="https://images.poweredbyiris.nl/boats/rower.png"></b-img>
     </div>
 </template>

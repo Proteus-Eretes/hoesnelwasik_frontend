@@ -57,20 +57,18 @@
                                 class="navbar-nav align-self-end w-100 flex-row font-weight-bold"
                             >
                                 <li class="ml-auto nav-item">
-                                    <a
-                                        v-on:click="switchType('uitslagen')"
-                                        href="#"
-                                        class="nav-link text-white"
-                                    >Uitslagen</a
+                                    <SwitchElement
+                                        linkClass="nav-link text-white"
+                                        target="uitslagen"
                                     >
+                                    </SwitchElement>
                                 </li>
                                 <li class="nav-item">
-                                    <a
-                                        v-on:click="switchType('loting')"
-                                        href="#"
-                                        class="nav-link text-white"
-                                        >Loting</a
+                                    <SwitchElement
+                                        linkClass="nav-link text-white"
+                                        target="loting"
                                     >
+                                    </SwitchElement>
                                 </li>
                             </ul>
                         </div>
@@ -90,10 +88,13 @@
 
 <script>
 import SearchBar from './SearchBar';
-import MobileNavBar from "./MobileNavBar";
+import MobileNavBar from './MobileNavBar';
+import SwitchElement from "./SwitchElement";
+
 export default {
     name: 'NavBar',
     components: {
+        SwitchElement,
         MobileNavBar,
         SearchBar
     },
@@ -132,21 +133,6 @@ export default {
                 this.$router.push({
                     path: '/iframe/' + match + `/${years[years.length - 1]}`
                 });
-            }
-        },
-        switchType(type) {
-            const par = this.$router.currentRoute.params;
-            const match = par.match;
-            const year = par.year;
-            const field = par.field;
-            if (
-                field !== undefined &&
-                !this.$router.currentRoute.fullPath.includes('club') &&
-                !this.$router.currentRoute.fullPath.includes('search')
-            ) {
-                this.$router.push(`/iframe/${match}/${year}/${type}/${field}`);
-            } else {
-                this.$router.push(`/iframe/${match}/${year}/${type}`);
             }
         }
     }
