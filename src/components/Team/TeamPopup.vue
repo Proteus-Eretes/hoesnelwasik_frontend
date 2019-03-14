@@ -1,5 +1,12 @@
 <template>
-    <b-modal :title=team.teamname ref="teamModalRef" hide-footer header-bg-variant="dark" header-text-variant="white" id="TeamPopup">
+    <b-modal
+        :title="team.teamname"
+        ref="teamModalRef"
+        hide-footer
+        header-bg-variant="dark"
+        header-text-variant="white"
+        id="TeamPopup"
+    >
         <div class="modal-content">
             <div class="modal-body" style="padding: 0rem">
                 <b-table stacked :items="items" :fields="fields" />
@@ -28,9 +35,13 @@ export default {
     },
     computed: {
         fields() {
+            const backnumberField = { key: 'backnumber', label: 'Rugnummer' };
+            const commentsField = { key: 'times.0.comments', label: 'Commentaar' };
+            const subveldField = { key: 'fieldnameshortsub', label: 'Subveld' };
+
             const attributes = [
                 { key: 'clubname', label: 'Club' },
-                { key: 'backnumber', label: 'Rugnummer' },
+                backnumberField,
                 { key: 'fieldnameshort', label: 'Veld' },
                 { key: 'rower8', label: 'Slag' },
                 { key: 'rower7', label: '7' },
@@ -41,12 +52,24 @@ export default {
                 { key: 'rower2', label: '2' },
                 { key: 'rower1', label: 'Boeg' },
                 { key: 'steername', label: 'Stuur' },
-                { key: 'coachnames', label: 'Coach' },
-                { key: 'comments', label: 'Commentaar' }
-            ];
-            return attributes.filter(element => {
-                return this.team[element.key];
+                { key: 'coachnames', label: 'Coach' }
+            ].filter(el => {
+                return this.team[el.key];
             });
+
+            if (this.team.backnumber === undefined) {
+                backnumberField.key = 'times.0.backnumber';
+                attributes.splice(1, 0, backnumberField);
+            }
+
+            if (this.team.fieldnameshortsub !== '0') {
+                attributes.splice(3, 0, subveldField);
+            }
+
+            if (this.team.times !== undefined && this.team.times[0].comments) {
+                attributes.push(commentsField);
+            }
+            return attributes;
         },
         items() {
             return [this.team];
