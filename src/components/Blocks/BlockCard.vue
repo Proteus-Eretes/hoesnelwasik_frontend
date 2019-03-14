@@ -4,6 +4,7 @@
         header-bg-variant="dark"
         header-text-variant="white"
         no-body
+        class="table-responsive"
     >
         <h2 slot="header">{{ blockTitle }}</h2>
         <b-table

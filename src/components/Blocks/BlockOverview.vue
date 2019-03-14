@@ -1,6 +1,6 @@
 <template>
     <b-container class="mt-3">
-        <b-card-group deck class="blokDeck">
+        <b-card-group deck class="blokDeck justify-content-center">
             <block-card
                 v-for="block in blocks"
                 :key="block[0].blockid"
@@ -25,12 +25,9 @@ export default {
 .blokDeck {
     flex-wrap: wrap !important;
     flex-grow: 1 !important;
-    justify-content: space-evenly;
-    align-items: flex-start;
 }
 .blokDeck .card {
     flex-basis: 40% !important;
     margin: 15px 0 15px;
-    max-width: 50%;
 }
 </style>

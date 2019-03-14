@@ -29,43 +29,18 @@
                     <ul class="list-unstyled">
                         <li class="nav-item">
                             <h3>
-                                <a
-                                    class="nav-link text-white"
-                                    v-on:click="$router.push(switchType($router.currentRoute, 'uitslagen'))"
-                                    href="#"
-                                    ><strong
-                                        v-if="
-                                            highlightLink(
-                                                $router.currentRoute.fullPath,
-                                                'uitslagen'
-                                            )
-                                        "
-                                    >
-                                        Uitslagen</strong
-                                    >
-                                    <div v-else>Uitslagen</div>
-                                </a>
+                                <SwitchElement
+                                    linkClass="nav-link text-white"
+                                    target="uitslagen"
+                                ></SwitchElement>
                             </h3>
                         </li>
                         <li class="nav-item">
                             <h3>
-                                <a
-                                    class="nav-link text-white"
-                                    v-on:click="$router.push(switchType($router.currentRoute, 'loting'))"
-                                    href="#"
-                                >
-                                    <strong
-                                        v-if="
-                                            highlightLink(
-                                                $router.currentRoute.fullPath,
-                                                'loting'
-                                            )
-                                        "
-                                    >
-                                        Loting
-                                    </strong>
-                                    <div v-else>Loting</div>
-                                </a>
+                                <SwitchElement
+                                    linkClass="nav-link text-white"
+                                    target="loting"
+                                ></SwitchElement>
                             </h3>
                         </li>
                     </ul>
@@ -84,10 +59,11 @@
 <script>
 import SearchBar from './SearchBar';
 import { Slide } from 'vue-burger-menu';
-import { highlightLink, switchType } from './navigation';
+import SwitchElement from './SwitchElement';
 export default {
     name: 'MobileNavBar',
     components: {
+        SwitchElement,
         SearchBar,
         Slide
     },
@@ -125,8 +101,6 @@ export default {
         }
     },
     methods: {
-        highlightLink,
-        switchType,
         openMatch(next) {
             if (next) {
                 const years = this.regattas

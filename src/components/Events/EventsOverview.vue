@@ -80,4 +80,9 @@ export default {
 .columns {
     column-count: 2 !important;
 }
+@media (max-width: 419.98px) {
+    .columns {
+        column-count: 1 !important;
+    }
+}
 </style>
