@@ -41,7 +41,7 @@ export default {
     computed: {
         blockTitle() {
             return (
-                'Block ' +
+                'Blok ' +
                 this.block[0].blocknumber +
                 ': ' +
                 this.removeSeconds(this.block[0].starttime)

@@ -17,16 +17,30 @@ describe('Service', () => {
                 {
                     blockid: 'aa',
                     field: '1',
+                    daydate: '2019-01-01',
+                    starttime: '12:00:01',
                     startorder: '2'
                 },
                 {
                     blockid: 'aa',
                     field: '2',
+                    daydate: '2019-01-01',
+                    startorder: '3',
+                    starttime: '12:00:01'
+                },
+                {
+                    blockid: 'ac',
+                    field: '4',
+                    daydate: '2019-01-02',
+                    starttime: '12:00:01',
                     startorder: '1'
                 },
                 {
                     blockid: 'ab',
-                    field: '3'
+                    field: '3',
+                    daydate: '2019-01-01',
+                    startorder: '3',
+                    starttime: '12:00:00'
                 }
             ]
         });
@@ -38,20 +52,36 @@ describe('Service', () => {
         expect(await blocks).toEqual([
             [
                 {
-                    blockid: 'aa',
-                    field: '2',
-                    startorder: '1'
-                },
-                {
-                    blockid: 'aa',
-                    field: '1',
-                    startorder: '2'
+                    blockid: 'ab',
+                    field: '3',
+                    daydate: '2019-01-01',
+                    startorder: '3',
+                    starttime: '12:00:00'
                 }
             ],
             [
                 {
-                    blockid: 'ab',
-                    field: '3'
+                    blockid: 'aa',
+                    field: '1',
+                    startorder: '2',
+                    daydate: '2019-01-01',
+                    starttime: '12:00:01'
+                },
+                {
+                    blockid: 'aa',
+                    field: '2',
+                    daydate: '2019-01-01',
+                    starttime: '12:00:01',
+                    startorder: '3'
+                }
+            ],
+            [
+                {
+                    blockid: 'ac',
+                    field: '4',
+                    daydate: '2019-01-02',
+                    startorder: '1',
+                    starttime: '12:00:01'
                 }
             ]
         ]);
