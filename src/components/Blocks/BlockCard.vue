@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import moment from 'moment';
 export default {
     name: 'BlockCard',
     props: {
@@ -32,9 +33,9 @@ export default {
                 { key: 'fieldnameshort', label: 'Veld' },
                 { key: 'numberofteams', label: 'Aantal ploegen' },
                 {
-                    key: 'starttime',
+                    key: 'field_starttime',
                     label: 'Starttijd',
-                    formatter: this.removeSeconds
+                    formatter: this.removeSecondsFields
                 }
             ]
         };
@@ -50,6 +51,12 @@ export default {
         }
     },
     methods: {
+        removeSecondsFields(starttime) {
+            if (starttime === null || starttime === this.block[0].starttime || this.isNumber(starttime)) {
+                return this.removeSeconds(this.block[0].starttime);
+            }
+            return moment(starttime).format('H:mm');
+        },
         removeSeconds(starttime) {
             return starttime.slice(0, starttime.lastIndexOf(':'));
         },
@@ -65,6 +72,9 @@ export default {
                     this.$router.currentRoute.params.year
                 }/${target}/${record.fieldnameshort}`
             });
+        },
+        isNumber(num) {
+            return !isNaN(num) && isFinite(num);
         }
     }
 };
