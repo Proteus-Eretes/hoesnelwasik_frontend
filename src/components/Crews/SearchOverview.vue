@@ -72,7 +72,7 @@ export default {
                     class: 'text-center d-none d-sm-table-cell'
                 },
                 {
-                    key: 'fieldnameshort',
+                    key: 'fieldnameshortsub',
                     label: 'Veld',
                     thClass: 'font-italic',
                     class: 'text-center'

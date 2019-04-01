@@ -13,6 +13,7 @@
                         :fields="fields"
                         thead-class="thead-dark"
                         @row-clicked="openTeamDialog"
+                        :tbody-tr-class="highLightWinner"
                     >
                         <template slot="smallRank" slot-scope="row">
                             {{ row.item.times[0].rank }}
@@ -48,6 +49,7 @@ import TeamPopup from '@/components/Team/TeamPopup.vue';
 import FinalTime from '../Time/FinalTime';
 import ViewNavigationBar from '../Navigation/ViewNavigationBar';
 import {getFinishTime} from "../Time/Time";
+import {highLightWinner} from "./highLightWinner";
 
 export default {
     name: 'ResultOverview',
@@ -83,7 +85,7 @@ export default {
                     class: 'text-center d-none d-sm-table-cell'
                 },
                 {
-                    key: 'fieldnameshort',
+                    key: 'fieldnameshortsub',
                     label: 'Veld',
                     thClass: 'font-italic',
                     class: 'text-center d-none d-sm-table-cell'
@@ -126,7 +128,8 @@ export default {
             this.team = team;
             this.$root.$emit('bv::show::modal', 'TeamPopup', button);
         },
-        getFinishTime
+        getFinishTime,
+        highLightWinner
     },
     computed: {
         fieldName() {
