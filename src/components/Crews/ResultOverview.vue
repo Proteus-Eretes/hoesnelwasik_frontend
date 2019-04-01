@@ -1,7 +1,7 @@
 <template>
     <b-card no-body header-class="p-0">
         <ViewNavigationBar type="uitslagen"></ViewNavigationBar>
-        <b-container v-if="crews.length">
+        <b-container v-if="crews.length" fluid>
             <div class="text-center mt-3">
                 <h3 class="text-secondary">{{ fieldName }}</h3>
             </div>
@@ -17,6 +17,11 @@
                     >
                         <template slot="smallRank" slot-scope="row">
                             {{ row.item.times[0].rank }}
+                        </template>
+                        <template slot="HEAD_OarImage">
+                            <div class="d-none d-sm-block">
+                                Blad
+                            </div>
                         </template>
                         <template slot="OarImage" slot-scope="row">
                             <OarImage :club="row.item.clubnameshort"></OarImage>
@@ -88,7 +93,7 @@ export default {
                     key: 'fieldnameshortsub',
                     label: 'Veld',
                     thClass: 'font-italic',
-                    class: 'text-center d-none d-sm-table-cell'
+                    class: 'text-center'
                 },
                 {
                     key: 'times.0.backnumber',
