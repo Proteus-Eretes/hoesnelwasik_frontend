@@ -27,7 +27,7 @@ describe('TeamPopup', () => {
                 fieldnameshort: 'H 1x',
                 rower8: 'bob',
                 coachnames: 'foo\nbar',
-                fieldnameshortsub: '0',
+                fieldnameshortsub: 'H 1x',
                 times: [
                     {
                         comments: 'foo bar'

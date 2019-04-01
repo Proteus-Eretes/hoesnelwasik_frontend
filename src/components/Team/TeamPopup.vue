@@ -62,7 +62,7 @@ export default {
                 attributes.splice(1, 0, backnumberField);
             }
 
-            if (this.team.fieldnameshortsub !== '0') {
+            if (this.team.fieldnameshortsub !== this.team.fieldnameshort) {
                 attributes.splice(3, 0, subveldField);
             }
 

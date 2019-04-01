@@ -45,7 +45,7 @@ export default {
                     class: 'text-center'
                 },
                 {
-                    key: 'fieldnameshort',
+                    key: 'fieldnameshortsub',
                     label: 'Veld',
                     thClass: 'font-italic',
                     class: 'text-center d-none d-sm-table-cell'
