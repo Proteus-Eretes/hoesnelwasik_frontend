@@ -1,5 +1,5 @@
 import {createLocalVue, shallowMount} from "@vue/test-utils";
-import VueRouter from 'vue-router'
+import VueRouter from 'vue-router';
 import SwitchElement from "../../../src/components/Navigation/SwitchElement";
 
 const localVue = createLocalVue();
