@@ -1,6 +1,6 @@
 <template>
     <div>
-        <NavBar :regatta="regatta" :regattas="regattas"></NavBar>
+        <NavBar :regatta="regatta" :editions="editions" :regattas="regattas"></NavBar>
         <RegattaOverview
             :blocks="blocks"
             :clubs="clubs"
@@ -30,6 +30,7 @@ export default {
             clubs: [],
             regatta: {},
             regattaService: null,
+            editions: [],
             regattas: [],
             blocks: [],
             events: []
@@ -40,8 +41,9 @@ export default {
             this.clubs = await this.regattaService.getClubs();
             this.blocks = await this.regattaService.getBlocks();
             this.events = await this.regattaService.getFields();
-            this.regattas = await this.regattaService.getEditions(this.match);
+            this.editions = await this.regattaService.getEditions(this.match);
             this.regatta = await this.regattaService.getEdition();
+            this.regattas = await this.regattaService.getRegattas();
             sendPageView();
         }
     },
@@ -56,6 +58,10 @@ export default {
     watch: {
         year: function() {
             this.regattaService.setYear(this.year);
+            this.init();
+        },
+        match: function() {
+            this.regattaService.setMatch(this.match);
             this.init();
         }
     }

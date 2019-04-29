@@ -3,11 +3,8 @@
         <Slide>
             <ul class="pt-3 navbar list-unstyled">
                 <li class="nav-item text-white">
-                    <h3>
-                        <a class="p-0 text-white" :href="homeUrl">
-                            {{ regatta.regattaname }}
-                        </a>
-                    </h3>
+                    <SwitchRegatta :regatta="regatta" :regattas="regattas">
+                    </SwitchRegatta>
                 </li>
                 <li class="nav-item text-white w-100">
                     <b-dropdown
@@ -60,14 +57,17 @@
 import SearchBar from './SearchBar';
 import { Slide } from 'vue-burger-menu';
 import SwitchElement from './SwitchElement';
+import SwitchRegatta from "./SwitchRegatta";
 export default {
     name: 'MobileNavBar',
     components: {
+        SwitchRegatta,
         SwitchElement,
         SearchBar,
         Slide
     },
     props: {
+        editions: Array,
         regattas: Array,
         regatta: Object
     },
@@ -84,17 +84,17 @@ export default {
     },
     computed: {
         hasNext() {
-            return this.regattas.filter(
+            return this.editions.filter(
                 regatta => regatta.jaar > this.regatta.jaar
             ).length;
         },
         hasPrev() {
-            return this.regattas.filter(regatta => {
+            return this.editions.filter(regatta => {
                 return regatta.jaar < this.regatta.jaar;
             }).length;
         },
         regattasOrder() {
-            return this.regattas
+            return this.editions
                 .map(regatta => +regatta.jaar)
                 .sort()
                 .reverse();
@@ -103,7 +103,7 @@ export default {
     methods: {
         openMatch(next) {
             if (next) {
-                const years = this.regattas
+                const years = this.editions
                     .filter(regatta => regatta.jaar > this.regatta.jaar)
                     .map(regatta => +regatta.jaar)
                     .sort();
@@ -111,7 +111,7 @@ export default {
                     path: `/iframe/${this.regatta.shortname}/${years[0]}`
                 });
             } else {
-                const years = this.regattas
+                const years = this.editions
                     .filter(regatta => regatta.jaar < this.regatta.jaar)
                     .map(regatta => +regatta.jaar)
                     .sort();

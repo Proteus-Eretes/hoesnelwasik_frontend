@@ -3,7 +3,7 @@ import {Service} from "../../../src/services/Service";
 describe("Service", () => {
     it("The regatta over fetchs correctly", async () => {
         const fetchSpy = jest.fn();
-        fetchSpy.mockReturnValue({regattas: []});
+        fetchSpy.mockReturnValue({editions: []});
         const service = new Service('url');
         service._fetch = fetchSpy;
         const regattas = await service.getRegattas();

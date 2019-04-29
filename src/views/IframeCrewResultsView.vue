@@ -26,7 +26,7 @@ export default {
         return {
             crews: [],
             regatta: {},
-            regattas: []
+            editions: []
         };
     },
     async mounted() {

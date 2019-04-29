@@ -27,7 +27,7 @@ export default {
         return {
             crews: [],
             regatta: {},
-            regattas: [],
+            editions: [],
             crewService: {}
         };
     },

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <MobileNavBar :regatta="regatta" :regattas="regattas"></MobileNavBar>
+        <MobileNavBar :regatta="regatta" :regattas="regattas" :editions="editions"></MobileNavBar>
         <nav
             class="navbar navbar-dark navbar-expand-sm d-none d-sm-block"
             style="background-color: black"
@@ -99,17 +99,18 @@ export default {
         SearchBar
     },
     props: {
+        editions: Array,
         regattas: Array,
         regatta: Object
     },
     computed: {
         hasNext() {
-            return this.regattas.filter(
+            return this.editions.filter(
                 regatta => regatta.jaar > this.regatta.jaar
             ).length;
         },
         hasPrev() {
-            return this.regattas.filter(regatta => {
+            return this.editions.filter(regatta => {
                 return regatta.jaar < this.regatta.jaar;
             }).length;
         }
@@ -118,7 +119,7 @@ export default {
         openMatch(next) {
             const match = this.$router.currentRoute.params.match;
             if (next) {
-                const years = this.regattas
+                const years = this.editions
                     .filter(regatta => regatta.jaar > this.regatta.jaar)
                     .map(regatta => +regatta.jaar)
                     .sort();
@@ -126,7 +127,7 @@ export default {
                     path: '/iframe/' + match + `/${years[0]}`
                 });
             } else {
-                const years = this.regattas
+                const years = this.editions
                     .filter(regatta => regatta.jaar < this.regatta.jaar)
                     .map(regatta => +regatta.jaar)
                     .sort();
