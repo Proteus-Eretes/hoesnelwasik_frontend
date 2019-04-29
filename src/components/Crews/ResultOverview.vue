@@ -49,12 +49,15 @@
 </template>
 
 <script>
+import moment from 'moment';
 import OarImage from '@/components/Clubs/OarImage.vue';
 import TeamPopup from '@/components/Team/TeamPopup.vue';
 import FinalTime from '../Time/FinalTime';
+import Time from '../Time/Time.vue';
 import ViewNavigationBar from '../Navigation/ViewNavigationBar';
-import {getFinishTime} from "../Time/Time";
+import {getFinishTime, getSplash} from "../Time/Time";
 import {highLightWinner} from "./highLightWinner";
+import findClockingLocations from "./findClockingLocations";
 
 export default {
     name: 'ResultOverview',
@@ -62,6 +65,7 @@ export default {
         crews: Array
     },
     components: {
+        Time,
         ViewNavigationBar,
         FinalTime,
         TeamPopup,
@@ -69,8 +73,29 @@ export default {
     },
     data() {
         return {
-            team: {},
-            fields: [
+            team: {}
+        };
+    },
+    methods: {
+        openTeamDialog(team, index, button) {
+            console.log(findClockingLocations(this.crews));
+            this.team = team;
+            this.$root.$emit('bv::show::modal', 'TeamPopup', button);
+        },
+        getFinishTime,
+        highLightWinner,
+        getSplash,
+
+    },
+    computed: {
+        fieldName() {
+            return this.crews[0].fieldnameshort;
+        },
+        splashes() {
+            return findClockingLocations(this.crews);
+        },
+        fields() {
+            return [
                 {
                     key: 'smallRank',
                     label: '',
@@ -113,6 +138,19 @@ export default {
                     thClass: 'font-italic',
                     class: 'text-center d-none d-sm-table-cell'
                 },
+                ...findClockingLocations(this.crews).map(location => ({
+                    key: location.distance,
+                    label: location.name,
+                    formatter: (val, distance, crew) => {
+                        const time = getSplash(crew.times[0].times)(distance);
+                        const t = time ? time.time : 0;
+                        const momentTime = moment.unix(t).utc();
+                        if (momentTime.hours()) {
+                            return momentTime.format('HH:mm:ss.S');
+                        }
+                        return momentTime.format('mm:ss.S');
+                    }
+                })),
                 {
                     key: 'FinishTime',
                     label: 'Finish tijd',
@@ -125,20 +163,7 @@ export default {
                     thClass: 'font-italic',
                     class: 'd-table-cell d-sm-none'
                 }
-            ]
-        };
-    },
-    methods: {
-        openTeamDialog(team, index, button) {
-            this.team = team;
-            this.$root.$emit('bv::show::modal', 'TeamPopup', button);
-        },
-        getFinishTime,
-        highLightWinner
-    },
-    computed: {
-        fieldName() {
-            return this.crews[0].fieldnameshort;
+            ];
         }
     }
 };
