@@ -22,6 +22,8 @@
 
 <script>
 import moment from 'moment';
+import {openPage} from "../../helpers/Routing";
+
 export default {
     name: 'BlockCard',
     props: {
@@ -61,17 +63,7 @@ export default {
             return starttime.slice(0, starttime.lastIndexOf(':'));
         },
         rowClicked(record) {
-            let target;
-            if (this.$router.currentRoute.fullPath.includes('loting')) {
-                target = 'loting';
-            } else {
-                target = 'uitslagen';
-            }
-            this.$router.push({
-                path: `/iframe/${this.$router.currentRoute.params.match}/${
-                    this.$router.currentRoute.params.year
-                }/${target}/${record.fieldnameshort}`
-            });
+            openPage(this.$router, record.fieldnameshort);
         },
         isNumber(num) {
             return !isNaN(num) && isFinite(num);
