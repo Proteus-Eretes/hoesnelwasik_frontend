@@ -76,7 +76,6 @@ export default {
     },
     methods: {
         openTeamDialog(team, index, button) {
-            console.log(findClockingLocations(this.crews));
             this.team = team;
             this.$root.$emit('bv::show::modal', 'TeamPopup', button);
         },
