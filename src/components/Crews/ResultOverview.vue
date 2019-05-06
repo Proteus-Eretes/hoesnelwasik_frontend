@@ -53,7 +53,6 @@ import moment from 'moment';
 import OarImage from '@/components/Clubs/OarImage.vue';
 import TeamPopup from '@/components/Team/TeamPopup.vue';
 import FinalTime from '../Time/FinalTime';
-import Time from '../Time/Time.vue';
 import ViewNavigationBar from '../Navigation/ViewNavigationBar';
 import {getFinishTime, getSplash} from "../Time/Time";
 import {highLightWinner} from "./highLightWinner";
