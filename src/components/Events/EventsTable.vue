@@ -1,9 +1,16 @@
 <template>
-    <b-table class="clickable" hover  :items="sorted_events" :fields="fields" head-variant="dark" @row-clicked="rowClicked" ></b-table>
+    <b-table
+        class="clickable"
+        hover
+        :items="sorted_events"
+        :fields="fields"
+        head-variant="dark"
+        @row-clicked="rowClicked"
+    ></b-table>
 </template>
 
 <script>
-import {openPage} from "../../helpers/Routing";
+import { openPage } from '../../helpers/Routing';
 
 export default {
     name: 'EventsTable',
@@ -24,7 +31,20 @@ export default {
     computed: {
         sorted_events() {
             const ev = this.events;
-            const order = ['E', 'G', 'B', 'Ej', 'Dev', 'Cl', 'V', 'C4', 'Bedr'];
+            const order = [
+                'E',
+                'G',
+                'B',
+                'Ej',
+                'Dev',
+                'Cl',
+                'V',
+                'C4',
+                'Bedr',
+                '18',
+                '16',
+                '14'
+            ];
             return ev.sort((eA, eB) => {
                 return order.indexOf(eA.category) > order.indexOf(eB.category);
             });
@@ -38,5 +58,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
