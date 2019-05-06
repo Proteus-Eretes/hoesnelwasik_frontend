@@ -65,7 +65,6 @@ export default {
         crews: Array
     },
     components: {
-        Time,
         ViewNavigationBar,
         FinalTime,
         TeamPopup,
@@ -143,8 +142,7 @@ export default {
                     label: location.name,
                     formatter: (val, distance, crew) => {
                         const time = getSplash(crew.times[0].times)(distance);
-                        const t = time ? time.time : 0;
-                        const momentTime = moment.unix(t).utc();
+                        const momentTime = moment.unix(time).utc();
                         if (momentTime.hours()) {
                             return momentTime.format('HH:mm:ss.S');
                         }

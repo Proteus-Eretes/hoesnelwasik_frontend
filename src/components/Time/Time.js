@@ -1,9 +1,5 @@
-export const getFinishTime = times => {
-    const time = times.find(time => time.type === 'Finish');
-    if (time) {
-        return time.time;
-    }
-    return 0;
-};
+const validateTime = time => time ? time.time : 0;
 
-export const getSplash = times => distance => times.find(time => time.distance === distance);
+export const getFinishTime = times => validateTime(times.find(time => time.type === 'Finish'));
+
+export const getSplash = times => distance => validateTime(times.find(time => time.distance === distance && time.type === 'Clocking Location'));
