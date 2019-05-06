@@ -21,12 +21,12 @@ export default {
 };
 </script>
 
-<style type="scss">
+<style type="scss" scoped>
 .blokDeck {
     flex-wrap: wrap !important;
     flex-grow: 1 !important;
 }
-.blokDeck .card {
+.blokDeck * {
     flex-basis: 40% !important;
     margin: 15px 0 15px;
 }
