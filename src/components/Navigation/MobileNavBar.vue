@@ -141,19 +141,19 @@ export default {
 };
 </script>
 
-<style type="scss">
+<style lang="scss">
 .bm-burger-bars {
-    background-color: white;
+    background-color: white !important;
 }
 .bm-burger-button {
-    z-index: 5;
-    top: 8px;
-    left: 18px;
+    z-index: 5 !important;
+    top: 8px !important;
+    left: 18px !important;
 }
 .bm-menu {
-    background-color: black;
+    background-color: black !important;
 }
 .black button {
-    background-color: black;
+    background-color: black !important;
 }
 </style>
