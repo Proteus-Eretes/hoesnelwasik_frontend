@@ -44,7 +44,7 @@ export default {
                 '16',
                 '14'
             ];
-            return this.events.sort((eA, eB) => return order.indexOf(eA.category) > order.indexOf(eB.category));
+            return this.events.sort((eA, eB) => order.indexOf(eA.category) > order.indexOf(eB.category));
         }
     },
     methods: {
