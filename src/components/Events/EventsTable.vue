@@ -30,7 +30,6 @@ export default {
     },
     computed: {
         sorted_events() {
-            const ev = this.events;
             const order = [
                 'E',
                 'G',
@@ -45,7 +44,7 @@ export default {
                 '16',
                 '14'
             ];
-            return ev.sort((eA, eB) => {
+            return this.events.sort((eA, eB) => {
                 return order.indexOf(eA.category) > order.indexOf(eB.category);
             });
         }

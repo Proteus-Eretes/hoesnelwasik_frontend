@@ -25,9 +25,7 @@ export default {
     },
     computed: {
         regattasList() {
-            return uniqBy(this.regattas, 'regattaname').sort((regattaA, regattaB) => {
-                return regattaA.regattaname > regattaB.regattaname;
-            });
+            return uniqBy(this.regattas, 'regattaname').sort((regattaA, regattaB) => regattaA.regattaname > regattaB.regattaname);
         }
     },
     methods: {

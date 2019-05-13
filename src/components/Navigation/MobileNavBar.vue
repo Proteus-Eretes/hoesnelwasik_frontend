@@ -3,8 +3,13 @@
         <Slide>
             <ul class="pt-3 navbar list-unstyled">
                 <li class="nav-item text-white">
-                    <SwitchRegatta :regatta="regatta" :regattas="regattas">
-                    </SwitchRegatta>
+                    <h3>
+                        <a class="p-0 text-white" :href="homeUrl">
+                            {{ regatta.regattaname }}
+                        </a>
+                    </h3>
+                    <!--<SwitchRegatta :regatta="regatta" :regattas="regattas">-->
+                    <!--</SwitchRegatta>-->
                 </li>
                 <li class="nav-item text-white w-100">
                     <b-dropdown
