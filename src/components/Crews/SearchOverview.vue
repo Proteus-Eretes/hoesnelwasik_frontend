@@ -19,6 +19,13 @@
                         <template slot="OarImage" slot-scope="row">
                             <OarImage :club="row.item.clubnameshort"></OarImage>
                         </template>
+                        <template slot="fieldnameshortsub" slot-scope="row">
+                            <b-link
+                                    :href="toField($router.currentRoute.params,'uitslagen', row.item.fieldnameshort)"
+                            >
+                                {{ row.item.fieldnameshortsub }}
+                            </b-link>
+                        </template>
                         <template slot="FinishTime" slot-scope="row">
                             <FinalTime
                                 :time="getFinishTime(row.item.times[0].times)"
@@ -47,6 +54,7 @@ import TeamPopup from '@/components/Team/TeamPopup.vue';
 import FinalTime from '../Time/FinalTime';
 import ViewNavigationBar from '../Navigation/ViewNavigationBar';
 import { getFinishTime } from '../Time/Time';
+import { toField } from "../../helpers/Routing";
 
 export default {
     name: 'SearchOverview',
@@ -115,7 +123,8 @@ export default {
             this.team = team;
             this.$root.$emit('bv::show::modal', 'TeamPopup', button);
         },
-        getFinishTime
+        getFinishTime,
+        toField,
     },
     computed: {
         fieldName() {
@@ -129,5 +138,3 @@ export default {
     }
 };
 </script>
-
-<style scoped></style>

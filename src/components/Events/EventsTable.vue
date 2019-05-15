@@ -3,6 +3,8 @@
 </template>
 
 <script>
+import {openPage} from "../../helpers/Routing";
+
 export default {
     name: 'EventsTable',
     props: {
@@ -21,16 +23,7 @@ export default {
     },
     methods: {
         rowClicked(record) {
-            let target;
-            if (this.$router.currentRoute.fullPath.includes('loting')) {
-                target = 'loting';
-            } else {
-                target = 'uitslagen';
-            }
-
-            this.$router.push({
-                path: `/iframe/${this.$router.currentRoute.params.match}/${this.$router.currentRoute.params.year}/${target}/${record.fieldnameshort}`
-            });
+            openPage(this.$router, record.fieldnameshort);
         }
     }
 };

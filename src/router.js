@@ -8,11 +8,14 @@ import IframeCrewSearchView from './views/IframeCrewSearchView';
 
 Vue.use(Router);
 
-const customProps = type => route => {
+const customProps = iframe => type => route => {
     const params = route.params;
-    params.target = type;
+    params.target = params.target ? params.target : type;
+    params.iframe = iframe;
     return params;
 };
+
+const customIframeProps = customProps(true);
 
 export default new Router({
     mode: 'history',
@@ -27,37 +30,31 @@ export default new Router({
             path: '/iframe/:match/:year?/:target?',
             name: 'IframeView',
             component: IframeView,
-            props: true
-        },
-        {
-            path: '/iframe/:match/:year?/(loting)?',
-            name: 'IframeView',
-            component: IframeView,
-            props: true
+            props: customIframeProps('uitslagen')
         },
         {
             path: '/iframe/:match/:year/loting/:field',
             name: 'IframeCrewDrawView',
             component: IframeCrewDrawView,
-            props: true
+            props: customIframeProps('loting')
         },
         {
             path: '/iframe/:match/:year/uitslagen/:field',
             name: 'IframeCrewResultsView',
             component: IframeCrewResultsView,
-            props: true
+            props: customIframeProps('uitslagen')
         },
         {
             path: '/iframe/:match/:year/search/:field',
             name: 'IframeCrewSearchView',
             component: IframeCrewSearchView,
-            props: customProps('search')
+            props: customIframeProps('search')
         },
         {
             path: '/iframe/:match/:year/club/:field',
             name: 'IframeCrewClubView',
             component: IframeCrewSearchView,
-            props: customProps('club')
+            props: customIframeProps('club')
         }
     ]
 });
