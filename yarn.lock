@@ -5122,9 +5122,9 @@ icss-utils@^2.1.0:
   dependencies:
     postcss "^6.0.1"
 
-idevice@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/idevice/-/idevice-2.0.0.tgz#8a2cf35b8342dfb912c4f2942fa5515090826daf"
+idevice@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/idevice/-/idevice-2.1.0.tgz#bad3f5e41ae55fb6fd860e9250bcf63f411ff526"
 
 ieee754@^1.1.4:
   version "1.1.12"
