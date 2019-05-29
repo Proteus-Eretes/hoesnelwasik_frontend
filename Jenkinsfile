@@ -22,6 +22,13 @@ pipeline {
                 sh 'yarn install && yarn build'
             }
         }
+        stage('Test') {
+            steps {
+                setBuildStatus ("Running the tests", "PENDING")
+                echo 'running tests'
+                yarn run test:unit
+            }
+        }
         stage('Deploy') {
             when {
                 branch 'master'
