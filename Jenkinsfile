@@ -26,7 +26,7 @@ pipeline {
             steps {
                 setBuildStatus ("Running the tests", "PENDING")
                 echo 'running tests'
-                yarn run test:unit
+                sh 'yarn run test:unit'
             }
         }
         stage('Deploy') {
