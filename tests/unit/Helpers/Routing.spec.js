@@ -1,4 +1,4 @@
-import { openPage, openSearch, toField } from '../../../src/Helpers/Routing';
+import {openClub, openPage, openSearch, toField} from '../../../src/Helpers/Routing';
 
 describe('Routing::toField', () => {
     it('Url does not go to iframe', () => {
@@ -147,6 +147,53 @@ describe('Open search page', () => {
         expect(pushSpy).toHaveBeenCalled();
         expect(pushSpy.mock.calls[0][0]).toEqual({
             path: '/ww/2920/search/Aapje'
+        });
+    });
+});
+
+describe('Open club page', () => {
+    let pushSpy;
+    let router = {
+        currentRoute: {
+            params: {},
+            fullPath: ''
+        }
+    };
+
+    beforeEach(() => {
+        pushSpy = jest.fn();
+        router.push = pushSpy;
+    });
+
+    it('Goes to search url on iframe', () => {
+        router.currentRoute.params = {
+            match: 'ww',
+            year: '2920',
+            iframe: true
+        };
+        router.currentRoute.fullPath = '/iframe/ww/2019/uitslagen#blocks';
+
+        openClub(router, 'Pro');
+
+        expect(pushSpy).toHaveBeenCalled();
+        expect(pushSpy.mock.calls[0][0]).toEqual({
+            path: '/iframe/ww/2920/club/Pro'
+        });
+    });
+
+    it('Goes to search url', () => {
+        router.currentRoute.params = {
+            match: 'ww',
+            year: '2920',
+            iframe: false
+        };
+        router.currentRoute.fullPath = '/ww/2019/uitslagen#blocks';
+
+        openClub(router, 'IRIS');
+
+        expect(pushSpy).toHaveBeenCalled();
+        expect(pushSpy.mock.calls[0][0]).toEqual({
+            path: '/ww/2920/club/IRIS'
         });
     });
 });
