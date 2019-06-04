@@ -9,4 +9,7 @@ export const openPage = (router, field) => {
     router.push({path: toField(router.currentRoute.params, target, field)});
 };
 
-export const toField = (routerParams, type, field) => `/${routerParams.iframe ? 'iframe/' : ''}${routerParams.match}/${routerParams.year}/${type}/${field}`;
+export const toField = (routerParams, type, field) =>
+    `/${routerParams.iframe ? 'iframe/' : ''}${routerParams.match}/${
+        routerParams.year
+    }/${type}/${field}`;

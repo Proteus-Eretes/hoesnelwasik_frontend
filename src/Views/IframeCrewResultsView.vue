@@ -7,7 +7,7 @@
 
 <script>
 import NavBar from '@/components/Navigation/NavBar';
-import { Crews } from '@/services/Crews';
+import { Crews } from '@/Services/Crews';
 import ResultOverview from '../components/Crews/ResultOverview';
 import {sendPageView} from "./analytics";
 

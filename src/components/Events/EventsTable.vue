@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import {openPage} from "../../helpers/Routing";
+import {openPage} from "../../Helpers/Routing";
 
 export default {
     name: 'EventsTable',

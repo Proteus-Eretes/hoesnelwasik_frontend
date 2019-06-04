@@ -1,4 +1,4 @@
-import uniqBy from "../../helpers/uniqBy";
+import uniqBy from "../../Helpers/uniqBy";
 
 export default teams =>
     uniqBy(

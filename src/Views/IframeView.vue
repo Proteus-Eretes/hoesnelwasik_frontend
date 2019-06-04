@@ -12,7 +12,7 @@
 <script>
 import NavBar from '@/components/Navigation/NavBar';
 import RegattaOverview from '@/components/Regatta/RegattaOverview';
-import { Regatta } from '../services/Regatta';
+import { Regatta } from '../Services/Regatta';
 import {sendPageView} from "./analytics";
 
 export default {

@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import RowerImage from '../rower/RowerImage';
+import RowerImage from '../Rower/RowerImage';
 import EventCard from './EventCard';
 export default {
     name: 'EventsOverview',

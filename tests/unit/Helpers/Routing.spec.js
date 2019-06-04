@@ -1,4 +1,4 @@
-import {openPage, toField} from "../../../src/helpers/Routing";
+import {openPage, toField} from "../../../src/Helpers/Routing";
 
 describe('Routing::toField', () => {
     it('Url does not go to iframe', () => {
