@@ -2,7 +2,7 @@ import uniqBy from "../../Helpers/uniqBy";
 
 export default teams =>
     uniqBy(
-        teams.reduce((timesList, team) =>  {
+        teams.reduce((timesList, team) => {
             timesList.push(
                 ...team.times[0].times
                     .filter(time => time.type === 'Clocking location')
