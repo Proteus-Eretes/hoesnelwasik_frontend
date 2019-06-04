@@ -22,8 +22,8 @@ export default {
         return {
             fields: {
                 blad: {
-                    key: 'OarImage',
                     label: 'Blad',
+                    key: 'OarImage',
                     thClass: 'font-italic',
                     class: 'text-center'
                 },
@@ -35,6 +35,13 @@ export default {
                 },
                 clubname: {
                     label: 'Vereniging',
+                    thClass: 'font-italic',
+                    class: 'text-center',
+                    sortable: true
+                },
+                numberofteams: {
+                    label: 'Aantal ploegen',
+                    key: 'numberofteams',
                     thClass: 'font-italic',
                     class: 'text-center',
                     sortable: true

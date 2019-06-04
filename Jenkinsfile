@@ -22,14 +22,20 @@ pipeline {
                 sh 'yarn install && yarn build'
             }
         }
-        stage('Deploy') {
+        stage('Test') {
             steps {
-                script {
-                    if ( GIT_BRANCH == 'origin/master') {
-                        echo 'Deploying to master'
-                        sh './node_modules/.bin/shipit live copyConfig'
-                    }
-                }
+                setBuildStatus ("Running the tests", "PENDING")
+                echo 'running tests'
+                sh 'yarn run test:unit'
+            }
+        }
+        stage('Deploy') {
+            when {
+                branch 'master'
+            }
+            steps {
+                echo 'Deploying to master'
+                sh './node_modules/.bin/shipit live copyConfig'
             }
         }
     }
