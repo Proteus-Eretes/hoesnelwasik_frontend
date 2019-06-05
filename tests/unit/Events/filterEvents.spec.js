@@ -331,4 +331,38 @@ describe('Events are filtered correctly', () => {
             ]
         );
     });
+
+    it('Filter on man - isLight: mix', () => {
+        const fieldnameshort = 'Mix 1x';
+        expect(filterEvents(events(fieldnameshort), true, true)).toEqual([]);
+    });
+
+    it('Filter on man: mix', () => {
+        const fieldnameshort = 'Mix 1x';
+        expect(filterEvents(events(fieldnameshort), true, false)).toEqual([]);
+    });
+
+    it('Filter on woman - isLight: mix', () => {
+        const fieldnameshort = 'Mix 1x';
+        expect(filterEvents(events(fieldnameshort), false, true)).toEqual([]);
+    });
+
+    it('Filter on woman: mix', () => {
+        const fieldnameshort = 'Mix 1x';
+        expect(filterEvents(events(fieldnameshort), false, false)).toEqual([]);
+    });
+
+    it('Filter on mix - isLight: X', () => {
+        const fieldnameshort = 'X 1x';
+        expect(filterEvents(events(fieldnameshort), false, true, true)).toEqual(
+            []
+        );
+    });
+
+    it('Filter on mix: X', () => {
+        const fieldnameshort = 'X 1x';
+        expect(filterEvents(events(fieldnameshort), true, false, true)).toEqual(
+            []
+        );
+    });
 });
