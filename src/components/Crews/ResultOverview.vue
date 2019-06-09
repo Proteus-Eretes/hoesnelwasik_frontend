@@ -16,7 +16,7 @@
                         :tbody-tr-class="highLightWinner"
                     >
                         <template slot="smallRank" slot-scope="row">
-                            {{ row.item.times[0].rank }}
+                            {{ row.item.times[getOverallTimeIndex].rank }}
                         </template>
                         <template slot="HEAD_OarImage">
                             <div class="d-none d-sm-block">
@@ -81,10 +81,12 @@ export default {
         },
         getFinishTime,
         highLightWinner,
-        getSplash,
-
+        getSplash
     },
     computed: {
+        getOverallTimeIndex() {
+            return this.crews[0].times.length - 1;
+        },
         fieldName() {
             return this.crews[0].fieldnameshort;
         },
@@ -106,7 +108,7 @@ export default {
                     class: 'text-center'
                 },
                 {
-                    key: 'times.0.rank',
+                    key: 'times.' + this.getOverallTimeIndex + '.rank',
                     label: 'Pos',
                     thClass: 'font-italic',
                     class: 'text-center d-none d-sm-table-cell'
