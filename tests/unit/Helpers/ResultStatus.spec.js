@@ -1,4 +1,4 @@
-import { ResultStatus } from '../../../src/helpers/ResultStatus';
+import { ResultStatus } from '../../../src/Helpers/ResultStatus';
 
 describe('Results()', () => {
     it('Should find excluded teams', () => {

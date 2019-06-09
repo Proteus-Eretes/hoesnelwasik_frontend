@@ -54,7 +54,7 @@ import TeamPopup from '@/components/Team/TeamPopup.vue';
 import FinalTime from '../Time/FinalTime';
 import ViewNavigationBar from '../Navigation/ViewNavigationBar';
 import { getFinishTime } from '../Time/Time';
-import { toField } from "../../helpers/Routing";
+import { toField } from "../../Helpers/Routing";
 
 export default {
     name: 'SearchOverview',

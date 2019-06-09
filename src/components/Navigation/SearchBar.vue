@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import {openSearch} from "../../Helpers/Routing";
+
 export default {
     name: 'SearchBar',
     data() {
@@ -31,9 +33,7 @@ export default {
     },
     methods: {
         search() {
-            this.$router.push({
-                path: `/iframe/${this.$router.currentRoute.params.match}/${this.$router.currentRoute.params.year}/search/${this.searchString}`
-            });
+            openSearch(this.$router, this.searchString);
         }
     }
 };

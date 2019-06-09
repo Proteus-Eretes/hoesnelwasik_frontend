@@ -1,10 +1,10 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './views/Home.vue';
-import IframeView from './views/IframeView';
-import IframeCrewDrawView from './views/IframeCrewDrawView';
-import IframeCrewResultsView from './views/IframeCrewResultsView';
-import IframeCrewSearchView from './views/IframeCrewSearchView';
+import Home from './Views/Home.vue';
+import IframeView from './Views/IframeView';
+import IframeCrewDrawView from './Views/IframeCrewDrawView';
+import IframeCrewResultsView from './Views/IframeCrewResultsView';
+import IframeCrewSearchView from './Views/IframeCrewSearchView';
 
 Vue.use(Router);
 

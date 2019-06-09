@@ -1,4 +1,4 @@
-import { Regatta } from '../../../src/services/Regatta';
+import { Regatta } from '../../../src/Services/Regatta';
 
 describe('Service', () => {
     let fetchSpy;

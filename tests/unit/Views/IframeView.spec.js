@@ -1,5 +1,5 @@
 import { shallowMount } from "@vue/test-utils";
-import IframeView from '../../../src/views/IframeView';
+import IframeView from '../../../src/Views/IframeView';
 
 describe("IframeView.vue", () => {
 

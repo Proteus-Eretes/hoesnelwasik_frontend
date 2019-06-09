@@ -1,4 +1,4 @@
-import {Crews} from "../../../src/services/Crews";
+import {Crews} from "../../../src/Services/Crews";
 
 describe("Crews", () => {
     let fetchSpy;
