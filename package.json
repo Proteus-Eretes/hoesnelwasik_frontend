@@ -36,7 +36,7 @@
     "sass": "^1.21.0",
     "sass-loader": "^7.1.0",
     "shipit-cli": "^4.2.0",
-    "shipit-deploy": "^4.1.4",
+    "shipit-deploy": "^5.0.0",
     "vue-template-compiler": "^2.6.10"
   }
 }
