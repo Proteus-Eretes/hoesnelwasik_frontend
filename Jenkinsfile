@@ -23,13 +23,12 @@ pipeline {
             }
         }
         stage('Deploy') {
+            when {
+                branch 'master'
+            }
             steps {
-                script {
-                    if ( GIT_BRANCH == 'origin/master') {
-                        echo 'Deploying to master'
-                        sh './node_modules/.bin/shipit live copyConfig'
-                    }
-                }
+                echo 'Deploying to master'
+                sh './node_modules/.bin/shipit live copyConfig'
             }
         }
     }

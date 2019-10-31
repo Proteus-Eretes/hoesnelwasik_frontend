@@ -1,4 +1,4 @@
-import {Service} from "../../../src/services/Service";
+import {Service} from "../../../src/Services/Service";
 
 describe("Service", () => {
     it("The regatta over fetchs correctly", async () => {

@@ -8,7 +8,7 @@ localVue.use(VueRouter);
 const router = new VueRouter();
 
 describe('SwitchElement', () => {
-    it('Highlight on routing parh', () => {
+    it('Highlight on routing path', () => {
         router.push('uitslagen');
         const element = shallowMount(SwitchElement, {
             localVue,

@@ -22,7 +22,7 @@
 
 <script>
 import moment from 'moment';
-import {openPage} from "../../helpers/Routing";
+import {openPage} from "../../Helpers/Routing";
 
 export default {
     name: 'BlockCard',

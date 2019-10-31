@@ -11,6 +11,7 @@
 <script>
 // @ is an alias to /src
 import OarImage from '@/components/Clubs/OarImage.vue';
+import {openClub} from "../../Helpers/Routing";
 
 export default {
     name: 'ClubsOverview',
@@ -22,8 +23,8 @@ export default {
         return {
             fields: {
                 blad: {
-                    key: 'OarImage',
                     label: 'Blad',
+                    key: 'OarImage',
                     thClass: 'font-italic',
                     class: 'text-center'
                 },
@@ -38,19 +39,20 @@ export default {
                     thClass: 'font-italic',
                     class: 'text-center',
                     sortable: true
+                },
+                numberofteams: {
+                    label: 'Aantal ploegen',
+                    key: 'numberofteams',
+                    thClass: 'font-italic',
+                    class: 'text-center',
+                    sortable: true
                 }
             }
         };
     },
     methods: {
         rowClicked(record) {
-            const par = this.$router.currentRoute.params;
-            const year = par.year;
-            const match = par.match;
-            this.$router.push({
-                path:
-                    '/iframe/' + match + '/' + year + '/club/' + record.clubshort
-            });
+            openClub(this.$router, record.clubshort);
         }
     }
 };

@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import {ResultStatus} from "../../helpers/ResultStatus";
+import {ResultStatus} from "../../Helpers/ResultStatus";
 import FinishTime from "./FinishTime";
 
 export default {

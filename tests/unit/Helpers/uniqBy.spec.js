@@ -1,4 +1,4 @@
-import uniqBy from '../../../src/helpers/uniqBy';
+import uniqBy from '../../../src/Helpers/uniqBy';
 
 describe('uniqBy', () => {
     it('filters array to unique values only on key', () => {
