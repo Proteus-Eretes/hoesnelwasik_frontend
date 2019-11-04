@@ -89,7 +89,8 @@
 <script>
 import SearchBar from './SearchBar';
 import MobileNavBar from './MobileNavBar';
-import SwitchElement from "./SwitchElement";
+import SwitchElement from './SwitchElement';
+import {openNextRegatta, openPrevRegatta} from "./navigation";
 
 export default {
     name: 'NavBar',
@@ -109,29 +110,22 @@ export default {
             ).length;
         },
         hasPrev() {
-            return this.regattas.filter(regatta => {
-                return regatta.jaar < this.regatta.jaar;
-            }).length;
+            return this.regattas.filter(
+                regatta => regatta.jaar < this.regatta.jaar
+            ).length;
         }
     },
     methods: {
         openMatch(next) {
-            const match = this.$router.currentRoute.params.match;
             if (next) {
-                const years = this.regattas
-                    .filter(regatta => regatta.jaar > this.regatta.jaar)
-                    .map(regatta => +regatta.jaar)
-                    .sort();
-                this.$router.push({
-                    path: '/iframe/' + match + `/${years[0]}`
+                openNextRegatta(this.$router, this.regattas, {
+                    ...this.$router.currentRoute.params,
+                    year: this.regatta.jaar
                 });
             } else {
-                const years = this.regattas
-                    .filter(regatta => regatta.jaar < this.regatta.jaar)
-                    .map(regatta => +regatta.jaar)
-                    .sort();
-                this.$router.push({
-                    path: '/iframe/' + match + `/${years[years.length - 1]}`
+                openPrevRegatta(this.$router, this.regattas, {
+                    ...this.$router.currentRoute.params,
+                    year: this.regatta.jaar
                 });
             }
         }
