@@ -22,7 +22,7 @@
 
 <script>
 import moment from 'moment';
-import {openPage} from "../../Helpers/Routing";
+import { openPage } from '../../Helpers/Routing';
 
 export default {
     name: 'BlockCard',
@@ -54,7 +54,11 @@ export default {
     },
     methods: {
         removeSecondsFields(starttime) {
-            if (starttime === null || starttime === this.block[0].starttime || this.isNumber(starttime)) {
+            if (
+                starttime === null ||
+                starttime === this.block[0].starttime ||
+                this.isNumber(starttime)
+            ) {
                 return this.removeSeconds(this.block[0].starttime);
             }
             return moment(starttime).format('H:mm');

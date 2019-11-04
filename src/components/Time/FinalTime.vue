@@ -2,18 +2,18 @@
     <div>
         <FinishTime :time="time" :bonus-seconds="bonusSeconds"></FinishTime>
         <template v-if="inValidTime">
-            {{displayStatus}}
+            {{ displayStatus }}
         </template>
     </div>
 </template>
 
 <script>
-import {ResultStatus} from "../../Helpers/ResultStatus";
-import FinishTime from "./FinishTime";
+import { ResultStatus } from '../../Helpers/ResultStatus';
+import FinishTime from './FinishTime';
 
 export default {
     name: 'FinalTime',
-    components: {FinishTime},
+    components: { FinishTime },
     props: {
         time: Number,
         bonusSeconds: String,
@@ -27,5 +27,5 @@ export default {
             return ResultStatus.getStatus(+this.status);
         }
     }
-}
+};
 </script>

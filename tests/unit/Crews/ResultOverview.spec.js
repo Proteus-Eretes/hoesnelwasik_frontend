@@ -73,7 +73,7 @@ describe('ResultOverview', () => {
                                         alteredTime: 1025.554
                                     },
                                     {
-                                        time:301.2,
+                                        time: 301.2,
                                         distance: '5000',
                                         name: 'Finish',
                                         type: 'Finish',
@@ -110,6 +110,5 @@ describe('ResultOverview', () => {
         expect(wrapper.html()).toMatch('>03:30.0</td>');
         expect(wrapper.html()).toMatch('>04:00.1</td>');
         expect(wrapper.html()).toMatch('05:01.2');
-
     });
 });

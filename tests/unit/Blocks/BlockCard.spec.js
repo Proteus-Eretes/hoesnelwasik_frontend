@@ -1,5 +1,5 @@
 import BlockCard from '../../../src/components/Blocks/BlockCard';
-import { mount } from "@vue/test-utils";
+import { mount } from '@vue/test-utils';
 import BootstrapVue from 'bootstrap-vue';
 import { createLocalVue } from '@vue/test-utils';
 

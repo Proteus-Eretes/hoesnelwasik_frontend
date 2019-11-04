@@ -90,7 +90,7 @@
 import SearchBar from './SearchBar';
 import MobileNavBar from './MobileNavBar';
 import SwitchElement from './SwitchElement';
-import {openNextRegatta, openPrevRegatta} from "./navigation";
+import { openNextRegatta, openPrevRegatta } from './navigation';
 
 export default {
     name: 'NavBar',

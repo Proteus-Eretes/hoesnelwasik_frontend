@@ -7,7 +7,7 @@
                 title-item-class="text-uppercase"
                 title="Veld"
                 href="#velden"
-                :active=getActive(0)
+                :active="getActive(0)"
             >
                 <EventsOverview :events="events"></EventsOverview>
             </b-tab>
@@ -16,7 +16,7 @@
                 title-link-class="link-unstyled"
                 title-item-class="text-uppercase"
                 title="Blok"
-                :active=getActive(1)
+                :active="getActive(1)"
                 href="#blocks"
             >
                 <block-overview :blocks="blocks"></block-overview>
@@ -26,7 +26,7 @@
                 title-link-class="link-unstyled"
                 title-item-class="text-uppercase"
                 title="Vereniging"
-                :active=getActive(2)
+                :active="getActive(2)"
                 href="#clubs"
             >
                 <clubs-overview :clubs="clubs"></clubs-overview>
@@ -39,7 +39,7 @@
 import ClubsOverview from '@/components/Clubs/ClubsOverview';
 import BlockOverview from '@/components/Blocks/BlockOverview';
 import EventsOverview from '../Events/EventsOverview';
-import {findTabIndex, getActiveTab} from "../Navigation/activeTab";
+import { findTabIndex, getActiveTab } from '../Navigation/activeTab';
 
 export default {
     name: 'RegattaOverview',

@@ -1,5 +1,4 @@
-import {Regatta} from "./Regatta";
-
+import { Regatta } from './Regatta';
 
 export class Crews extends Regatta {
     /**

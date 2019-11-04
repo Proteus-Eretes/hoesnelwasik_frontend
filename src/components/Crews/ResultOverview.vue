@@ -28,14 +28,14 @@
                         </template>
                         <template slot="FinishTime" slot-scope="row">
                             <FinalTime
-                                :time= "getFinishTime(row.item.times[0].times)"
+                                :time="getFinishTime(row.item.times[0].times)"
                                 :bonus-seconds="row.item.times[0].bonussecond"
                                 :status="row.item.times[0].status"
                             ></FinalTime>
                         </template>
                         <template slot="FinishTimeSmall" slot-scope="row">
                             <FinalTime
-                                :time= "getFinishTime(row.item.times[0].times)"
+                                :time="getFinishTime(row.item.times[0].times)"
                                 :bonus-seconds="row.item.times[0].bonussecond"
                                 :status="row.item.times[0].status"
                             ></FinalTime>
@@ -54,8 +54,8 @@ import OarImage from '@/components/Clubs/OarImage.vue';
 import TeamPopup from '@/components/Team/TeamPopup.vue';
 import FinalTime from '../Time/FinalTime';
 import ViewNavigationBar from '../Navigation/ViewNavigationBar';
-import {getFinishTime, getSplash} from "../Time/Time";
-import {highLightWinner} from "./highLightWinner";
+import { getFinishTime, getSplash } from '../Time/Time';
+import { highLightWinner } from './highLightWinner';
 import findClockingLocations from './findClockingLocations';
 
 export default {
@@ -81,8 +81,7 @@ export default {
         },
         getFinishTime,
         highLightWinner,
-        getSplash,
-
+        getSplash
     },
     computed: {
         fieldName() {

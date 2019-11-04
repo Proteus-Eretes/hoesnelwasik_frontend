@@ -1,5 +1,5 @@
-import {createLocalVue, shallowMount} from "@vue/test-utils";
-import SearchBar from "../../../src/components/Navigation/SearchBar";
+import { createLocalVue, shallowMount } from '@vue/test-utils';
+import SearchBar from '../../../src/components/Navigation/SearchBar';
 
 const localVue = createLocalVue();
 
@@ -8,7 +8,7 @@ describe('SwitchElement', () => {
         const element = shallowMount(SearchBar, {
             localVue,
             propsData: {
-                searchString: 'Aapjes',
+                searchString: 'Aapjes'
             }
         });
 

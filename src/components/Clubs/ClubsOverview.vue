@@ -1,6 +1,14 @@
 <template>
     <div v-if="clubs">
-        <b-table class="clickable" hover striped head-variant="dark" :items="clubs" :fields="fields" @row-clicked="rowClicked" >
+        <b-table
+            class="clickable"
+            hover
+            striped
+            head-variant="dark"
+            :items="clubs"
+            :fields="fields"
+            @row-clicked="rowClicked"
+        >
             <template slot="OarImage" slot-scope="row">
                 <OarImage :club="row.item.clubshort"></OarImage>
             </template>
@@ -11,7 +19,7 @@
 <script>
 // @ is an alias to /src
 import OarImage from '@/components/Clubs/OarImage.vue';
-import {openClub} from "../../Helpers/Routing";
+import { openClub } from '../../Helpers/Routing';
 
 export default {
     name: 'ClubsOverview',

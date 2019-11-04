@@ -9,7 +9,7 @@ describe('uniqBy', () => {
                     { key: 'a', value: 1 },
                     { key: 'a', value: 2 },
                     { key: 'b', value: 2 },
-                    { key: 'b', value: 1 },
+                    { key: 'b', value: 1 }
                 ],
                 'key'
             )
@@ -31,6 +31,10 @@ describe('uniqBy', () => {
                 ],
                 'key'
             )
-        ).toEqual([{ key: 'a', value: 1 }, { key: 'b', value: 2 }, {value: 3}]);
+        ).toEqual([
+            { key: 'a', value: 1 },
+            { key: 'b', value: 2 },
+            { value: 3 }
+        ]);
     });
 });

@@ -13,7 +13,7 @@
 import NavBar from '@/components/Navigation/NavBar';
 import RegattaOverview from '@/components/Regatta/RegattaOverview';
 import { Regatta } from '../Services/Regatta';
-import {sendPageView} from "./analytics";
+import { sendPageView } from './analytics';
 
 export default {
     name: 'iframe-view',

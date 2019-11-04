@@ -47,7 +47,7 @@
 <script>
 import RowerImage from '../Rower/RowerImage';
 import EventCard from './EventCard';
-import filterEvents from "./filterEvents";
+import filterEvents from './filterEvents';
 export default {
     name: 'EventsOverview',
     components: { EventCard, RowerImage },

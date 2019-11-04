@@ -1,9 +1,16 @@
 <template>
-    <b-table class="clickable" hover  :items="events" :fields="fields" head-variant="dark" @row-clicked="rowClicked" ></b-table>
+    <b-table
+        class="clickable"
+        hover
+        :items="events"
+        :fields="fields"
+        head-variant="dark"
+        @row-clicked="rowClicked"
+    ></b-table>
 </template>
 
 <script>
-import {openPage} from "../../Helpers/Routing";
+import { openPage } from '../../Helpers/Routing';
 
 export default {
     name: 'EventsTable',

@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import {openSearch} from "../../Helpers/Routing";
+import { openSearch } from '../../Helpers/Routing';
 
 export default {
     name: 'SearchBar',

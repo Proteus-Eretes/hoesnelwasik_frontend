@@ -7,7 +7,13 @@
             </div>
             <b-row>
                 <div class="table-responsive">
-                    <b-table hover :items="crews" :fields="fields" thead-class="thead-dark" @row-clicked="openTeamDialog">
+                    <b-table
+                        hover
+                        :items="crews"
+                        :fields="fields"
+                        thead-class="thead-dark"
+                        @row-clicked="openTeamDialog"
+                    >
                         <template slot="OarImage" slot-scope="row">
                             <OarImage :club="row.item.clubnameshort"></OarImage>
                         </template>
@@ -27,7 +33,7 @@
 <script>
 import OarImage from '@/components/Clubs/OarImage.vue';
 import TeamPopup from '@/components/Team/TeamPopup.vue';
-import ViewNavigationBar from "../Navigation/ViewNavigationBar";
+import ViewNavigationBar from '../Navigation/ViewNavigationBar';
 
 export default {
     name: 'DrawOverview',
