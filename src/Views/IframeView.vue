@@ -36,12 +36,22 @@ export default {
         };
     },
     methods: {
-        init: async function() {
-            this.clubs = await this.regattaService.getClubs();
-            this.blocks = await this.regattaService.getBlocks();
-            this.events = await this.regattaService.getFields();
-            this.regattas = await this.regattaService.getEditions(this.match);
-            this.regatta = await this.regattaService.getEdition();
+        init: function() {
+            this.regattaService.getClubs().then(clubs => {
+                this.clubs = clubs;
+            });
+            this.regattaService.getBlocks().then(blocks => {
+                this.blocks = blocks;
+            });
+            this.regattaService.getFields().then(events => {
+                this.events = events;
+            });
+            this.regattaService.getEditions(this.match).then(regattas => {
+                this.regattas = regattas;
+            });
+            this.regattaService.getEdition().then(regatta => {
+                this.regatta = regatta;
+            });
             sendPageView();
         }
     },
