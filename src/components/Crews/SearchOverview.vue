@@ -16,34 +16,34 @@
                         :sort-by.sync="sortBy"
                         :sort-desc.sync="sortDesc"
                     >
-                        <template slot="OarImage" slot-scope="row">
-                            <OarImage :club="row.item.clubnameshort"></OarImage>
+                        <template v-slot:cell(OarImage)="data">
+                            <OarImage :club="data.item.clubnameshort"></OarImage>
                         </template>
-                        <template slot="fieldnameshortsub" slot-scope="row">
+                        <template v-slot:cell(fieldnameshortsub)="data">
                             <b-link
                                 :href="
                                     toField(
                                         $router.currentRoute.params,
                                         'uitslagen',
-                                        row.item.fieldnameshort
+                                        data.item.fieldnameshort
                                     )
                                 "
                             >
                                 {{ row.item.fieldnameshortsub }}
                             </b-link>
                         </template>
-                        <template slot="FinishTime" slot-scope="row">
+                        <template v-slot:cell(FinishTime)="data">
                             <FinalTime
-                                :time="getFinishTime(row.item.times[0].times)"
-                                :bonus-seconds="row.item.times[0].bonussecond"
-                                :status="row.item.times[0].status"
+                                :time="getFinishTime(data.item.times[0].times)"
+                                :bonus-seconds="data.item.times[0].bonussecond"
+                                :status="data.item.times[0].status"
                             ></FinalTime>
                         </template>
-                        <template slot="FinishTimeSmall" slot-scope="row">
+                        <template v-slot:cell(FinishTimeSmall)="data">
                             <FinalTime
-                                :time="getFinishTime(row.item.times[0].times)"
-                                :bonus-seconds="row.item.times[0].bonussecond"
-                                :status="row.item.times[0].status"
+                                :time="getFinishTime(data.item.times[0].times)"
+                                :bonus-seconds="data.item.times[0].bonussecond"
+                                :status="data.item.times[0].status"
                             ></FinalTime>
                         </template>
                     </b-table>

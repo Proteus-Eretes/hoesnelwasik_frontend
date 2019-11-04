@@ -6,7 +6,7 @@
         no-body
         class="table-responsive"
     >
-        <h2 slot="header">{{ blockTitle }}</h2>
+        <template v-slot:header><h2>{{ blockTitle }}</h2></template>
         <b-table
             class="clickable"
             striped

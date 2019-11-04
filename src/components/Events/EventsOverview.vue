@@ -7,7 +7,7 @@
                 no-body
                 title-link-class="link-unstyled"
             >
-                <template slot="title">
+                <template v-slot:cell(title)>
                     <RowerImage :n="n"></RowerImage>
                 </template>
                 <b-container class="mt-3">

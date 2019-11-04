@@ -14,8 +14,8 @@
                         thead-class="thead-dark"
                         @row-clicked="openTeamDialog"
                     >
-                        <template slot="OarImage" slot-scope="row">
-                            <OarImage :club="row.item.clubnameshort"></OarImage>
+                        <template v-slot:cell(OarImage)="data">
+                            <OarImage :club="data.item.clubnameshort"></OarImage>
                         </template>
                         <template slot="HEAD_OarImage">
                             <div class="d-none d-sm-block">

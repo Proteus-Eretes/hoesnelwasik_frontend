@@ -9,8 +9,8 @@
             :fields="fields"
             @row-clicked="rowClicked"
         >
-            <template slot="OarImage" slot-scope="row">
-                <OarImage :club="row.item.clubshort"></OarImage>
+            <template v-slot:cell(OarImage)="data">
+                <OarImage :club="data.item.clubshort"></OarImage>
             </template>
         </b-table>
     </div>
@@ -29,33 +29,35 @@ export default {
     },
     data() {
         return {
-            fields: {
-                blad: {
+            fields: [
+                {
                     label: 'Blad',
                     key: 'OarImage',
                     thClass: 'font-italic',
                     class: 'text-center'
                 },
-                clubshort: {
+                {
                     label: 'Code',
+                    key: 'clubshort',
                     thClass: 'font-italic',
                     class: 'text-center',
                     sortable: true
                 },
-                clubname: {
+                {
                     label: 'Vereniging',
+                    key: 'clubname',
                     thClass: 'font-italic',
                     class: 'text-center',
                     sortable: true
                 },
-                numberofteams: {
+                {
                     label: 'Aantal ploegen',
                     key: 'numberofteams',
                     thClass: 'font-italic',
                     class: 'text-center',
                     sortable: true
                 }
-            }
+            ]
         };
     },
     methods: {
