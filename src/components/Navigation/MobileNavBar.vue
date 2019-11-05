@@ -4,7 +4,7 @@
             <ul class="pt-3 navbar list-unstyled">
                 <li class="nav-item text-white">
                     <h3>
-                        <a class="p-0 text-white" :href="homeUrl">
+                        <a class="p-0 text-white" v-on:click="homeUrl()">
                             {{ regatta.regattaname }}
                         </a>
                     </h3>
@@ -60,6 +60,8 @@
 import SearchBar from './SearchBar';
 import { Slide } from 'vue-burger-menu';
 import SwitchElement from './SwitchElement';
+import { openNextRegatta, openPrevRegatta } from './navigation';
+import { openRegatta } from '../../Helpers/Routing';
 export default {
     name: 'MobileNavBar',
     components: {
@@ -103,34 +105,32 @@ export default {
     methods: {
         openMatch(next) {
             if (next) {
-                const years = this.regattas
-                    .filter(regatta => regatta.jaar > this.regatta.jaar)
-                    .map(regatta => +regatta.jaar)
-                    .sort();
-                this.$router.push({
-                    path: `/iframe/${this.regatta.shortname}/${years[0]}`
+                openNextRegatta(this.$router, this.regattas, {
+                    ...this.$router.currentRoute.params,
+                    year: this.regatta.jaar
                 });
             } else {
-                const years = this.regattas
-                    .filter(regatta => regatta.jaar < this.regatta.jaar)
-                    .map(regatta => +regatta.jaar)
-                    .sort();
-                this.$router.push({
-                    path: `/iframe/${this.regatta.shortname}/${
-                        years[years.length - 1]
-                    }`
+                openPrevRegatta(this.$router, this.regattas, {
+                    ...this.$router.currentRoute.params,
+                    year: this.regatta.jaar
                 });
             }
         },
         openEdition(year) {
-            this.$router.push({
-                path: `/iframe/${this.regatta.shortname}/${year}`
+            openRegatta(this.$router, {
+                ...this.$router.currentRoute.params,
+                year
             });
         },
         homeUrl(type) {
-            return `/iframe/${this.regatta.shortname}/${
-                this.regatta.jaar
-            }/${type}`;
+            openRegatta(
+                this.$router,
+                {
+                    ...this.$router.currentRoute.params,
+                    year: this.regatta.jaar
+                },
+                type
+            );
         }
     }
 };

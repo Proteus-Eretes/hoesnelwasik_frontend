@@ -56,7 +56,7 @@ import FinalTime from '../Time/FinalTime';
 import ViewNavigationBar from '../Navigation/ViewNavigationBar';
 import {getFinishTime, getSplash} from "../Time/Time";
 import {highLightWinner} from "./highLightWinner";
-import findClockingLocations from "./findClockingLocations";
+import findClockingLocations from './findClockingLocations';
 
 export default {
     name: 'ResultOverview',

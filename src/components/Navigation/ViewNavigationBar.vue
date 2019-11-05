@@ -5,7 +5,7 @@
             title-link-class="link-unstyled"
             title-item-class="text-uppercase"
             title="Veld"
-            v-on:click="navMatch('#velden')"
+            @click="navMatch('velden')"
             :active=getActive(0)
         >
         </b-tab>
@@ -14,7 +14,7 @@
             title-link-class="link-unstyled"
             title-item-class="text-uppercase"
             title="Blok"
-            v-on:click="navMatch('#blocks')"
+            @click="navMatch('blocks')"
             :active=getActive(1)
         >
         </b-tab>
@@ -23,7 +23,7 @@
             title-link-class="link-unstyled"
             title-item-class="text-uppercase"
             title="Vereniging"
-            v-on:click="navMatch('#clubs')"
+            @click="navMatch('clubs')"
             :active=getActive(2)
         >
         </b-tab>
@@ -32,6 +32,7 @@
 
 <script>
 import {getActiveTab} from "./activeTab";
+import {openRegatta} from "../../Helpers/Routing";
 
 export default {
     name: 'ViewNavigationBar',
@@ -40,11 +41,7 @@ export default {
     },
     methods: {
         navMatch(hash) {
-            this.$router.push({
-                path: `/iframe/${this.$router.currentRoute.params.match}/${
-                    this.$router.currentRoute.params.year
-                }/${this.type}${hash}`
-            });
+            openRegatta(this.$router, this.$router.currentRoute.params, this.type, hash);
         },
         getActive(index) {
             if (this.$router.currentRoute.fullPath.includes('club')) {

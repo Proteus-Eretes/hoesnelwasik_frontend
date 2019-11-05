@@ -1,4 +1,5 @@
-const pushLink = (router, target, arg) => router.push({path: toField(router.currentRoute.params, target, arg)});
+const pushLink = (router, target, arg) =>
+    router.push({ path: toField(router.currentRoute.params, target, arg) });
 
 export const openPage = (router, field) => {
     if (router.currentRoute.fullPath.includes('loting')) {
@@ -8,11 +9,22 @@ export const openPage = (router, field) => {
     }
 };
 
-export const openSearch = (router, search) => pushLink(router, 'search', search);
+export const openSearch = (router, search) =>
+    pushLink(router, 'search', search);
 
 export const openClub = (router, club) => pushLink(router, 'club', club);
 
-export const toField = (routerParams, type, field) =>
-    `/${routerParams.iframe ? 'iframe/' : ''}${routerParams.match}/${
-        routerParams.year
-    }/${type}/${field}`;
+export const toField = ({ iframe, match, year }, type, field) =>
+    `/${iframe ? 'iframe/' : ''}${match}/${year}/${type}/${field}`;
+
+export const openRegatta = (
+    router,
+    { iframe, match, year },
+    type = 'uitslagen',
+    hash = 'blocks'
+) => {
+    router.push({
+        path: `/${iframe ? 'iframe/' : ''}${match}/${year}/${type}`,
+        hash
+    });
+};
