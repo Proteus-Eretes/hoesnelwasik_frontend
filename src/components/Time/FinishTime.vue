@@ -1,7 +1,9 @@
 <template>
     <div class="FinishTime" :class="styling">
-        {{prettyTime}}
-        <span v-if="bonusSeconds > 0" style="font-size: 59%; "> (+ {{bonusSeconds}})</span>
+        {{ prettyTime }}
+        <span v-if="bonusSeconds > 0" style="font-size: 59%; ">
+            (+ {{ bonusSeconds }})</span
+        >
     </div>
 </template>
 
@@ -16,7 +18,9 @@ export default {
     },
     computed: {
         prettyTime() {
-            const momentTime = moment.unix(this.time + +this.bonusSeconds).utc();
+            const momentTime = moment
+                .unix(this.time + +this.bonusSeconds)
+                .utc();
             if (momentTime.hours()) {
                 return momentTime.format('HH:mm:ss.S');
             }

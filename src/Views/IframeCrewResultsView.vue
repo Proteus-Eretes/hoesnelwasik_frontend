@@ -9,7 +9,7 @@
 import NavBar from '@/components/Navigation/NavBar';
 import { Crews } from '@/Services/Crews';
 import ResultOverview from '../components/Crews/ResultOverview';
-import {sendPageView} from "./analytics";
+import { sendPageView } from './analytics';
 
 export default {
     name: 'IframeCrewResultsView',

@@ -1,5 +1,7 @@
-import {findTabIndex, getActiveTab} from "../../../src/components/Navigation/activeTab";
-
+import {
+    findTabIndex,
+    getActiveTab
+} from '../../../src/components/Navigation/activeTab';
 
 describe('activeTab', () => {
     it('Return the correct active tab', () => {

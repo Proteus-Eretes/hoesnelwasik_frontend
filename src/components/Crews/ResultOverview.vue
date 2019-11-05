@@ -15,29 +15,29 @@
                         @row-clicked="openTeamDialog"
                         :tbody-tr-class="highLightWinner"
                     >
-                        <template slot="smallRank" slot-scope="row">
-                            {{ row.item.times[0].rank }}
+                        <template v-slot:cell(smallRank)="data">
+                            {{ data.item.times[0].rank }}
                         </template>
-                        <template slot="HEAD_OarImage">
+                        <template v-slot:head(OarImage)>
                             <div class="d-none d-sm-block">
                                 Blad
                             </div>
                         </template>
-                        <template slot="OarImage" slot-scope="row">
-                            <OarImage :club="row.item.clubnameshort"></OarImage>
+                        <template v-slot:cell(OarImage)="data">
+                            <OarImage :club="data.item.clubnameshort"></OarImage>
                         </template>
-                        <template slot="FinishTime" slot-scope="row">
+                        <template v-slot:cell(FinishTime)="data">
                             <FinalTime
-                                :time= "getFinishTime(row.item.times[0].times)"
-                                :bonus-seconds="row.item.times[0].bonussecond"
-                                :status="row.item.times[0].status"
+                                :time="getFinishTime(data.item.times[0].times)"
+                                :bonus-seconds="data.item.times[0].bonussecond"
+                                :status="data.item.times[0].status"
                             ></FinalTime>
                         </template>
-                        <template slot="FinishTimeSmall" slot-scope="row">
+                        <template v-slot:cell(FinishTimeSmall)="data">
                             <FinalTime
-                                :time= "getFinishTime(row.item.times[0].times)"
-                                :bonus-seconds="row.item.times[0].bonussecond"
-                                :status="row.item.times[0].status"
+                                :time="getFinishTime(data.item.times[0].times)"
+                                :bonus-seconds="data.item.times[0].bonussecond"
+                                :status="data.item.times[0].status"
                             ></FinalTime>
                         </template>
                     </b-table>
@@ -54,8 +54,8 @@ import OarImage from '@/components/Clubs/OarImage.vue';
 import TeamPopup from '@/components/Team/TeamPopup.vue';
 import FinalTime from '../Time/FinalTime';
 import ViewNavigationBar from '../Navigation/ViewNavigationBar';
-import {getFinishTime, getSplash} from "../Time/Time";
-import {highLightWinner} from "./highLightWinner";
+import { getFinishTime, getSplash } from '../Time/Time';
+import { highLightWinner } from './highLightWinner';
 import findClockingLocations from './findClockingLocations';
 
 export default {
@@ -81,15 +81,11 @@ export default {
         },
         getFinishTime,
         highLightWinner,
-        getSplash,
-
+        getSplash
     },
     computed: {
         fieldName() {
             return this.crews[0].fieldnameshort;
-        },
-        splashes() {
-            return findClockingLocations(this.crews);
         },
         fields() {
             return [

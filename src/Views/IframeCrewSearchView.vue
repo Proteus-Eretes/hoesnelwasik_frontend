@@ -8,8 +8,8 @@
 <script>
 import NavBar from '@/components/Navigation/NavBar';
 import { Crews } from '@/Services/Crews';
-import SearchOverview from "../components/Crews/SearchOverview";
-import {sendPageView} from "./analytics";
+import SearchOverview from '../components/Crews/SearchOverview';
+import { sendPageView } from './analytics';
 
 export default {
     name: 'IframeCrewSearchView',

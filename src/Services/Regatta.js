@@ -2,7 +2,6 @@ import { Service } from './Service';
 import moment from 'moment';
 
 export class Regatta extends Service {
-
     /**
      * {@inheritDoc}
      * @param {string} baseUrl
