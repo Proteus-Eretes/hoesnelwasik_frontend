@@ -29,7 +29,7 @@
                                     )
                                 "
                             >
-                                {{ row.item.fieldnameshortsub }}
+                                {{ data.item.fieldnameshortsub }}
                             </b-link>
                         </template>
                         <template v-slot:cell(FinishTime)="data">

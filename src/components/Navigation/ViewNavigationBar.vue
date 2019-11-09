@@ -8,6 +8,7 @@
             @click="navMatch('velden')"
             :active="getActive(0)"
         >
+            <slot name="fields"></slot>
         </b-tab>
         <b-tab
             no-body
@@ -17,6 +18,7 @@
             @click="navMatch('blocks')"
             :active="getActive(1)"
         >
+            <slot name="blocks"></slot>
         </b-tab>
         <b-tab
             no-body
@@ -26,18 +28,24 @@
             @click="navMatch('clubs')"
             :active="getActive(2)"
         >
+            <slot name="clubs"></slot>
         </b-tab>
     </b-tabs>
 </template>
 
 <script>
-import { getActiveTab } from './activeTab';
+import {findTabIndex, getActiveTab} from './activeTab';
 import { openRegatta } from '../../Helpers/Routing';
 
 export default {
     name: 'ViewNavigationBar',
     props: {
         type: String
+    },
+    data() {
+        return {
+            tabIndex: findTabIndex(this.$route.hash, this.$router.currentRoute.path)
+        };
     },
     methods: {
         navMatch(hash) {
@@ -49,10 +57,7 @@ export default {
             );
         },
         getActive(index) {
-            if (this.$router.currentRoute.fullPath.includes('club')) {
-                return getActiveTab(2, index);
-            }
-            return getActiveTab(1, index);
+            return getActiveTab(this.tabIndex, index);
         }
     }
 };
