@@ -8396,10 +8396,10 @@ liftoff@^2.5.0:
     rechoir "^0.6.2"
     resolve "^1.1.7"
 
-line-awesome@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/line-awesome/-/line-awesome-1.0.2.tgz#7f4f954ce7c1ffc8ca0e8aa575768d1f46e429cc"
-  integrity sha512-IDBNPCKlj3Rsvs7+Kt9hyC8q6r8v54LLoUgOkRiNUPWGcVK0gsgHnOaL59YLs2TK6KWFySGMwsC3jRCGI04jNQ==
+line-awesome@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/line-awesome/-/line-awesome-1.2.1.tgz#beacf16571dcd42a5b70926daf5626d98138582d"
+  integrity sha512-wqQKLWqJvFR0y/HFoegrTsJC5RnEv6TMTlEWLlpKjVapOF5/NAldmxJJ4/HMsg9l5GehJTuL7uaRJ7/DGquhvg==
 
 lines-and-columns@^1.1.6:
   version "1.1.6"
