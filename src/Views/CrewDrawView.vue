@@ -12,7 +12,7 @@ import { Crews } from '@/Services/Crews';
 import { sendPageView } from './analytics';
 
 export default {
-    name: 'IframeCrewDrawView',
+    name: 'CrewDrawView',
     props: {
         field: String,
         match: String,

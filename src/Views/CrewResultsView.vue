@@ -12,7 +12,7 @@ import ResultOverview from '../components/Crews/ResultOverview';
 import { sendPageView } from './analytics';
 
 export default {
-    name: 'IframeCrewResultsView',
+    name: 'CrewResultsView',
     props: {
         field: String,
         match: String,

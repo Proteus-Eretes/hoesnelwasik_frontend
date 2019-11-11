@@ -12,7 +12,7 @@ import SearchOverview from '../components/Crews/SearchOverview';
 import { sendPageView } from './analytics';
 
 export default {
-    name: 'IframeCrewSearchView',
+    name: 'CrewSearchView',
     props: {
         field: String,
         match: String,
