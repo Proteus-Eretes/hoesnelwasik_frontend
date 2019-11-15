@@ -36,7 +36,10 @@ export default {
     computed: {
         fields() {
             const backnumberField = { key: 'backnumber', label: 'Rugnummer' };
-            const commentsField = { key: 'times.0.comments', label: 'Commentaar' };
+            const commentsField = {
+                key: 'times.0.comments',
+                label: 'Commentaar'
+            };
             const subveldField = { key: 'fieldnameshortsub', label: 'Subveld' };
 
             const attributes = [
@@ -77,5 +80,3 @@ export default {
     }
 };
 </script>
-
-<style scoped></style>

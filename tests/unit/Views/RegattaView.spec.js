@@ -1,11 +1,10 @@
-import { shallowMount } from "@vue/test-utils";
-import IframeView from '../../../src/views/IframeView';
+import { shallowMount } from '@vue/test-utils';
+import RegattaView from '../../../src/Views/RegattaView';
 
-describe("IframeView.vue", () => {
-
-    it("Renders", () => {
+describe('RegattaView.vue', () => {
+    it('Renders', () => {
         const initSpy = jest.fn();
-        const wrapper = shallowMount(IframeView, {
+        const wrapper = shallowMount(RegattaView, {
             methods: {
                 init: initSpy
             }

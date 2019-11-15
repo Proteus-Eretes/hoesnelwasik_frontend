@@ -6,7 +6,9 @@
         no-body
         class="table-responsive"
     >
-        <h2 slot="header">{{ blockTitle }}</h2>
+        <template v-slot:header
+            ><h2>{{ blockTitle }}</h2></template
+        >
         <b-table
             class="clickable"
             striped
@@ -22,7 +24,8 @@
 
 <script>
 import moment from 'moment';
-import {openPage} from "../../helpers/Routing";
+import { openPage } from '../../Helpers/Routing';
+import { fieldStatus } from './fieldStatus';
 
 export default {
     name: 'BlockCard',
@@ -37,7 +40,17 @@ export default {
                 {
                     key: 'field_starttime',
                     label: 'Starttijd',
-                    formatter: this.removeSecondsFields
+                    formatter: (time, key, field) => {
+                        if (field.status) {
+                            return fieldStatus[field.status].name;
+                        }
+                        return this.removeSecondsFields(time);
+                    },
+                    tdClass: (time, key, field) => {
+                        if (field.status > 0) {
+                            return fieldStatus[field.status].class;
+                        }
+                    }
                 }
             ]
         };
@@ -54,7 +67,11 @@ export default {
     },
     methods: {
         removeSecondsFields(starttime) {
-            if (starttime === null || starttime === this.block[0].starttime || this.isNumber(starttime)) {
+            if (
+                starttime === null ||
+                starttime === this.block[0].starttime ||
+                this.isNumber(starttime)
+            ) {
                 return this.removeSeconds(this.block[0].starttime);
             }
             return moment(starttime).format('H:mm');
@@ -71,3 +88,32 @@ export default {
     }
 };
 </script>
+
+<style type="scss">
+.stat_official {
+    color: green;
+    font-weight: bold;
+}
+.stat_protest {
+    color: red;
+    font-weight: bold;
+}
+.stat_unofficial {
+    color: orange;
+    font-weight: bold;
+}
+.stat_started,
+.stat_finishing {
+    animation: blinker 2s linear infinite;
+    color: green;
+    font-weight: bold;
+}
+.stat_canceled {
+    color: #737373;
+}
+@keyframes blinker {
+    50% {
+        opacity: 0.4;
+    }
+}
+</style>

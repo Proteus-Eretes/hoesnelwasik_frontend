@@ -89,7 +89,8 @@
 <script>
 import SearchBar from './SearchBar';
 import MobileNavBar from './MobileNavBar';
-import SwitchElement from "./SwitchElement";
+import SwitchElement from './SwitchElement';
+import { openNextRegatta, openPrevRegatta } from './navigation';
 
 export default {
     name: 'NavBar',
@@ -106,33 +107,26 @@ export default {
     computed: {
         hasNext() {
             return this.editions.filter(
-                regatta => regatta.jaar > this.regatta.jaar
+                edition => edition.jaar > this.regatta.jaar
             ).length;
         },
         hasPrev() {
-            return this.editions.filter(regatta => {
-                return regatta.jaar < this.regatta.jaar;
-            }).length;
+            return this.editions.filter(
+                edition => edition.jaar < this.regatta.jaar
+            ).length;
         }
     },
     methods: {
         openMatch(next) {
-            const match = this.$router.currentRoute.params.match;
             if (next) {
-                const years = this.editions
-                    .filter(regatta => regatta.jaar > this.regatta.jaar)
-                    .map(regatta => +regatta.jaar)
-                    .sort();
-                this.$router.push({
-                    path: '/iframe/' + match + `/${years[0]}`
+                openNextRegatta(this.$router, this.editions, {
+                    ...this.$router.currentRoute.params,
+                    year: this.regatta.jaar
                 });
             } else {
-                const years = this.editions
-                    .filter(regatta => regatta.jaar < this.regatta.jaar)
-                    .map(regatta => +regatta.jaar)
-                    .sort();
-                this.$router.push({
-                    path: '/iframe/' + match + `/${years[years.length - 1]}`
+                openPrevRegatta(this.$router, this.editions, {
+                    ...this.$router.currentRoute.params,
+                    year: this.regatta.jaar
                 });
             }
         }

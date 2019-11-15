@@ -12,11 +12,11 @@
 <script>
 import NavBar from '@/components/Navigation/NavBar';
 import RegattaOverview from '@/components/Regatta/RegattaOverview';
-import { Regatta } from '../services/Regatta';
-import {sendPageView} from "./analytics";
+import { Regatta } from '../Services/Regatta';
+import { sendPageView } from './analytics';
 
 export default {
-    name: 'iframe-view',
+    name: 'RegattaView',
     components: {
         RegattaOverview,
         NavBar
@@ -37,13 +37,25 @@ export default {
         };
     },
     methods: {
-        init: async function() {
-            this.clubs = await this.regattaService.getClubs();
-            this.blocks = await this.regattaService.getBlocks();
-            this.events = await this.regattaService.getFields();
-            this.editions = await this.regattaService.getEditions(this.match);
-            this.regatta = await this.regattaService.getEdition();
-            this.regattas = await this.regattaService.getRegattas();
+        init: function() {
+            this.regattaService.getClubs().then(clubs => {
+                this.clubs = clubs;
+            });
+            this.regattaService.getBlocks().then(blocks => {
+                this.blocks = blocks;
+            });
+            this.regattaService.getFields().then(events => {
+                this.events = events;
+            });
+            this.regattaService.getEditions(this.match).then(editions => {
+                this.editions = editions;
+            });
+            this.regattaService.getRegattas().then(regattas => {
+                this.regattas = regattas;
+            });
+            this.regattaService.getEdition().then(regatta => {
+                this.regatta = regatta;
+            });
             sendPageView();
         }
     },

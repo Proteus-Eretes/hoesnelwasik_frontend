@@ -1,25 +1,25 @@
 <template>
     <div>
         <NavBar :regatta="regatta" :regattas="regattas"></NavBar>
-        <DrawOverview :crews="crews"></DrawOverview>
+        <ResultOverview :crews="crews"> </ResultOverview>
     </div>
 </template>
 
 <script>
 import NavBar from '@/components/Navigation/NavBar';
-import DrawOverview from "@/components/Crews/DrawOverview";
-import {Crews} from "@/services/Crews";
-import {sendPageView} from "./analytics";
+import { Crews } from '@/Services/Crews';
+import ResultOverview from '../components/Crews/ResultOverview';
+import { sendPageView } from './analytics';
 
 export default {
-    name: 'IframeCrewDrawView',
+    name: 'CrewResultsView',
     props: {
         field: String,
         match: String,
         year: String
     },
     components: {
-        DrawOverview,
+        ResultOverview,
         NavBar
     },
     data() {
@@ -35,7 +35,7 @@ export default {
             this.match,
             this.year,
             this.field,
-            'loting'
+            'uitslagen'
         );
         sendPageView();
 
@@ -45,7 +45,3 @@ export default {
     }
 };
 </script>
-
-<style scoped>
-
-</style>

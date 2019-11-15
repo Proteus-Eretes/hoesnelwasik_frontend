@@ -7,9 +7,15 @@
             </div>
             <b-row>
                 <div class="table-responsive">
-                    <b-table hover :items="crews" :fields="fields" thead-class="thead-dark" @row-clicked="openTeamDialog">
-                        <template slot="OarImage" slot-scope="row">
-                            <OarImage :club="row.item.clubnameshort"></OarImage>
+                    <b-table
+                        hover
+                        :items="crews"
+                        :fields="fields"
+                        thead-class="thead-dark"
+                        @row-clicked="openTeamDialog"
+                    >
+                        <template v-slot:cell(OarImage)="data">
+                            <OarImage :club="data.item.clubnameshort"></OarImage>
                         </template>
                         <template slot="HEAD_OarImage">
                             <div class="d-none d-sm-block">
@@ -27,7 +33,7 @@
 <script>
 import OarImage from '@/components/Clubs/OarImage.vue';
 import TeamPopup from '@/components/Team/TeamPopup.vue';
-import ViewNavigationBar from "../Navigation/ViewNavigationBar";
+import ViewNavigationBar from '../Navigation/ViewNavigationBar';
 
 export default {
     name: 'DrawOverview',
@@ -89,5 +95,3 @@ export default {
     }
 };
 </script>
-
-<style scoped></style>

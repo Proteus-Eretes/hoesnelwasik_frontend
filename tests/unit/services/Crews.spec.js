@@ -1,6 +1,6 @@
-import {Crews} from "../../../src/services/Crews";
+import { Crews } from '../../../src/Services/Crews';
 
-describe("Crews", () => {
+describe('Crews', () => {
     let fetchSpy;
     let crews;
 
@@ -10,7 +10,7 @@ describe("Crews", () => {
         crews._fetch = fetchSpy;
     });
 
-    it("The crews uses correct url", async () => {
+    it('The crews uses correct url', async () => {
         fetchSpy.mockReturnValue({
             error: true
         });

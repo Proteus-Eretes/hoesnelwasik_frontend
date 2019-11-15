@@ -1,6 +1,6 @@
-import {createLocalVue, shallowMount} from "@vue/test-utils";
+import { createLocalVue, shallowMount } from '@vue/test-utils';
 import VueRouter from 'vue-router';
-import SwitchElement from "../../../src/components/Navigation/SwitchElement";
+import SwitchElement from '../../../src/components/Navigation/SwitchElement';
 
 const localVue = createLocalVue();
 localVue.use(VueRouter);
@@ -8,7 +8,7 @@ localVue.use(VueRouter);
 const router = new VueRouter();
 
 describe('SwitchElement', () => {
-    it('Highlight on routing parh', () => {
+    it('Highlight on routing path', () => {
         router.push('uitslagen');
         const element = shallowMount(SwitchElement, {
             localVue,

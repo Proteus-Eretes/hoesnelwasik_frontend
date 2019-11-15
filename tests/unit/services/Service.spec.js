@@ -1,12 +1,12 @@
-import {Service} from "../../../src/services/Service";
+import { Service } from '../../../src/Services/Service';
 
-describe("Service", () => {
-    it("The regatta over fetchs correctly", async () => {
+describe('Service', () => {
+    it('The regatta over fetchs correctly', async () => {
         const fetchSpy = jest.fn();
-        fetchSpy.mockReturnValue({editions: []});
+        fetchSpy.mockReturnValue({ editions: [] });
         const service = new Service('url');
         service._fetch = fetchSpy;
-        const regattas = await service.getRegattas();
+        await service.getRegattas();
         expect(fetchSpy).toHaveBeenCalled();
         expect(fetchSpy.mock.calls[0][0]).toBe('/');
     });

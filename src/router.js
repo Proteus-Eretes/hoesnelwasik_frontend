@@ -1,10 +1,9 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './views/Home.vue';
-import IframeView from './views/IframeView';
-import IframeCrewDrawView from './views/IframeCrewDrawView';
-import IframeCrewResultsView from './views/IframeCrewResultsView';
-import IframeCrewSearchView from './views/IframeCrewSearchView';
+import RegattaView from './Views/RegattaView';
+import CrewDrawView from './Views/CrewDrawView';
+import CrewResultsView from './Views/CrewResultsView';
+import CrewSearchView from './Views/CrewSearchView';
 
 Vue.use(Router);
 
@@ -16,44 +15,70 @@ const customProps = iframe => type => route => {
 };
 
 const customIframeProps = customProps(true);
+const customPropsFn = customProps(false);
 
 export default new Router({
     mode: 'history',
     base: process.env.BASE_URL,
     routes: [
         {
-            path: '/',
-            name: 'home',
-            component: Home
+            path: '/:match/:year?/:target?',
+            name: 'regattaView',
+            component: RegattaView,
+            props: customPropsFn('uitslagen')
+        },
+        {
+            path: '/:match/:year/loting/:field',
+            name: 'CrewDrawView',
+            component: CrewDrawView,
+            props: customPropsFn('loting')
+        },
+        {
+            path: '/:match/:year/uitslagen/:field',
+            name: 'CrewResultsView',
+            component: CrewResultsView,
+            props: customPropsFn('uitslagen')
+        },
+        {
+            path: '/:match/:year/search/:field',
+            name: 'CrewSearchView',
+            component: CrewSearchView,
+            props: customPropsFn('search')
+        },
+        {
+            path: '/:match/:year/club/:field',
+            name: 'IframeCrewClubView',
+            component: CrewSearchView,
+            props: customPropsFn('club')
         },
         {
             path: '/iframe/:match/:year?/:target?',
-            name: 'IframeView',
-            component: IframeView,
+            name: 'regattaView',
+            component: RegattaView,
             props: customIframeProps('uitslagen')
         },
         {
             path: '/iframe/:match/:year/loting/:field',
-            name: 'IframeCrewDrawView',
-            component: IframeCrewDrawView,
+            name: 'CrewDrawView',
+            component: CrewDrawView,
             props: customIframeProps('loting')
         },
         {
             path: '/iframe/:match/:year/uitslagen/:field',
-            name: 'IframeCrewResultsView',
-            component: IframeCrewResultsView,
+            name: 'CrewResultsView',
+            component: CrewResultsView,
             props: customIframeProps('uitslagen')
         },
         {
             path: '/iframe/:match/:year/search/:field',
-            name: 'IframeCrewSearchView',
-            component: IframeCrewSearchView,
+            name: 'CrewSearchView',
+            component: CrewSearchView,
             props: customIframeProps('search')
         },
         {
             path: '/iframe/:match/:year/club/:field',
             name: 'IframeCrewClubView',
-            component: IframeCrewSearchView,
+            component: CrewSearchView,
             props: customIframeProps('club')
         }
     ]

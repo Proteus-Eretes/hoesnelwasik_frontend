@@ -7,12 +7,12 @@
 
 <script>
 import NavBar from '@/components/Navigation/NavBar';
-import { Crews } from '@/services/Crews';
-import SearchOverview from "../components/Crews/SearchOverview";
-import {sendPageView} from "./analytics";
+import { Crews } from '@/Services/Crews';
+import SearchOverview from '../components/Crews/SearchOverview';
+import { sendPageView } from './analytics';
 
 export default {
-    name: 'IframeCrewSearchView',
+    name: 'CrewSearchView',
     props: {
         field: String,
         match: String,

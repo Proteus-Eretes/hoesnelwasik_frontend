@@ -1,5 +1,5 @@
 /*!
-iDevice.js v2.0.0
+iDevice.js v2.1.0
 (c) Alexandre Dieulot
 dieulot.fr/idevice/license
 */
@@ -18,7 +18,7 @@ var iDevice = (function() {
     var matches = gpu.match(/^Apple (.+) GPU$/);
     var cpu = matches && matches[1];
     var s = screen.width + 'x' + screen.height;
-    var dpr = devicePixelRatio
+    var dpr = devicePixelRatio;
 
     if (!cpu) {
         if (gpu == 'PowerVR SGX 535' && s == '768x1024' && dpr == 1) {
@@ -119,6 +119,12 @@ var iDevice = (function() {
         if (dpr == 2) {
             if (s == '375x812' || s == '414x896') {
                 return 'iPhone XR'
+            }
+            if (s == '834x1112') {
+                return 'iPad Air (2019)';
+            }
+            if (s == '768x1024') {
+                return 'iPad mini (2019)';
             }
         }
         if (dpr == 3) {

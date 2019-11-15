@@ -7,7 +7,7 @@
                 no-body
                 title-link-class="link-unstyled"
             >
-                <template slot="title">
+                <template v-slot:title>
                     <RowerImage :n="n"></RowerImage>
                 </template>
                 <b-container class="mt-3">
@@ -45,8 +45,9 @@
 </template>
 
 <script>
-import RowerImage from '../rower/RowerImage';
+import RowerImage from '../Rower/RowerImage';
 import EventCard from './EventCard';
+import filterEvents from './filterEvents';
 export default {
     name: 'EventsOverview',
     components: { EventCard, RowerImage },
@@ -63,14 +64,7 @@ export default {
     },
     methods: {
         getFilteredEvents(n, isMan, isLight, isMix = false) {
-            // noinspection EqualityComparisonWithCoercionJS
-            return this.events[n].filter(
-                event =>
-                    event.isman == isMan &&
-                    event.islight == isLight &&
-                    ((event.fieldnameshort.includes('Mix') && isMix) ||
-                        (!event.fieldnameshort.includes('Mix') && !isMix))
-            );
+            return filterEvents(this.events[n], isMan, isLight, isMix);
         }
     }
 };
