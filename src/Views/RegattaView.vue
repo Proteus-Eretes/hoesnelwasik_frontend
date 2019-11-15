@@ -16,7 +16,7 @@ import { Regatta } from '../Services/Regatta';
 import { sendPageView } from './analytics';
 
 export default {
-    name: 'iframe-view',
+    name: 'RegattaView',
     components: {
         RegattaOverview,
         NavBar
