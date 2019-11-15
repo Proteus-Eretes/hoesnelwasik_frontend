@@ -1,6 +1,10 @@
 <template>
     <div>
-        <MobileNavBar :regatta="regatta" :regattas="regattas" :editions="editions"></MobileNavBar>
+        <MobileNavBar
+            :regatta="regatta"
+            :regattas="regattas"
+            :editions="editions"
+        ></MobileNavBar>
         <nav
             class="navbar navbar-dark navbar-expand-sm d-none d-sm-block"
             style="background-color: black"

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <NavBar :regatta="regatta" :regattas="regattas"></NavBar>
+        <NavBar :regatta="regatta" :regattas="regattas" :editions="editions"></NavBar>
         <DrawOverview :crews="crews"></DrawOverview>
     </div>
 </template>
@@ -26,6 +26,7 @@ export default {
         return {
             crews: [],
             regatta: {},
+            regattas: [],
             editions: []
         };
     },
@@ -40,7 +41,11 @@ export default {
         sendPageView();
 
         this.crews = await crews.getCrews();
-        this.regattas = await crews.getEditions(this.match);
+        this.regattas = await crews.getRegattas(
+            this.$router.currentRoute.params.iframe,
+            this.match
+        );
+        this.editions = await crews.getEditions(this.match);
         this.regatta = await crews.getEdition();
     }
 };

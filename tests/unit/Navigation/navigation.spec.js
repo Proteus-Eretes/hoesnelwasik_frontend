@@ -17,39 +17,43 @@ describe('navigation', () => {
 
     it('suggest correct type', () => {
         const data1 = {
-            params: {
-                match: 'sss',
-                year: '0'
-            },
+            match: 'sss',
+            year: '0',
+            iframe: false,
             fullPath: 'localhost/sss/0/toss'
         };
         const data2 = {
-            params: {
-                match: 'sss',
-                year: '0',
-                field: 'E 8+'
-            },
+            match: 'sss',
+            year: '0',
+            field: 'E 8+',
+            iframe: false,
             fullPath: 'localhost/sss/0/uitslagen/E 8+'
         };
         const data3 = {
-            params: {
-                match: 'sss',
-                year: '0'
-            },
+            match: 'sss',
+            year: '0',
+            iframe: false,
             fullPath: 'localhost/sss/0/toss/'
         };
         const data4 = {
-            params: {
-                match: 'sss',
-                year: '0',
-                field: 'E 8+'
-            },
+            match: 'sss',
+            year: '0',
+            field: 'E 8+',
+            iframe: false,
             fullPath: 'localhost/sss/0/toss'
         };
-        expect(switchType(data1, 'toss')).toBe('/iframe/sss/0/toss');
-        expect(switchType(data2, 'toss')).toBe('/iframe/sss/0/toss/E 8+');
-        expect(switchType(data3, 'uitslagen')).toBe('/iframe/sss/0/uitslagen');
-        expect(switchType(data4, 'toss')).toBe('/iframe/sss/0/toss/E 8+');
+        const data5 = {
+            match: 'sss',
+            year: '0',
+            field: 'E 8+',
+            iframe: true,
+            fullPath: 'localhost/iframe/sss/0/toss'
+        };
+        expect(switchType(data1, 'toss')).toBe('/sss/0/toss');
+        expect(switchType(data2, 'toss')).toBe('/sss/0/toss/E 8+');
+        expect(switchType(data3, 'uitslagen')).toBe('/sss/0/uitslagen');
+        expect(switchType(data4, 'toss')).toBe('/sss/0/toss/E 8+');
+        expect(switchType(data5, 'toss')).toBe('/iframe/sss/0/toss/E 8+');
     });
 
     it('Opens the next edition of the regatta', () => {
@@ -64,14 +68,14 @@ describe('navigation', () => {
         openNextRegatta(
             router,
             [
-                { match: 'ww', jaar: 2026 },
-                { match: 'ww', jaar: 2018 },
-                { match: 'ww', jaar: 2028 },
-                { match: 'ww', jaar: 2025 },
-                { match: 'ww', jaar: 2029 },
-                { match: 'ww', jaar: 2016 }
+                {match: 'ww', jaar: 2026},
+                {match: 'ww', jaar: 2018},
+                {match: 'ww', jaar: 2028},
+                {match: 'ww', jaar: 2025},
+                {match: 'ww', jaar: 2029},
+                {match: 'ww', jaar: 2016}
             ],
-            { iframe: true, match: 'ww', year: 2019 }
+            {iframe: true, match: 'ww', year: 2019}
         );
 
         expect(pushSpy).toHaveBeenCalled();
@@ -93,14 +97,14 @@ describe('navigation', () => {
         openPrevRegatta(
             router,
             [
-                { match: 'ww', jaar: 2026 },
-                { match: 'ww', jaar: 2016 },
-                { match: 'ww', jaar: 2017 },
-                { match: 'ww', jaar: 2025 },
-                { match: 'ww', jaar: 2029 },
-                { match: 'ww', jaar: 2015 }
+                {match: 'ww', jaar: 2026},
+                {match: 'ww', jaar: 2016},
+                {match: 'ww', jaar: 2017},
+                {match: 'ww', jaar: 2025},
+                {match: 'ww', jaar: 2029},
+                {match: 'ww', jaar: 2015}
             ],
-            { iframe: true, match: 'ww', year: 2019 }
+            {iframe: true, match: 'ww', year: 2019}
         );
 
         expect(pushSpy).toHaveBeenCalled();
