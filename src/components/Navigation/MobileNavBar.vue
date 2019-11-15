@@ -4,9 +4,7 @@
             <ul class="pt-3 navbar list-unstyled">
                 <li class="nav-item text-white">
                     <h3>
-                        <a class="p-0 text-white" v-on:click="homeUrl()">
-                            {{ regatta.regattaname }}
-                        </a>
+                        <switch-regatta :regattas="regattas" :regatta="regatta"></switch-regatta>
                     </h3>
                 </li>
                 <li class="nav-item text-white w-100">
@@ -62,9 +60,11 @@ import { Slide } from 'vue-burger-menu';
 import SwitchElement from './SwitchElement';
 import { openNextRegatta, openPrevRegatta } from './navigation';
 import { openRegatta } from '../../Helpers/Routing';
+import SwitchRegatta from "./SwitchRegatta";
 export default {
     name: 'MobileNavBar',
     components: {
+        SwitchRegatta,
         SwitchElement,
         SearchBar,
         Slide

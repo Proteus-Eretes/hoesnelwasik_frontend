@@ -27,7 +27,7 @@
                                 <div
                                     class="navbar-nav nav-item nav-link text-white"
                                 >
-                                    {{ regatta.regattaname }}
+                                    <switch-regatta :regattas="regattas" :regatta="regatta"></switch-regatta>
                                     <span
                                         v-on:click="openMatch(false)"
                                         v-if="hasPrev"
@@ -95,10 +95,12 @@ import SearchBar from './SearchBar';
 import MobileNavBar from './MobileNavBar';
 import SwitchElement from './SwitchElement';
 import { openNextRegatta, openPrevRegatta } from './navigation';
+import SwitchRegatta from "./SwitchRegatta";
 
 export default {
     name: 'NavBar',
     components: {
+        SwitchRegatta,
         SwitchElement,
         MobileNavBar,
         SearchBar
