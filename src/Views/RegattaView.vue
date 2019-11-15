@@ -1,6 +1,10 @@
 <template>
     <div>
-        <NavBar :regatta="regatta" :editions="editions" :regattas="regattas"></NavBar>
+        <NavBar
+            :regatta="regatta"
+            :editions="editions"
+            :regattas="regattas"
+        ></NavBar>
         <RegattaOverview
             :blocks="blocks"
             :clubs="clubs"
@@ -50,9 +54,14 @@ export default {
             this.regattaService.getEditions(this.match).then(editions => {
                 this.editions = editions;
             });
-            this.regattaService.getRegattas().then(regattas => {
-                this.regattas = regattas;
-            });
+            this.regattaService
+                .getRegattas(
+                    this.$router.currentRoute.params.iframe,
+                    this.match
+                )
+                .then(regattas => {
+                    this.regattas = regattas;
+                });
             this.regattaService.getEdition().then(regatta => {
                 this.regatta = regatta;
             });

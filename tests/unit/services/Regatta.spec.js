@@ -169,6 +169,110 @@ describe('Service', () => {
         });
     });
 
+    it('Get the editions on iframe', async () => {
+        regatta.regattas = [
+            {
+                shortname: 'head',
+                jaar: 2017
+            },
+            {
+                shortname: 'head',
+                jaar: 2018
+            },
+            {
+                shortname: 'head',
+                jaar: 2019
+            },
+            {
+                shortname: 'ww',
+                jaar: 2017
+            },
+            {
+                shortname: 'ww',
+                jaar: 2018
+            },
+            {
+                shortname: 'ww',
+                jaar: 2019
+            }
+        ];
+
+        const regattas = await regatta.getRegattas(true, 'head');
+
+        expect(regattas).toEqual([
+            {
+                shortname: 'head',
+                jaar: 2017
+            },
+            {
+                shortname: 'head',
+                jaar: 2018
+            },
+            {
+                shortname: 'head',
+                jaar: 2019
+            }
+        ]);
+    });
+
+    it('Gets the regattas when not on iframe', async () => {
+        regatta.regattas = [
+            {
+                shortname: 'head',
+                jaar: 2017
+            },
+            {
+                shortname: 'head',
+                jaar: 2018
+            },
+            {
+                shortname: 'head',
+                jaar: 2019
+            },
+            {
+                shortname: 'ww',
+                jaar: 2017
+            },
+            {
+                shortname: 'ww',
+                jaar: 2018
+            },
+            {
+                shortname: 'ww',
+                jaar: 2019
+            }
+        ];
+
+        const regattas = await regatta.getRegattas(false, 'head');
+
+        expect(regattas).toEqual([
+            {
+                shortname: 'head',
+                jaar: 2017
+            },
+            {
+                shortname: 'head',
+                jaar: 2018
+            },
+            {
+                shortname: 'head',
+                jaar: 2019
+            },
+            {
+                shortname: 'ww',
+                jaar: 2017
+            },
+            {
+                shortname: 'ww',
+                jaar: 2018
+            },
+            {
+                shortname: 'ww',
+                jaar: 2019
+            }
+        ]);
+    });
+
     it('Can get the an sequnce of editions', async () => {
         regatta.regattas = [
             {
