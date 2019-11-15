@@ -1,5 +1,5 @@
 import ClubsOverview from '../../../src/components/Clubs/ClubsOverview';
-import { mount } from "@vue/test-utils";
+import { mount } from '@vue/test-utils';
 import BootstrapVue from 'bootstrap-vue';
 import { createLocalVue } from '@vue/test-utils';
 
@@ -9,7 +9,6 @@ localVue.use(BootstrapVue);
 
 describe('ClubsOverview', () => {
     it('Renders the number of teams field correctly', () => {
-
         // mount mock clubs
         const wrapper = mount(ClubsOverview, {
             localVue,

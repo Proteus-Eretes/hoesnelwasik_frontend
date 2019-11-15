@@ -1,4 +1,10 @@
-import {openClub, openPage, openSearch, toField} from '../../../src/Helpers/Routing';
+import {
+    openClub,
+    openPage,
+    openRegatta,
+    openSearch,
+    toField
+} from '../../../src/Helpers/Routing';
 
 describe('Routing::toField', () => {
     it('Url does not go to iframe', () => {
@@ -194,6 +200,41 @@ describe('Open club page', () => {
         expect(pushSpy).toHaveBeenCalled();
         expect(pushSpy.mock.calls[0][0]).toEqual({
             path: '/ww/2920/club/IRIS'
+        });
+    });
+
+    it('Goes to correct tab url of an match', () => {
+        router.currentRoute.params = {
+            match: 'ww',
+            year: '2920',
+            iframe: false
+        };
+
+        openRegatta(
+            router,
+            { match: 'ww', year: '2920', iframe: false },
+            'loting',
+            'club'
+        );
+        expect(pushSpy).toHaveBeenCalled();
+        expect(pushSpy.mock.calls[0][0]).toEqual({
+            path: '/ww/2920/loting',
+            hash: 'club'
+        });
+    });
+
+    it('Goes to default tab block of an match', () => {
+        router.currentRoute.params = {
+            match: 'ww',
+            year: '2920',
+            iframe: false
+        };
+
+        openRegatta(router, { match: 'ww', year: '2920', iframe: false });
+        expect(pushSpy).toHaveBeenCalled();
+        expect(pushSpy.mock.calls[0][0]).toEqual({
+            path: '/ww/2920/uitslagen',
+            hash: 'blocks'
         });
     });
 });

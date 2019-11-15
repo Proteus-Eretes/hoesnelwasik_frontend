@@ -14,13 +14,13 @@
 </template>
 
 <script>
-import {highlightLink, switchType} from "./navigation";
+import { highlightLink, switchType } from './navigation';
 
 export default {
-    name: "SwitchElement",
+    name: 'SwitchElement',
     props: {
         target: String,
-        linkClass: String,
+        linkClass: String
     },
     data() {
         return {
@@ -37,7 +37,7 @@ export default {
         }
     },
     watch: {
-        $route () {
+        $route() {
             this.currentRoute = this.$router.currentRoute.fullPath;
         }
     }

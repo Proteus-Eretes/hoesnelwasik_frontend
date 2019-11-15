@@ -7,7 +7,7 @@
                 no-body
                 title-link-class="link-unstyled"
             >
-                <template slot="title">
+                <template v-slot:title>
                     <RowerImage :n="n"></RowerImage>
                 </template>
                 <b-container class="mt-3">
@@ -47,7 +47,7 @@
 <script>
 import RowerImage from '../Rower/RowerImage';
 import EventCard from './EventCard';
-import filterEvents from "./filterEvents";
+import filterEvents from './filterEvents';
 export default {
     name: 'EventsOverview',
     components: { EventCard, RowerImage },

@@ -5,52 +5,59 @@
             title-link-class="link-unstyled"
             title-item-class="text-uppercase"
             title="Veld"
-            v-on:click="navMatch('#velden')"
-            :active=getActive(0)
+            @click="navMatch('velden')"
+            :active="getActive(0)"
         >
+            <slot name="fields"></slot>
         </b-tab>
         <b-tab
             no-body
             title-link-class="link-unstyled"
             title-item-class="text-uppercase"
             title="Blok"
-            v-on:click="navMatch('#blocks')"
-            :active=getActive(1)
+            @click="navMatch('blocks')"
+            :active="getActive(1)"
         >
+            <slot name="blocks"></slot>
         </b-tab>
         <b-tab
             no-body
             title-link-class="link-unstyled"
             title-item-class="text-uppercase"
             title="Vereniging"
-            v-on:click="navMatch('#clubs')"
-            :active=getActive(2)
+            @click="navMatch('clubs')"
+            :active="getActive(2)"
         >
+            <slot name="clubs"></slot>
         </b-tab>
     </b-tabs>
 </template>
 
 <script>
-import {getActiveTab} from "./activeTab";
+import {findTabIndex, getActiveTab} from './activeTab';
+import { openRegatta } from '../../Helpers/Routing';
 
 export default {
     name: 'ViewNavigationBar',
     props: {
         type: String
     },
+    data() {
+        return {
+            tabIndex: findTabIndex(this.$route.hash, this.$router.currentRoute.path)
+        };
+    },
     methods: {
         navMatch(hash) {
-            this.$router.push({
-                path: `/iframe/${this.$router.currentRoute.params.match}/${
-                    this.$router.currentRoute.params.year
-                }/${this.type}${hash}`
-            });
+            openRegatta(
+                this.$router,
+                this.$router.currentRoute.params,
+                this.type,
+                hash
+            );
         },
         getActive(index) {
-            if (this.$router.currentRoute.fullPath.includes('club')) {
-                return getActiveTab(2, index);
-            }
-            return getActiveTab(1, index);
+            return getActiveTab(this.tabIndex, index);
         }
     }
 };

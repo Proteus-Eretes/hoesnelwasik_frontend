@@ -1,8 +1,16 @@
 <template>
     <div v-if="clubs">
-        <b-table class="clickable" hover striped head-variant="dark" :items="clubs" :fields="fields" @row-clicked="rowClicked" >
-            <template slot="OarImage" slot-scope="row">
-                <OarImage :club="row.item.clubshort"></OarImage>
+        <b-table
+            class="clickable"
+            hover
+            striped
+            head-variant="dark"
+            :items="clubs"
+            :fields="fields"
+            @row-clicked="rowClicked"
+        >
+            <template v-slot:cell(OarImage)="data">
+                <OarImage :club="data.item.clubshort"></OarImage>
             </template>
         </b-table>
     </div>
@@ -11,7 +19,7 @@
 <script>
 // @ is an alias to /src
 import OarImage from '@/components/Clubs/OarImage.vue';
-import {openClub} from "../../Helpers/Routing";
+import { openClub } from '../../Helpers/Routing';
 
 export default {
     name: 'ClubsOverview',
@@ -21,33 +29,35 @@ export default {
     },
     data() {
         return {
-            fields: {
-                blad: {
+            fields: [
+                {
                     label: 'Blad',
                     key: 'OarImage',
                     thClass: 'font-italic',
                     class: 'text-center'
                 },
-                clubshort: {
+                {
                     label: 'Code',
+                    key: 'clubshort',
                     thClass: 'font-italic',
                     class: 'text-center',
                     sortable: true
                 },
-                clubname: {
+                {
                     label: 'Vereniging',
+                    key: 'clubname',
                     thClass: 'font-italic',
                     class: 'text-center',
                     sortable: true
                 },
-                numberofteams: {
+                {
                     label: 'Aantal ploegen',
                     key: 'numberofteams',
                     thClass: 'font-italic',
                     class: 'text-center',
                     sortable: true
                 }
-            }
+            ]
         };
     },
     methods: {

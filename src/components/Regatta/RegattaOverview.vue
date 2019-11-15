@@ -1,37 +1,10 @@
 <template>
     <b-card no-body header-class="p-0">
-        <b-tabs card class="full-width">
-            <b-tab
-                no-body
-                title-link-class="link-unstyled"
-                title-item-class="text-uppercase"
-                title="Veld"
-                href="#velden"
-                :active=getActive(0)
-            >
-                <EventsOverview :events="events"></EventsOverview>
-            </b-tab>
-            <b-tab
-                no-body
-                title-link-class="link-unstyled"
-                title-item-class="text-uppercase"
-                title="Blok"
-                :active=getActive(1)
-                href="#blocks"
-            >
-                <block-overview :blocks="blocks"></block-overview>
-            </b-tab>
-            <b-tab
-                no-body
-                title-link-class="link-unstyled"
-                title-item-class="text-uppercase"
-                title="Vereniging"
-                :active=getActive(2)
-                href="#clubs"
-            >
-                <clubs-overview :clubs="clubs"></clubs-overview>
-            </b-tab>
-        </b-tabs>
+        <ViewNavigationBar>
+            <EventsOverview slot="fields" :events="events"></EventsOverview>
+            <block-overview slot="blocks" :blocks="blocks"></block-overview>
+            <clubs-overview slot="clubs" :clubs="clubs"></clubs-overview>
+        </ViewNavigationBar>
     </b-card>
 </template>
 
@@ -39,14 +12,17 @@
 import ClubsOverview from '@/components/Clubs/ClubsOverview';
 import BlockOverview from '@/components/Blocks/BlockOverview';
 import EventsOverview from '../Events/EventsOverview';
-import {findTabIndex, getActiveTab} from "../Navigation/activeTab";
+import { findTabIndex, getActiveTab } from '../Navigation/activeTab';
+import {openRegatta} from "../../Helpers/Routing";
+import ViewNavigationBar from '../Navigation/ViewNavigationBar';
 
 export default {
     name: 'RegattaOverview',
     components: {
         EventsOverview,
         BlockOverview,
-        ClubsOverview
+        ClubsOverview,
+        ViewNavigationBar
     },
     props: {
         clubs: Array,
@@ -61,6 +37,14 @@ export default {
     methods: {
         getActive(index) {
             return getActiveTab(this.tabIndex, index);
+        },
+        navMatch(hash) {
+            openRegatta(
+                this.$router,
+                this.$router.currentRoute.params,
+                this.type,
+                hash
+            );
         }
     }
 };
