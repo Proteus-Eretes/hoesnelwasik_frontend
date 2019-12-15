@@ -1,6 +1,10 @@
 <template>
     <div>
-        <NavBar :regatta="regatta" :regattas="regattas"></NavBar>
+        <NavBar
+            :regatta="regatta"
+            :editions="editions"
+            :regattas="regattas"
+        ></NavBar>
         <RegattaOverview
             :blocks="blocks"
             :clubs="clubs"
@@ -30,6 +34,7 @@ export default {
             clubs: [],
             regatta: {},
             regattaService: null,
+            editions: [],
             regattas: [],
             blocks: [],
             events: []
@@ -46,9 +51,17 @@ export default {
             this.regattaService.getFields().then(events => {
                 this.events = events;
             });
-            this.regattaService.getEditions(this.match).then(regattas => {
-                this.regattas = regattas;
+            this.regattaService.getEditions(this.match).then(editions => {
+                this.editions = editions;
             });
+            this.regattaService
+                .getRegattas(
+                    this.$router.currentRoute.params.iframe,
+                    this.match
+                )
+                .then(regattas => {
+                    this.regattas = regattas;
+                });
             this.regattaService.getEdition().then(regatta => {
                 this.regatta = regatta;
             });
@@ -66,6 +79,10 @@ export default {
     watch: {
         year: function() {
             this.regattaService.setYear(this.year);
+            this.init();
+        },
+        match: function() {
+            this.regattaService.setMatch(this.match);
             this.init();
         }
     }

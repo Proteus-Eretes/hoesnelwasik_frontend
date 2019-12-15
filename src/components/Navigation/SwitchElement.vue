@@ -1,6 +1,6 @@
 <template>
     <a
-        v-on:click="$router.push(switchType($router.currentRoute, target))"
+        v-on:click="$router.push(switchType({...$router.currentRoute.params, ...$router.currentRoute}, target))"
         href="#"
         :class="linkClass"
     >

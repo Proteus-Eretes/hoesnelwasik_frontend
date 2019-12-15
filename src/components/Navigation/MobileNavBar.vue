@@ -4,9 +4,7 @@
             <ul class="pt-3 navbar list-unstyled">
                 <li class="nav-item text-white">
                     <h3>
-                        <a class="p-0 text-white" v-on:click="homeUrl()">
-                            {{ regatta.regattaname }}
-                        </a>
+                        <switch-regatta :regattas="regattas" :regatta="regatta"></switch-regatta>
                     </h3>
                 </li>
                 <li class="nav-item text-white w-100">
@@ -62,14 +60,17 @@ import { Slide } from 'vue-burger-menu';
 import SwitchElement from './SwitchElement';
 import { openNextRegatta, openPrevRegatta } from './navigation';
 import { openRegatta } from '../../Helpers/Routing';
+import SwitchRegatta from "./SwitchRegatta";
 export default {
     name: 'MobileNavBar',
     components: {
+        SwitchRegatta,
         SwitchElement,
         SearchBar,
         Slide
     },
     props: {
+        editions: Array,
         regattas: Array,
         regatta: Object
     },
@@ -86,18 +87,18 @@ export default {
     },
     computed: {
         hasNext() {
-            return this.regattas.filter(
-                regatta => regatta.jaar > this.regatta.jaar
+            return this.editions.filter(
+                edition => edition.jaar > this.regatta.jaar
             ).length;
         },
         hasPrev() {
-            return this.regattas.filter(regatta => {
-                return regatta.jaar < this.regatta.jaar;
+            return this.editions.filter(edition => {
+                return edition.jaar < this.regatta.jaar;
             }).length;
         },
         regattasOrder() {
-            return this.regattas
-                .map(regatta => +regatta.jaar)
+            return this.editions
+                .map(edition => +edition.jaar)
                 .sort()
                 .reverse();
         }
@@ -105,12 +106,12 @@ export default {
     methods: {
         openMatch(next) {
             if (next) {
-                openNextRegatta(this.$router, this.regattas, {
+                openNextRegatta(this.$router, this.editions, {
                     ...this.$router.currentRoute.params,
                     year: this.regatta.jaar
                 });
             } else {
-                openPrevRegatta(this.$router, this.regattas, {
+                openPrevRegatta(this.$router, this.editions, {
                     ...this.$router.currentRoute.params,
                     year: this.regatta.jaar
                 });

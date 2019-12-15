@@ -135,6 +135,14 @@ export class Regatta extends Service {
         });
     }
 
+    getRegattas(iframe, regattaName) {
+        if (iframe) {
+            return this.getEditions(regattaName);
+        }
+
+        return super.getRegattas();
+    }
+
     async getEdition() {
         const regattas = await this.getEditions(this._match);
 

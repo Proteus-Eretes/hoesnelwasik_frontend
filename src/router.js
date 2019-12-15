@@ -22,36 +22,6 @@ export default new Router({
     base: process.env.BASE_URL,
     routes: [
         {
-            path: '/:match/:year?/:target?',
-            name: 'regattaView',
-            component: RegattaView,
-            props: customPropsFn('uitslagen')
-        },
-        {
-            path: '/:match/:year/loting/:field',
-            name: 'CrewDrawView',
-            component: CrewDrawView,
-            props: customPropsFn('loting')
-        },
-        {
-            path: '/:match/:year/uitslagen/:field',
-            name: 'CrewResultsView',
-            component: CrewResultsView,
-            props: customPropsFn('uitslagen')
-        },
-        {
-            path: '/:match/:year/search/:field',
-            name: 'CrewSearchView',
-            component: CrewSearchView,
-            props: customPropsFn('search')
-        },
-        {
-            path: '/:match/:year/club/:field',
-            name: 'IframeCrewClubView',
-            component: CrewSearchView,
-            props: customPropsFn('club')
-        },
-        {
             path: '/iframe/:match/:year?/:target?',
             name: 'regattaView',
             component: RegattaView,
@@ -80,6 +50,36 @@ export default new Router({
             name: 'IframeCrewClubView',
             component: CrewSearchView,
             props: customIframeProps('club')
+        },
+        {
+            path: '/:match/:year?/:target?',
+            name: 'regattaView',
+            component: RegattaView,
+            props: customPropsFn('uitslagen')
+        },
+        {
+            path: '/:match/:year/loting/:field',
+            name: 'CrewDrawView',
+            component: CrewDrawView,
+            props: customPropsFn('loting')
+        },
+        {
+            path: '/:match/:year/uitslagen/:field',
+            name: 'CrewResultsView',
+            component: CrewResultsView,
+            props: customPropsFn('uitslagen')
+        },
+        {
+            path: '/:match/:year/search/:field',
+            name: 'CrewSearchView',
+            component: CrewSearchView,
+            props: customPropsFn('search')
+        },
+        {
+            path: '/:match/:year/club/:field',
+            name: 'IframeCrewClubView',
+            component: CrewSearchView,
+            props: customPropsFn('club')
         }
     ]
 });
