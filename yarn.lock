@@ -1761,23 +1761,23 @@
     string.prototype.padstart "^3.0.0"
     strip-ansi "^6.0.0"
 
-"@vue/cli-ui-addon-webpack@^4.0.5":
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/@vue/cli-ui-addon-webpack/-/cli-ui-addon-webpack-4.0.5.tgz#c09f17db8a1234a3e494d92d4eabec71b370a179"
-  integrity sha512-BMRW+g374RnqQNFLyUGHg099lADoZbYEjycCKZzBI4v+QCqUXEnn70l02/7H3sEee6PqR/dfquSJiZqxhSIJmQ==
+"@vue/cli-ui-addon-webpack@^4.1.1":
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/@vue/cli-ui-addon-webpack/-/cli-ui-addon-webpack-4.1.1.tgz#951d99ce2e4a23a899cb9a4d3eff46d0225d9c79"
+  integrity sha512-AKWt4ahv19gB3oV12lTb1G7AlimpTudCuWuMOL3BlaWZNNbspseFegq1I7mSJQHK45z3iy6GysIAsn9fHCAKvg==
 
-"@vue/cli-ui-addon-widgets@^4.0.5":
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/@vue/cli-ui-addon-widgets/-/cli-ui-addon-widgets-4.0.5.tgz#6926d2fe496797094d7e0466f1ede9aafacbdbe2"
-  integrity sha512-55KgyH0yDiStE0j04+5z+UTLATReQjIc1s7n9aVGsRte+nnt9bN74pBg9//CW8EWpD1OmEpTtsidn2NafuaxLQ==
+"@vue/cli-ui-addon-widgets@^4.1.1":
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/@vue/cli-ui-addon-widgets/-/cli-ui-addon-widgets-4.1.1.tgz#9d8e0cf0cc377e6ea9e05848cb53a29691fd276d"
+  integrity sha512-M98L2PcC6LStUV9IftXS6jjwjM0BXIan/7T+FBN1U69WyTRRSNbbGmhicn9HzcfmAiHbS9Ac5Pk3nz3KXafNTQ==
 
-"@vue/cli-ui@^4.0.5":
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/@vue/cli-ui/-/cli-ui-4.0.5.tgz#0a364cf6e4bd4a084b7bb295453922a423d41eee"
-  integrity sha512-pnK0qRMEocjhL965o2Zxw9iYYwwCDOIxAl7jg6pmQybgmz68ipi/gXDTe3IyDzyEJraVIsGDScvJL9/IbRLDZw==
+"@vue/cli-ui@^4.1.1":
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/@vue/cli-ui/-/cli-ui-4.1.1.tgz#02bf2d451831f9bce2c2ebce751039ab8c7f12a3"
+  integrity sha512-uXrIX4IJeXBDEchY+AeoeKf9FiYlHILFR4JjJvI6p6nq7tHhCN3UFt7/XScWzEfYyGRuHVtY3MCejMIR9LaKvA==
   dependencies:
     "@akryum/winattr" "^3.0.0"
-    "@vue/cli-shared-utils" "^4.0.5"
+    "@vue/cli-shared-utils" "^4.1.1"
     chalk "^2.4.1"
     clone "^2.1.1"
     deepmerge "^3.2.0"
@@ -1789,7 +1789,7 @@
     graphql "^14.3.1"
     graphql-subscriptions "^1.1.0"
     graphql-tag "^2.9.2"
-    graphql-type-json "^0.3.0"
+    graphql-type-json "^0.3.1"
     javascript-stringify "^1.6.0"
     js-yaml "^3.13.1"
     lodash.merge "^4.6.1"
@@ -1807,15 +1807,15 @@
     vue-cli-plugin-apollo "^0.21.3"
     watch "^1.0.2"
 
-"@vue/cli@^4.0.0":
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/@vue/cli/-/cli-4.0.5.tgz#20f3159e9c1c1d646bb1086e9387f99351fb6064"
-  integrity sha512-G13V2wlye7IClgO/S8j/QOjp1fBv7MEawTXqGBX/FqSajY4DPmzZRK0eoc6+IZQLmHSYAwmVZ242HE8YL1McAw==
+"@vue/cli@^4.1.1":
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/@vue/cli/-/cli-4.1.1.tgz#bf24d6adbc3b6b6cc1a9b9d10bb1f8fc1159b312"
+  integrity sha512-Qdxn3rL4E34y22geQdPOkQtGKbewa+hiyD0rEXMBOjqIqxWnYm68p/dTJjHeou3egGu5P9ol7BujJfPJBhfgTw==
   dependencies:
-    "@vue/cli-shared-utils" "^4.0.5"
-    "@vue/cli-ui" "^4.0.5"
-    "@vue/cli-ui-addon-webpack" "^4.0.5"
-    "@vue/cli-ui-addon-widgets" "^4.0.5"
+    "@vue/cli-shared-utils" "^4.1.1"
+    "@vue/cli-ui" "^4.1.1"
+    "@vue/cli-ui-addon-webpack" "^4.1.1"
+    "@vue/cli-ui-addon-widgets" "^4.1.1"
     boxen "^4.1.0"
     chalk "^2.4.1"
     cmd-shim "^2.0.2"
@@ -1825,7 +1825,7 @@
     didyoumean "^1.2.1"
     download-git-repo "^1.0.2"
     ejs "^2.7.1"
-    envinfo "^7.4.0"
+    envinfo "^7.5.0"
     execa "^1.0.0"
     fs-extra "^7.0.1"
     globby "^9.2.0"
@@ -1840,8 +1840,8 @@
     minimist "^1.2.0"
     recast "^0.18.1"
     request "^2.87.0"
-    request-promise-native "^1.0.7"
-    resolve "^1.10.1"
+    request-promise-native "^1.0.8"
+    resolve "^1.13.0"
     semver "^6.1.0"
     shortid "^2.2.15"
     slash "^3.0.0"
@@ -5250,10 +5250,10 @@ env-ci@3.2.2:
     execa "^1.0.0"
     java-properties "^1.0.0"
 
-envinfo@^7.4.0:
-  version "7.4.0"
-  resolved "https://registry.yarnpkg.com/envinfo/-/envinfo-7.4.0.tgz#bef4ece9e717423aaf0c3584651430b735ad6630"
-  integrity sha512-FdDfnWnCVjxTTpWE3d6Jgh5JDIA3Cw7LCgpM/pI7kK1ORkjaqI2r6NqQ+ln2j0dfpgxY00AWieSvtkiZQKIItA==
+envinfo@^7.5.0:
+  version "7.5.0"
+  resolved "https://registry.yarnpkg.com/envinfo/-/envinfo-7.5.0.tgz#91410bb6db262fb4f1409bd506e9ff57e91023f4"
+  integrity sha512-jDgnJaF/Btomk+m3PZDTTCb5XIIIX3zYItnCRfF73zVgvinLoRomuhi75Y4su0PtQxWz4v66XnLLckyvyJTOIQ==
 
 errno@^0.1.3, errno@~0.1.7:
   version "0.1.7"
@@ -6539,10 +6539,10 @@ graphql-tools@^4.0.0, graphql-tools@^4.0.5:
     iterall "^1.1.3"
     uuid "^3.1.0"
 
-graphql-type-json@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/graphql-type-json/-/graphql-type-json-0.3.0.tgz#bb32e1b74bf52ebc690f9df12b4067bc061f818a"
-  integrity sha512-lnxg5HiB95yxy+/5cDKtP6pZo0zgntsOmqsjeCBXFGJ4YoMF3+1YaSEKWJntNTu+VsAm3zf6lPxFpp1kxzofLA==
+graphql-type-json@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/graphql-type-json/-/graphql-type-json-0.3.1.tgz#47fca2b1fa7adc0758d165b33580d7be7a6cf548"
+  integrity sha512-1lPkUXQ2L8o+ERLzVAuc3rzc/E6pGF+6HnjihCVTK0VzR0jCuUd92FqNxoHdfILXqOn2L6b4y47TBxiPyieUVA==
 
 graphql-upload@^8.0.2:
   version "8.1.0"
@@ -11245,10 +11245,10 @@ resolve@1.1.7:
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.1.7.tgz#203114d82ad2c5ed9e8e0411b3932875e889e97b"
   integrity sha1-IDEU2CrSxe2ejgQRs5ModeiJ6Xs=
 
-resolve@1.x, resolve@^1.1.6, resolve@^1.1.7, resolve@^1.10.0, resolve@^1.10.1, resolve@^1.12.0, resolve@^1.3.2, resolve@^1.4.0, resolve@^1.8.1:
-  version "1.12.0"
-  resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.12.0.tgz#3fc644a35c84a48554609ff26ec52b66fa577df6"
-  integrity sha512-B/dOmuoAik5bKcD6s6nXDCjzUKnaDvdkRyAk6rsmsKLipWj4797iothd7jmmUhWTfinVMU+wc56rYKsit2Qy4w==
+resolve@1.x, resolve@^1.1.6, resolve@^1.1.7, resolve@^1.10.0, resolve@^1.12.0, resolve@^1.13.0, resolve@^1.3.2, resolve@^1.4.0, resolve@^1.8.1:
+  version "1.13.1"
+  resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.13.1.tgz#be0aa4c06acd53083505abb35f4d66932ab35d16"
+  integrity sha512-CxqObCX8K8YtAhOBRg+lrcdn+LK+WYOS8tSjqSFbjtrI5PnS63QPhZl4+yKfrU9tdsbMu9Anr/amegT87M9Z6w==
   dependencies:
     path-parse "^1.0.6"
 
