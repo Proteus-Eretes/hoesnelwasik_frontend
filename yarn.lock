@@ -1742,13 +1742,13 @@
     webpack-dev-server "^3.8.2"
     webpack-merge "^4.2.2"
 
-"@vue/cli-shared-utils@^4.0.5", "@vue/cli-shared-utils@^4.1.1":
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/@vue/cli-shared-utils/-/cli-shared-utils-4.1.1.tgz#79e26b56fda185fda00e5787a8f4aac56757b123"
-  integrity sha512-nsxNW8Sy9y2yx/r9DqgZoYg/DoygvASIQl0XXG+imQUDWEXKmD6UZA6y5ANfStCljzZ/wd7WgWP+txmjy6exOw==
+"@vue/cli-shared-utils@^4.0.5", "@vue/cli-shared-utils@^4.1.1", "@vue/cli-shared-utils@^4.1.2":
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/@vue/cli-shared-utils/-/cli-shared-utils-4.1.2.tgz#d33984c8790ad869ef77f5229abd3e8e584fe58b"
+  integrity sha512-uQAVqxCWdL5ipZ0TPu6SVsdokQp4yHt8SzzpUGhq8TkW4vwalGddJAAJrqZHMl91ZTIJ4p4ixofmCaaJo5rSRA==
   dependencies:
     "@hapi/joi" "^15.0.1"
-    chalk "^2.4.1"
+    chalk "^2.4.2"
     execa "^1.0.0"
     launch-editor "^2.2.1"
     lru-cache "^5.1.1"
@@ -1758,30 +1758,27 @@
     request "^2.87.0"
     request-promise-native "^1.0.8"
     semver "^6.1.0"
-    string.prototype.padstart "^3.0.0"
     strip-ansi "^6.0.0"
 
-"@vue/cli-ui-addon-webpack@^4.0.5":
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/@vue/cli-ui-addon-webpack/-/cli-ui-addon-webpack-4.0.5.tgz#c09f17db8a1234a3e494d92d4eabec71b370a179"
-  integrity sha512-BMRW+g374RnqQNFLyUGHg099lADoZbYEjycCKZzBI4v+QCqUXEnn70l02/7H3sEee6PqR/dfquSJiZqxhSIJmQ==
+"@vue/cli-ui-addon-webpack@^4.1.2":
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/@vue/cli-ui-addon-webpack/-/cli-ui-addon-webpack-4.1.2.tgz#2b3d0e6af43c92fba186e0722a043b1ee10b5b34"
+  integrity sha512-zmb8cYHCxqEzrpQvlV5R8zMcDWJMo6KRTIn13i5FxBdezZkkni1tJunaoiDRjEFyuu01Lg8jcb8TNxuIaH5TKg==
 
-"@vue/cli-ui-addon-widgets@^4.0.5":
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/@vue/cli-ui-addon-widgets/-/cli-ui-addon-widgets-4.0.5.tgz#6926d2fe496797094d7e0466f1ede9aafacbdbe2"
-  integrity sha512-55KgyH0yDiStE0j04+5z+UTLATReQjIc1s7n9aVGsRte+nnt9bN74pBg9//CW8EWpD1OmEpTtsidn2NafuaxLQ==
+"@vue/cli-ui-addon-widgets@^4.1.2":
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/@vue/cli-ui-addon-widgets/-/cli-ui-addon-widgets-4.1.2.tgz#68c22a05cd7f8b0baa138b54cc66e9cab20416a7"
+  integrity sha512-Y6/MLtfaiEfoEToSoSSbFi/EshpLmsBMfK7m98NbCTZgpnhJ7iSaHYkYsF4gg0D52C6Oa2cy0iLoJtaFA8zQbQ==
 
-"@vue/cli-ui@^4.0.5":
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/@vue/cli-ui/-/cli-ui-4.0.5.tgz#0a364cf6e4bd4a084b7bb295453922a423d41eee"
-  integrity sha512-pnK0qRMEocjhL965o2Zxw9iYYwwCDOIxAl7jg6pmQybgmz68ipi/gXDTe3IyDzyEJraVIsGDScvJL9/IbRLDZw==
+"@vue/cli-ui@^4.1.2":
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/@vue/cli-ui/-/cli-ui-4.1.2.tgz#3a25211d3e9fd77abb4e8d172beb04c39e1fcbd4"
+  integrity sha512-fA9z8yDQqhD8QcHlWt6wX0t+7EVKFVRRzxPnZ8dEoYaoo+Y5wLAE0fJyyxjpzlwEStqBSDs6A7X+1wQq/FBICQ==
   dependencies:
     "@akryum/winattr" "^3.0.0"
-    "@vue/cli-shared-utils" "^4.0.5"
-    chalk "^2.4.1"
+    "@vue/cli-shared-utils" "^4.1.2"
     clone "^2.1.1"
     deepmerge "^3.2.0"
-    execa "^1.0.0"
     express-history-api-fallback "^2.2.1"
     fkill "^6.1.0"
     fs-extra "^7.0.1"
@@ -1789,7 +1786,7 @@
     graphql "^14.3.1"
     graphql-subscriptions "^1.1.0"
     graphql-tag "^2.9.2"
-    graphql-type-json "^0.3.0"
+    graphql-type-json "^0.3.1"
     javascript-stringify "^1.6.0"
     js-yaml "^3.13.1"
     lodash.merge "^4.6.1"
@@ -1801,32 +1798,29 @@
     portfinder "^1.0.25"
     prismjs "^1.16.0"
     rss-parser "^3.7.3"
-    semver "^6.1.0"
     shortid "^2.2.15"
     typescript "^3.4.5"
     vue-cli-plugin-apollo "^0.21.3"
     watch "^1.0.2"
 
-"@vue/cli@^4.0.0":
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/@vue/cli/-/cli-4.0.5.tgz#20f3159e9c1c1d646bb1086e9387f99351fb6064"
-  integrity sha512-G13V2wlye7IClgO/S8j/QOjp1fBv7MEawTXqGBX/FqSajY4DPmzZRK0eoc6+IZQLmHSYAwmVZ242HE8YL1McAw==
+"@vue/cli@^4.1.2":
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/@vue/cli/-/cli-4.1.2.tgz#39a208366b49a0457ed70db7e85b9bd6efbede49"
+  integrity sha512-CGBcPFvnWnZMV+7Q4FI8yBWkQKECXYQ2Sf8YWoqn5ZG3ZRODG8dXSejg1O0VktKtPl7IVYYXOOqvyerV11fYmw==
   dependencies:
-    "@vue/cli-shared-utils" "^4.0.5"
-    "@vue/cli-ui" "^4.0.5"
-    "@vue/cli-ui-addon-webpack" "^4.0.5"
-    "@vue/cli-ui-addon-widgets" "^4.0.5"
+    "@vue/cli-shared-utils" "^4.1.2"
+    "@vue/cli-ui" "^4.1.2"
+    "@vue/cli-ui-addon-webpack" "^4.1.2"
+    "@vue/cli-ui-addon-widgets" "^4.1.2"
     boxen "^4.1.0"
-    chalk "^2.4.1"
-    cmd-shim "^2.0.2"
+    cmd-shim "^3.0.3"
     commander "^2.20.0"
     debug "^4.1.0"
     deepmerge "^3.2.0"
     didyoumean "^1.2.1"
     download-git-repo "^1.0.2"
     ejs "^2.7.1"
-    envinfo "^7.4.0"
-    execa "^1.0.0"
+    envinfo "^7.5.0"
     fs-extra "^7.0.1"
     globby "^9.2.0"
     import-global "^0.1.0"
@@ -1839,10 +1833,7 @@
     lru-cache "^5.1.1"
     minimist "^1.2.0"
     recast "^0.18.1"
-    request "^2.87.0"
-    request-promise-native "^1.0.7"
-    resolve "^1.10.1"
-    semver "^6.1.0"
+    resolve "^1.13.1"
     shortid "^2.2.15"
     slash "^3.0.0"
     validate-npm-package-name "^3.0.0"
@@ -3994,10 +3985,10 @@ clone@^1.0.2:
   resolved "https://registry.yarnpkg.com/clone/-/clone-1.0.4.tgz#da309cc263df15994c688ca902179ca3c7cd7c7e"
   integrity sha1-2jCcwmPfFZlMaIypAheco8fNfH4=
 
-cmd-shim@^2.0.2:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/cmd-shim/-/cmd-shim-2.1.0.tgz#e59a08d4248dda3bb502044083a4db4ac890579a"
-  integrity sha512-A5C0Cyf2H8sKsHqX0tvIWRXw5/PK++3Dc0lDbsugr90nOECLLuSPahVQBG8pgmgiXgm/TzBWMqI2rWdZwHduAw==
+cmd-shim@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/cmd-shim/-/cmd-shim-3.0.3.tgz#2c35238d3df37d98ecdd7d5f6b8dc6b21cadc7cb"
+  integrity sha512-DtGg+0xiFhQIntSBRzL2fRQBnmtAVwXIDo4Qq46HPpObYquxMaZS4sb82U9nH91qJrlosC1wa9gwr0QyL/HypA==
   dependencies:
     graceful-fs "^4.1.2"
     mkdirp "~0.5.0"
@@ -5250,10 +5241,10 @@ env-ci@3.2.2:
     execa "^1.0.0"
     java-properties "^1.0.0"
 
-envinfo@^7.4.0:
-  version "7.4.0"
-  resolved "https://registry.yarnpkg.com/envinfo/-/envinfo-7.4.0.tgz#bef4ece9e717423aaf0c3584651430b735ad6630"
-  integrity sha512-FdDfnWnCVjxTTpWE3d6Jgh5JDIA3Cw7LCgpM/pI7kK1ORkjaqI2r6NqQ+ln2j0dfpgxY00AWieSvtkiZQKIItA==
+envinfo@^7.5.0:
+  version "7.5.0"
+  resolved "https://registry.yarnpkg.com/envinfo/-/envinfo-7.5.0.tgz#91410bb6db262fb4f1409bd506e9ff57e91023f4"
+  integrity sha512-jDgnJaF/Btomk+m3PZDTTCb5XIIIX3zYItnCRfF73zVgvinLoRomuhi75Y4su0PtQxWz4v66XnLLckyvyJTOIQ==
 
 errno@^0.1.3, errno@~0.1.7:
   version "0.1.7"
@@ -6539,10 +6530,10 @@ graphql-tools@^4.0.0, graphql-tools@^4.0.5:
     iterall "^1.1.3"
     uuid "^3.1.0"
 
-graphql-type-json@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/graphql-type-json/-/graphql-type-json-0.3.0.tgz#bb32e1b74bf52ebc690f9df12b4067bc061f818a"
-  integrity sha512-lnxg5HiB95yxy+/5cDKtP6pZo0zgntsOmqsjeCBXFGJ4YoMF3+1YaSEKWJntNTu+VsAm3zf6lPxFpp1kxzofLA==
+graphql-type-json@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/graphql-type-json/-/graphql-type-json-0.3.1.tgz#47fca2b1fa7adc0758d165b33580d7be7a6cf548"
+  integrity sha512-1lPkUXQ2L8o+ERLzVAuc3rzc/E6pGF+6HnjihCVTK0VzR0jCuUd92FqNxoHdfILXqOn2L6b4y47TBxiPyieUVA==
 
 graphql-upload@^8.0.2:
   version "8.1.0"
@@ -11245,10 +11236,10 @@ resolve@1.1.7:
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.1.7.tgz#203114d82ad2c5ed9e8e0411b3932875e889e97b"
   integrity sha1-IDEU2CrSxe2ejgQRs5ModeiJ6Xs=
 
-resolve@1.x, resolve@^1.1.6, resolve@^1.1.7, resolve@^1.10.0, resolve@^1.10.1, resolve@^1.12.0, resolve@^1.3.2, resolve@^1.4.0, resolve@^1.8.1:
-  version "1.12.0"
-  resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.12.0.tgz#3fc644a35c84a48554609ff26ec52b66fa577df6"
-  integrity sha512-B/dOmuoAik5bKcD6s6nXDCjzUKnaDvdkRyAk6rsmsKLipWj4797iothd7jmmUhWTfinVMU+wc56rYKsit2Qy4w==
+resolve@1.x, resolve@^1.1.6, resolve@^1.1.7, resolve@^1.10.0, resolve@^1.12.0, resolve@^1.13.1, resolve@^1.3.2, resolve@^1.4.0, resolve@^1.8.1:
+  version "1.14.1"
+  resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.14.1.tgz#9e018c540fcf0c427d678b9931cbf45e984bcaff"
+  integrity sha512-fn5Wobh4cxbLzuHaE+nphztHy43/b++4M6SsGFC2gB8uYwf0C8LcarfCz1un7UTW8OFQg9iNjZ4xpcFVGebDPg==
   dependencies:
     path-parse "^1.0.6"
 
@@ -12119,15 +12110,6 @@ string.prototype.padend@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/string.prototype.padend/-/string.prototype.padend-3.0.0.tgz#f3aaef7c1719f170c5eab1c32bf780d96e21f2f0"
   integrity sha1-86rvfBcZ8XDF6rHDK/eA2W4h8vA=
-  dependencies:
-    define-properties "^1.1.2"
-    es-abstract "^1.4.3"
-    function-bind "^1.0.2"
-
-string.prototype.padstart@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/string.prototype.padstart/-/string.prototype.padstart-3.0.0.tgz#5bcfad39f4649bb2d031292e19bcf0b510d4b242"
-  integrity sha1-W8+tOfRkm7LQMSkuGbzwtRDUskI=
   dependencies:
     define-properties "^1.1.2"
     es-abstract "^1.4.3"
