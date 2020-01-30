@@ -4,23 +4,17 @@
             <ul class="pt-3 navbar list-unstyled">
                 <li class="nav-item text-white">
                     <h3>
-                        <switch-regatta :regattas="regattas" :regatta="regatta"></switch-regatta>
+                        <switch-regatta
+                            :regattas="regattas"
+                            :regatta="regatta"
+                        ></switch-regatta>
                     </h3>
                 </li>
                 <li class="nav-item text-white w-100">
-                    <b-dropdown
-                        :text="regatta.jaar"
-                        style="background-color: black"
-                        class="black"
-                    >
-                        <b-dropdown-item
-                            v-for="edition in regattasOrder"
-                            :key="edition"
-                            v-on:click="openEdition(edition)"
-                        >
-                            {{ edition }}
-                        </b-dropdown-item>
-                    </b-dropdown>
+                    <switch-edition
+                        :regatta="regatta"
+                        :editions="editions"
+                    ></switch-edition>
                 </li>
                 <li class="nav-item text-white">
                     <h3>Bekijk</h3>
@@ -58,12 +52,13 @@
 import SearchBar from './SearchBar';
 import { Slide } from 'vue-burger-menu';
 import SwitchElement from './SwitchElement';
-import { openNextRegatta, openPrevRegatta } from './navigation';
 import { openRegatta } from '../../Helpers/Routing';
-import SwitchRegatta from "./SwitchRegatta";
+import SwitchRegatta from './SwitchRegatta';
+import SwitchEdition from './SwitchEdition';
 export default {
     name: 'MobileNavBar',
     components: {
+        SwitchEdition,
         SwitchRegatta,
         SwitchElement,
         SearchBar,
@@ -85,44 +80,7 @@ export default {
             ]
         };
     },
-    computed: {
-        hasNext() {
-            return this.editions.filter(
-                edition => edition.jaar > this.regatta.jaar
-            ).length;
-        },
-        hasPrev() {
-            return this.editions.filter(edition => {
-                return edition.jaar < this.regatta.jaar;
-            }).length;
-        },
-        regattasOrder() {
-            return this.editions
-                .map(edition => +edition.jaar)
-                .sort()
-                .reverse();
-        }
-    },
     methods: {
-        openMatch(next) {
-            if (next) {
-                openNextRegatta(this.$router, this.editions, {
-                    ...this.$router.currentRoute.params,
-                    year: this.regatta.jaar
-                });
-            } else {
-                openPrevRegatta(this.$router, this.editions, {
-                    ...this.$router.currentRoute.params,
-                    year: this.regatta.jaar
-                });
-            }
-        },
-        openEdition(year) {
-            openRegatta(this.$router, {
-                ...this.$router.currentRoute.params,
-                year
-            });
-        },
         homeUrl(type) {
             openRegatta(
                 this.$router,
