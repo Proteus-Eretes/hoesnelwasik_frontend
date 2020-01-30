@@ -2,7 +2,7 @@
     <b-table
         class="clickable"
         hover
-        :items="sorted_events"
+        :items="sortedEvents"
         :fields="fields"
         head-variant="dark"
         @row-clicked="rowClicked"
@@ -30,10 +30,10 @@ export default {
         };
     },
     computed: {
-        sorted_events() {
+        sortedEvents() {
             return [...this.events].sort(
                 (eA, eB) =>
-                    eventsOrder.indexOf(eA.category) >
+                    eventsOrder.indexOf(eA.category) -
                     eventsOrder.indexOf(eB.category)
             );
         }
