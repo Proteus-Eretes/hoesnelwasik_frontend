@@ -58,7 +58,7 @@ export default {
             target = 'search';
         }
         this.crewService = new Crews(
-            'https://beta.hoesnelwasik.nl/api',
+            this.$router.options.api,
             this.match,
             this.year,
             this.field,
