@@ -70,7 +70,7 @@ export default {
     },
     mounted() {
         this.regattaService = new Regatta(
-            'https://beta.hoesnelwasik.nl/api',
+            this.$router.options.api,
             this.match,
             this.year
         );
