@@ -17,8 +17,6 @@ const customProps = iframe => type => route => {
 const customIframeProps = customProps(true);
 const customPropsFn = customProps(false);
 
-console.log(window.location.origin);
-
 export default new Router({
     mode: 'history',
     base: process.env.BASE_URL,
