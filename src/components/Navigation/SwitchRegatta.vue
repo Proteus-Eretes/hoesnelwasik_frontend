@@ -27,9 +27,7 @@ export default {
     computed: {
         regattasList() {
             return uniqBy(this.regattas, 'regattaname').sort(
-                (regattaA, regattaB) => {
-                    return regattaA.regattaname > regattaB.regattaname;
-                }
+                (regattaA, regattaB) => regattaA.regattaname .localeCompare(regattaB.regattaname)
             );
         }
     },
