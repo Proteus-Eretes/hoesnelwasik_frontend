@@ -1,6 +1,6 @@
 <template>
     <div>
-        <NavBar :regatta="regatta" :regattas="regattas"></NavBar>
+        <NavBar :regatta="regatta" :regattas="regattas" :editions="editions"></NavBar>
         <SearchOverview :crews="crews"> </SearchOverview>
     </div>
 </template>
@@ -12,7 +12,7 @@ import SearchOverview from '../components/Crews/SearchOverview';
 import { sendPageView } from './analytics';
 
 export default {
-    name: 'IframeCrewSearchView',
+    name: 'CrewSearchView',
     props: {
         field: String,
         match: String,
@@ -28,13 +28,18 @@ export default {
             crews: [],
             regatta: {},
             regattas: [],
+            editions: [],
             crewService: {}
         };
     },
     methods: {
         async init() {
             this.crews = await this.crewService.getCrews();
-            this.regattas = await this.crewService.getEditions(this.match);
+            this.regattas = await this.crewService.getRegattas(
+                this.$router.currentRoute.params.iframe,
+                this.match
+            );
+            this.editions = await this.crewService.getEditions(this.match);
             this.regatta = await this.crewService.getEdition();
             sendPageView();
         }

@@ -1,31 +1,32 @@
 <template>
     <div>
-        <NavBar :regatta="regatta" :regattas="regattas"></NavBar>
-        <DrawOverview :crews="crews"></DrawOverview>
+        <NavBar :regatta="regatta" :regattas="regattas" :editions="editions"></NavBar>
+        <ResultOverview :crews="crews"> </ResultOverview>
     </div>
 </template>
 
 <script>
 import NavBar from '@/components/Navigation/NavBar';
-import DrawOverview from '@/components/Crews/DrawOverview';
 import { Crews } from '@/Services/Crews';
+import ResultOverview from '../components/Crews/ResultOverview';
 import { sendPageView } from './analytics';
 
 export default {
-    name: 'IframeCrewDrawView',
+    name: 'CrewResultsView',
     props: {
         field: String,
         match: String,
         year: String
     },
     components: {
-        DrawOverview,
+        ResultOverview,
         NavBar
     },
     data() {
         return {
             crews: [],
             regatta: {},
+            editions: [],
             regattas: []
         };
     },
@@ -35,12 +36,16 @@ export default {
             this.match,
             this.year,
             this.field,
-            'loting'
+            'uitslagen'
         );
         sendPageView();
 
         this.crews = await crews.getCrews();
-        this.regattas = await crews.getEditions(this.match);
+        this.regattas = await crews.getRegattas(
+            this.$router.currentRoute.params.iframe,
+            this.match
+        );
+        this.editions = await crews.getEditions(this.match);
         this.regatta = await crews.getEdition();
     }
 };
