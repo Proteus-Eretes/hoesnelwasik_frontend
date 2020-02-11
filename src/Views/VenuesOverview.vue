@@ -19,7 +19,7 @@
                     <b-card-text>{{ regatta.regattaname }}</b-card-text>
                 </b-card>
             </b-card-group>
-            <br>
+            <br />
             <h2>Archief</h2>
             <b-card-group deck class="venueDeck justify-content-center">
                 <b-card
@@ -79,13 +79,16 @@ export default {
             );
         },
         recentRegattas() {
-            return this.regattas
-                .filter(regatta => {
-                    return regatta.jaar >= new Date().getFullYear() - 1;
-                })
-                .sort((regattaA, regattaB) =>
-                    regattaA.regattaname.localeCompare(regattaB.regattaname)
-                );
+            return uniqBy(
+                this.regattas
+                    .filter(
+                        regatta => regatta.jaar >= new Date().getFullYear() - 1
+                    )
+                    .sort((regattaA, regattaB) =>
+                        regattaA.regattaname.localeCompare(regattaB.regattaname)
+                    ),
+                'regattaname'
+            );
         }
     }
 };
