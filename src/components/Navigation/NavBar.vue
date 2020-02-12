@@ -12,7 +12,7 @@
             <div class="collapse navbar-collapse w-100" id="navbar">
                 <b-container fluid>
                     <b-row>
-                        <div class="col-4">
+                        <b-col cols="4">
                             <h1
                                 class="d-none d-xl-flex row text-white text-uppercase"
                             >
@@ -37,8 +37,8 @@
                                     ></switch-edition>
                                 </div>
                             </b-row>
-                        </div>
-                        <div class="col-4">
+                        </b-col>
+                        <b-col cols="4">
                             <h1
                                 class="row nav-item text-white align-items-center justify-content-center text-uppercase"
                             >
@@ -47,8 +47,8 @@
                             <b-row>
                                 <SearchBar></SearchBar>
                             </b-row>
-                        </div>
-                        <div class="col-3 d-flex flex-row">
+                        </b-col>
+                        <b-col cols="3" class="d-flex flex-row">
                             <ul
                                 class="navbar-nav align-self-end w-100 flex-row font-weight-bold"
                             >
@@ -67,14 +67,14 @@
                                     </SwitchElement>
                                 </li>
                             </ul>
-                        </div>
-                        <div class="col-1 flex-row">
+                        </b-col>
+                        <b-col cols="1" class="flex-row">
                             <img
                                 alt="logo"
                                 class="mx-auto header-img"
                                 src="https://images.poweredbyiris.nl/100/logo.png"
                             />
-                        </div>
+                        </b-col>
                     </b-row>
                 </b-container>
             </div>
