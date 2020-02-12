@@ -27,22 +27,14 @@
                                 <div
                                     class="navbar-nav nav-item nav-link text-white"
                                 >
-                                    <switch-regatta :regattas="regattas" :regatta="regatta"></switch-regatta>
-                                    <span
-                                        v-on:click="openMatch(false)"
-                                        v-if="hasPrev"
-                                        class="pl-2 clickable"
-                                    >
-                                        &lt;
-                                    </span>
-                                    {{ regatta.jaar }}
-                                    <span
-                                        v-on:click="openMatch(true)"
-                                        v-if="hasNext"
-                                        class="pr-2 clickable"
-                                    >
-                                        &gt;
-                                    </span>
+                                    <switch-regatta
+                                        :regattas="regattas"
+                                        :regatta="regatta"
+                                    ></switch-regatta>
+                                    <switch-edition
+                                        :regatta="regatta"
+                                        :editions="editions"
+                                    ></switch-edition>
                                 </div>
                             </b-row>
                         </div>
@@ -94,12 +86,13 @@
 import SearchBar from './SearchBar';
 import MobileNavBar from './MobileNavBar';
 import SwitchElement from './SwitchElement';
-import { openNextRegatta, openPrevRegatta } from './navigation';
-import SwitchRegatta from "./SwitchRegatta";
+import SwitchRegatta from './SwitchRegatta';
+import SwitchEdition from './SwitchEdition';
 
 export default {
     name: 'NavBar',
     components: {
+        SwitchEdition,
         SwitchRegatta,
         SwitchElement,
         MobileNavBar,
@@ -109,33 +102,6 @@ export default {
         editions: Array,
         regattas: Array,
         regatta: Object
-    },
-    computed: {
-        hasNext() {
-            return this.editions.filter(
-                edition => edition.jaar > this.regatta.jaar
-            ).length;
-        },
-        hasPrev() {
-            return this.editions.filter(
-                edition => edition.jaar < this.regatta.jaar
-            ).length;
-        }
-    },
-    methods: {
-        openMatch(next) {
-            if (next) {
-                openNextRegatta(this.$router, this.editions, {
-                    ...this.$router.currentRoute.params,
-                    year: this.regatta.jaar
-                });
-            } else {
-                openPrevRegatta(this.$router, this.editions, {
-                    ...this.$router.currentRoute.params,
-                    year: this.regatta.jaar
-                });
-            }
-        }
     }
 };
 </script>

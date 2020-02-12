@@ -2,7 +2,7 @@
     <b-table
         class="clickable"
         hover
-        :items="events"
+        :items="sortedEvents"
         :fields="fields"
         head-variant="dark"
         @row-clicked="rowClicked"
@@ -11,6 +11,7 @@
 
 <script>
 import { openPage } from '../../Helpers/Routing';
+import eventsOrder from './eventsOrder';
 
 export default {
     name: 'EventsTable',
@@ -27,6 +28,15 @@ export default {
                 }
             ]
         };
+    },
+    computed: {
+        sortedEvents() {
+            return [...this.events].sort(
+                (eA, eB) =>
+                    eventsOrder.indexOf(eA.category) -
+                    eventsOrder.indexOf(eB.category)
+            );
+        }
     },
     methods: {
         rowClicked(record) {
