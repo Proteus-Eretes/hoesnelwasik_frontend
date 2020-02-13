@@ -11,8 +11,8 @@
         >
             <div class="collapse navbar-collapse w-100" id="navbar">
                 <b-container fluid>
-                    <b-row style="width:100%">
-                        <b-col cols="4">
+                    <b-row style="width: 100%">
+                        <b-col class="col-4">
                             <h1
                                 class="d-none d-xl-flex row text-white text-uppercase"
                             >
