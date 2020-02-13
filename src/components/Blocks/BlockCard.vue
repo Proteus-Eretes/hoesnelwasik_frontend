@@ -41,7 +41,7 @@ export default {
                     key: 'field_starttime',
                     label: 'Starttijd',
                     formatter: (time, key, field) => {
-                        if (field.status) {
+                        if (field.status && field.status != 0) {
                             return fieldStatus[field.status].name;
                         }
                         return this.removeSecondsFields(time);
