@@ -13,7 +13,7 @@ import ClubsOverview from '@/components/Clubs/ClubsOverview';
 import BlockOverview from '@/components/Blocks/BlockOverview';
 import EventsOverview from '../Events/EventsOverview';
 import { findTabIndex, getActiveTab } from '../Navigation/activeTab';
-import {openRegatta} from "../../Helpers/Routing";
+import { openRegatta } from '../../Helpers/Routing';
 import ViewNavigationBar from '../Navigation/ViewNavigationBar';
 
 export default {

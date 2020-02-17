@@ -1,8 +1,6 @@
 <template>
     <div>
-        <FrontpageNavBar>
-            
-        </FrontpageNavBar>
+        <FrontpageNavBar> </FrontpageNavBar>
         <div class="container">
             <h2>Recente Wedstrijden</h2>
             <b-card-group deck class="venueDeck justify-content-center">
