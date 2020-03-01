@@ -256,15 +256,6 @@ describe('Routing::openHome', () => {
         expect(openHome(router.currentRoute.params)).toBe('/');
     });
 
-    it('Url does not go to iframe, but does go to homepage', () => {
-        router.currentRoute.params = {
-            match: 'ww',
-            year: '2920',
-            iframe: false
-        };
-        expect(openHome(router.currentRoute.params)).not.toBe('/asd');
-    });
-
     it('Url stays on iframe', () => {
         router.currentRoute.params = {
             match: 'ww',
@@ -272,20 +263,5 @@ describe('Routing::openHome', () => {
             iframe: true
         };
         expect(openHome(router.currentRoute.params)).toBe('/iframe/ww/2920/');
-        expect(openHome(router.currentRoute.params)).not.toBe('/ww/2920/');
-    });
-
-    it('Url goes to iframe, but of same match and same year', () => {
-        router.currentRoute.params = {
-            match: 'ww',
-            year: '2920',
-            iframe: false
-        };
-        expect(openHome(router.currentRoute.params)).not.toBe(
-            '/iframe/ww/2921/'
-        );
-        expect(openHome(router.currentRoute.params)).not.toBe(
-            '/iframe/fiets/2920/'
-        );
     });
 });
