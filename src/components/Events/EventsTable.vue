@@ -5,7 +5,7 @@
         :items="sortedEvents"
         :fields="fields"
         head-variant="dark"
-        @row-clicked="rowClicked"
+        @row-clicked="openRow"
     >
         <template v-slot:cell(fieldnameshort)="data">
             {{ data.item.fieldnameshort }}
@@ -51,7 +51,10 @@ export default {
         }
     },
     methods: {
-        rowClicked
+        openRow(record) {
+            rowClicked(this.$router, record);
+        }
+
     }
 };
 </script>

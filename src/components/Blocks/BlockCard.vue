@@ -16,7 +16,7 @@
             head-variant="dark"
             :items="uniqueBlock"
             :fields="fields"
-            @row-clicked="rowClicked"
+            @row-clicked="openRow"
         >
         </b-table>
     </b-card>
@@ -83,9 +83,11 @@ export default {
         removeSeconds(starttime) {
             return starttime.slice(0, starttime.lastIndexOf(':'));
         },
-        rowClicked,
         isNumber(num) {
             return !isNaN(num) && isFinite(num);
+        },
+        openRow(record) {
+            rowClicked(this.$router, record);
         }
     }
 };
