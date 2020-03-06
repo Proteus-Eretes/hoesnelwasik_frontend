@@ -4,6 +4,7 @@ import RegattaView from './Views/RegattaView';
 import CrewDrawView from './Views/CrewDrawView';
 import CrewResultsView from './Views/CrewResultsView';
 import CrewSearchView from './Views/CrewSearchView';
+import VenuesOverview from "./Views/VenuesOverview";
 
 Vue.use(Router);
 
@@ -81,6 +82,11 @@ export default new Router({
             name: 'IframeCrewClubView',
             component: CrewSearchView,
             props: customPropsFn('club')
+        },
+        {
+            path: '/',
+            name: 'VenuesOverview',
+            component: VenuesOverview
         }
     ]
 });
