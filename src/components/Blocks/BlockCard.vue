@@ -14,7 +14,7 @@
             striped
             hover
             head-variant="dark"
-            :items="block"
+            :items="uniqueBlock"
             :fields="fields"
             @row-clicked="rowClicked"
         >
@@ -26,6 +26,7 @@
 import moment from 'moment';
 import { openPage } from '../../Helpers/Routing';
 import { fieldStatus } from './fieldStatus';
+import uniqBy from '../../Helpers/uniqBy';
 
 export default {
     name: 'BlockCard',
@@ -63,6 +64,9 @@ export default {
                 ': ' +
                 this.removeSeconds(this.block[0].starttime)
             );
+        },
+        uniqueBlock() {
+            return uniqBy(this.block, 'fieldnameshort')
         }
     },
     methods: {
