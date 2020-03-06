@@ -6,7 +6,7 @@
         header-text-variant="danger"
         align="center"
     >
-        <b-card-text> {{ text}}</b-card-text>
+        <b-card-text> {{ message }}</b-card-text>
     </b-card>
 </template>
 
@@ -14,13 +14,8 @@
 export default {
     name: 'BreakingNews',
     props: {
-        message: Text
+        message: String
     },
-    data() {
-        return {
-            text: 'Dit is een bericht'
-        };
-    }
 };
 </script>
 

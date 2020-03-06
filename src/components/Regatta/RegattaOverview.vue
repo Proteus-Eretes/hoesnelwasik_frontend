@@ -1,6 +1,5 @@
 <template>
     <b-card no-body header-class="p-0">
-        <BreakingNews></BreakingNews>
         <ViewNavigationBar>
             <EventsOverview slot="fields" :events="events"></EventsOverview>
             <block-overview slot="blocks" :blocks="blocks"></block-overview>
@@ -14,14 +13,12 @@ import ClubsOverview from '@/components/Clubs/ClubsOverview';
 import BlockOverview from '@/components/Blocks/BlockOverview';
 import EventsOverview from '../Events/EventsOverview';
 import { findTabIndex, getActiveTab } from '../Navigation/activeTab';
-import {openRegatta} from "../../Helpers/Routing";
+import { openRegatta } from "../../Helpers/Routing";
 import ViewNavigationBar from '../Navigation/ViewNavigationBar';
-import BreakingNews from "./BreakingNews";
 
 export default {
     name: 'RegattaOverview',
     components: {
-        BreakingNews,
         EventsOverview,
         BlockOverview,
         ClubsOverview,

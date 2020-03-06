@@ -115,6 +115,9 @@ export class Regatta extends Service {
     async _fetch(url) {
         const data = await super._fetch(url);
         this.match = !data.error;
+        if ('message' in data) {
+            this.message = data.message;
+        }
         return data;
     }
 
@@ -146,17 +149,20 @@ export class Regatta extends Service {
     async getEdition() {
         const regattas = await this.getEditions(this._match);
 
+        return {
+            message: this.message,
+            ...this._getRegatta(regattas),
+            hasMessage: this.message.length > 0,
+        };
+    }
+
+    _getRegatta(regattas) {
         if (this._year > 0) {
             return regattas.filter(regatta => {
                 return regatta.jaar === this._year;
             })[0];
         }
 
-        return regattas.reduce((lastestRegatta, regatta) => {
-            if (lastestRegatta.jaar < regatta.jaar) {
-                return regatta;
-            }
-            return lastestRegatta;
-        });
+        return regattas.sort((regattaA, regattaB) => regattaA.jaar < regattaB.jaar)[0];
     }
 }
