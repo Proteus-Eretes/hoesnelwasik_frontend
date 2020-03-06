@@ -13,16 +13,20 @@
                 <b-container fluid>
                     <b-row style="width: 100%">
                         <b-col class="col-4">
-                            <h1
-                                class="d-none d-xl-flex row text-white text-uppercase"
-                            >
-                                Hoe snel was ik?
-                            </h1>
-                            <h6
-                                class="h-50 align-items-center d-xl-none row text-white text-uppercase"
-                            >
-                                Hoe snel was ik?
-                            </h6>
+                            <b-link :href="openHome($router.currentRoute.params)">
+                                <h1
+                                    class="d-none d-xl-flex row text-white text-uppercase"
+                                >
+                                    Hoe snel was ik?
+                                </h1>
+                            </b-link>
+                            <b-link :href="openHome($router.currentRoute.params)">
+                                <h6
+                                    class="h-50 align-items-center d-xl-none row text-white text-uppercase"
+                                >
+                                    Hoe snel was ik?
+                                </h6>
+                            </b-link>
                             <b-row>
                                 <div
                                     class="navbar-nav nav-item nav-link text-white"
@@ -69,16 +73,19 @@
                             </ul>
                         </b-col>
                         <b-col cols="1" class="flex-row">
-                            <img
-                                alt="logo"
-                                class="mx-auto header-img"
-                                src="https://images.poweredbyiris.nl/100/logo.png"
-                            />
+                            <b-link :href="openHome($router.currentRoute.params)">
+                                <img
+                                    alt="logo"
+                                    class="mx-auto header-img"
+                                    src="https://images.poweredbyiris.nl/100/logo.png"
+                                />
+                            </b-link>
                         </b-col>
                     </b-row>
                 </b-container>
             </div>
         </nav>
+        <BreakingNews v-if="regatta.hasMessage" :message="regatta.message"></BreakingNews>
     </div>
 </template>
 
@@ -88,10 +95,13 @@ import MobileNavBar from './MobileNavBar';
 import SwitchElement from './SwitchElement';
 import SwitchRegatta from './SwitchRegatta';
 import SwitchEdition from './SwitchEdition';
+import BreakingNews from '../Regatta/BreakingNews';
+import { openHome } from '../../Helpers/Routing';
 
 export default {
     name: 'NavBar',
     components: {
+        BreakingNews,
         SwitchEdition,
         SwitchRegatta,
         SwitchElement,
@@ -102,6 +112,9 @@ export default {
         editions: Array,
         regattas: Array,
         regatta: Object
+    },
+    methods: {
+        openHome
     }
 };
 </script>

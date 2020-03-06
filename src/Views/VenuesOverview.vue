@@ -1,10 +1,6 @@
 <template>
     <div>
-        <NavBar
-            :regatta="regattasList[0]"
-            :editions="regattasList"
-            :regattas="regattasList"
-        ></NavBar>
+        <FrontpageNavBar> </FrontpageNavBar>
         <div class="container">
             <h2>Recente Wedstrijden</h2>
             <b-card-group deck class="venueDeck justify-content-center">
@@ -38,7 +34,7 @@
 </template>
 
 <script>
-import NavBar from '@/components/Navigation/NavBar';
+import FrontpageNavBar from '@/components/Navigation/FrontpageNavBar';
 import { Service } from '../Services/Service';
 import { sendPageView } from './analytics';
 import uniqBy from '../Helpers/uniqBy';
@@ -51,7 +47,7 @@ export default {
             regattas: []
         };
     },
-    components: { NavBar },
+    components: { FrontpageNavBar },
     mounted() {
         this.service = new Service(this.$router.options.api);
         this.init();

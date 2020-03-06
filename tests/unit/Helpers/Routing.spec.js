@@ -1,5 +1,6 @@
 import {
     openClub,
+    openHome,
     openPage,
     openRegatta,
     openSearch,
@@ -236,5 +237,31 @@ describe('Open club page', () => {
             path: '/ww/2920/uitslagen',
             hash: 'blocks'
         });
+    });
+});
+describe('Routing::openHome', () => {
+    let router = {
+        currentRoute: {
+            params: {},
+            fullPath: ''
+        }
+    };
+
+    it('Url does not go to iframe', () => {
+        router.currentRoute.params = {
+            match: 'ww',
+            year: '2920',
+            iframe: false
+        };
+        expect(openHome(router.currentRoute.params)).toBe('/');
+    });
+
+    it('Url stays on iframe', () => {
+        router.currentRoute.params = {
+            match: 'ww',
+            year: '2920',
+            iframe: true
+        };
+        expect(openHome(router.currentRoute.params)).toBe('/iframe/ww/2920/');
     });
 });

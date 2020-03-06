@@ -15,12 +15,14 @@ export class Regatta extends Service {
         this._clubs = null;
         this._fields = null;
         this.match = false;
+        this._message = '';
     }
 
     setYear(year) {
         this._year = year;
         this._clubs = null;
         this._fields = null;
+        this._message = '';
     }
 
     setMatch(match, year) {
@@ -28,6 +30,7 @@ export class Regatta extends Service {
         this._year = year;
         this._clubs = null;
         this._fields = null;
+        this._message = '';
     }
 
     async getBlocks() {
@@ -115,6 +118,9 @@ export class Regatta extends Service {
     async _fetch(url) {
         const data = await super._fetch(url);
         this.match = !data.error;
+        if ('message' in data) {
+            this._message = data.message;
+        }
         return data;
     }
 
@@ -146,17 +152,20 @@ export class Regatta extends Service {
     async getEdition() {
         const regattas = await this.getEditions(this._match);
 
+        return {
+            message: this._message,
+            ...this._getRegatta(regattas),
+            hasMessage: this._message.length > 0
+        };
+    }
+
+    _getRegatta(regattas) {
         if (this._year > 0) {
             return regattas.filter(regatta => {
                 return regatta.jaar === this._year;
             })[0];
         }
 
-        return regattas.reduce((lastestRegatta, regatta) => {
-            if (lastestRegatta.jaar < regatta.jaar) {
-                return regatta;
-            }
-            return lastestRegatta;
-        });
+        return regattas.sort((regattaA, regattaB) => regattaA.jaar < regattaB.jaar)[0];
     }
 }

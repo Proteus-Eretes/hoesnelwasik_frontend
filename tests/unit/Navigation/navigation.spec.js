@@ -1,7 +1,5 @@
 import {
     highlightLink,
-    openNextRegatta,
-    openPrevRegatta,
     switchType
 } from '../../../src/components/Navigation/navigation';
 
@@ -50,67 +48,9 @@ describe('navigation', () => {
             fullPath: 'localhost/iframe/sss/0/toss'
         };
         expect(switchType(data1, 'toss')).toBe('/sss/0/toss');
-        expect(switchType(data2, 'toss')).toBe('/sss/0/toss/E 8+');
+        expect(switchType(data2, 'toss')).toBe('/sss/0/toss');
         expect(switchType(data3, 'uitslagen')).toBe('/sss/0/uitslagen');
-        expect(switchType(data4, 'toss')).toBe('/sss/0/toss/E 8+');
-        expect(switchType(data5, 'toss')).toBe('/iframe/sss/0/toss/E 8+');
-    });
-
-    it('Opens the next edition of the regatta', () => {
-        const router = {
-            currentRoute: {
-                params: {},
-                fullPath: ''
-            }
-        };
-        const pushSpy = jest.fn();
-        router.push = pushSpy;
-        openNextRegatta(
-            router,
-            [
-                {match: 'ww', jaar: 2026},
-                {match: 'ww', jaar: 2018},
-                {match: 'ww', jaar: 2028},
-                {match: 'ww', jaar: 2025},
-                {match: 'ww', jaar: 2029},
-                {match: 'ww', jaar: 2016}
-            ],
-            {iframe: true, match: 'ww', year: 2019}
-        );
-
-        expect(pushSpy).toHaveBeenCalled();
-        expect(pushSpy.mock.calls[0][0]).toEqual({
-            path: '/iframe/ww/2025/uitslagen',
-            hash: 'blocks'
-        });
-    });
-
-    it('Opens the previous edition of the regatta', () => {
-        const router = {
-            currentRoute: {
-                params: {},
-                fullPath: ''
-            }
-        };
-        const pushSpy = jest.fn();
-        router.push = pushSpy;
-        openPrevRegatta(
-            router,
-            [
-                {match: 'ww', jaar: 2026},
-                {match: 'ww', jaar: 2016},
-                {match: 'ww', jaar: 2017},
-                {match: 'ww', jaar: 2025},
-                {match: 'ww', jaar: 2029},
-                {match: 'ww', jaar: 2015}
-            ],
-            {iframe: true, match: 'ww', year: 2019}
-        );
-
-        expect(pushSpy).toHaveBeenCalled();
-        expect(pushSpy.mock.calls[0][0]).toEqual({
-            path: '/iframe/ww/2017/uitslagen',
-            hash: 'blocks'
-        });
+        expect(switchType(data4, 'toss')).toBe('/sss/0/toss');
+        expect(switchType(data5, 'toss')).toBe('/iframe/sss/0/toss');
     });
 });

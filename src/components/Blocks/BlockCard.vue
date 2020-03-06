@@ -14,9 +14,9 @@
             striped
             hover
             head-variant="dark"
-            :items="block"
+            :items="uniqueBlock"
             :fields="fields"
-            @row-clicked="rowClicked"
+            @row-clicked="openRow"
         >
         </b-table>
     </b-card>
@@ -24,8 +24,9 @@
 
 <script>
 import moment from 'moment';
-import { openPage } from '../../Helpers/Routing';
 import { fieldStatus } from './fieldStatus';
+import uniqBy from '../../Helpers/uniqBy';
+import {rowClicked} from "../Navigation/navigation";
 
 export default {
     name: 'BlockCard',
@@ -63,6 +64,9 @@ export default {
                 ': ' +
                 this.removeSeconds(this.block[0].starttime)
             );
+        },
+        uniqueBlock() {
+            return uniqBy(this.block, 'fieldnameshort');
         }
     },
     methods: {
@@ -79,11 +83,11 @@ export default {
         removeSeconds(starttime) {
             return starttime.slice(0, starttime.lastIndexOf(':'));
         },
-        rowClicked(record) {
-            openPage(this.$router, record.fieldnameshort);
-        },
         isNumber(num) {
             return !isNaN(num) && isFinite(num);
+        },
+        openRow(record) {
+            rowClicked(this.$router, record);
         }
     }
 };

@@ -1,6 +1,10 @@
 <template>
     <div>
-        <NavBar :regatta="regatta" :regattas="regattas" :editions="editions"></NavBar>
+        <NavBar
+            :regatta="regatta"
+            :regattas="regattas"
+            :editions="editions"
+        ></NavBar>
         <SearchOverview :crews="crews"> </SearchOverview>
     </div>
 </template>
