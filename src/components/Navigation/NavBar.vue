@@ -85,6 +85,7 @@
                 </b-container>
             </div>
         </nav>
+        <BreakingNews v-if="regatta.hasMessage" :message="regatta.message"></BreakingNews>
     </div>
 </template>
 
@@ -94,11 +95,13 @@ import MobileNavBar from './MobileNavBar';
 import SwitchElement from './SwitchElement';
 import SwitchRegatta from './SwitchRegatta';
 import SwitchEdition from './SwitchEdition';
+import BreakingNews from '../Regatta/BreakingNews';
 import { openHome } from '../../Helpers/Routing';
 
 export default {
     name: 'NavBar',
     components: {
+        BreakingNews,
         SwitchEdition,
         SwitchRegatta,
         SwitchElement,

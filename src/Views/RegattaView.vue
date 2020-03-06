@@ -48,9 +48,15 @@ export default {
             this.regattaService.getBlocks().then(blocks => {
                 this.blocks = blocks;
             });
-            this.regattaService.getFields().then(events => {
-                this.events = events;
-            });
+            this.regattaService
+                .getFields()
+                .then(events => {
+                    this.events = events;
+                    return this.regattaService.getEdition();
+                })
+                .then(regatta => {
+                    this.regatta = regatta;
+                });
             this.regattaService.getEditions(this.match).then(editions => {
                 this.editions = editions;
             });
@@ -62,9 +68,6 @@ export default {
                 .then(regattas => {
                     this.regattas = regattas;
                 });
-            this.regattaService.getEdition().then(regatta => {
-                this.regatta = regatta;
-            });
             sendPageView();
         }
     },

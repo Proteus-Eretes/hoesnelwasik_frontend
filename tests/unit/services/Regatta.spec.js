@@ -165,7 +165,28 @@ describe('Service', () => {
 
         expect(edition).toEqual({
             shortname: 'ww',
-            jaar: 2019
+            hasMessage: false,
+            jaar: 2019,
+            message: ''
+        });
+    });
+
+    it('Has message is set correctly', async () => {
+        regatta.regattas = [
+            {
+                shortname: 'ww',
+                jaar: 2019
+            }
+        ];
+        regatta._message = 'aap';
+
+        const edition = await regatta.getEdition();
+
+        expect(edition).toEqual({
+            shortname: 'ww',
+            hasMessage: true,
+            jaar: 2019,
+            message: 'aap'
         });
     });
 
