@@ -6,12 +6,20 @@
         :fields="fields"
         head-variant="dark"
         @row-clicked="rowClicked"
-    ></b-table>
+    >
+        <template v-slot:cell(fieldnameshort)="data">
+            {{ data.item.fieldnameshort }}
+            <small style="float: right" v-if="meerkamp">{{ data.item.name }}</small>
+            <small>| Blok {{ data.item.blocknumber }}</small>
+        </template>
+    </b-table>
 </template>
 
 <script>
-import { openPage } from '../../Helpers/Routing';
+
 import eventsOrder from './eventsOrder';
+import uniqBy from "../../Helpers/uniqBy";
+import {rowClicked} from "../Navigation/navigation";
 
 export default {
     name: 'EventsTable',
@@ -22,11 +30,12 @@ export default {
     data() {
         return {
             fields: [
+
                 {
                     key: 'fieldnameshort',
-                    label: this.title
-                }
-            ]
+                    label: this.title,
+                },
+            ],
         };
     },
     computed: {
@@ -36,12 +45,13 @@ export default {
                     eventsOrder.indexOf(eA.category) -
                     eventsOrder.indexOf(eB.category)
             );
+        },
+        meerkamp() {
+            return uniqBy(this.events, 'name').length > 1;
         }
     },
     methods: {
-        rowClicked(record) {
-            openPage(this.$router, record.fieldnameshort);
-        }
+        rowClicked
     }
 };
 </script>

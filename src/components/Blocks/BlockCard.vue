@@ -24,9 +24,9 @@
 
 <script>
 import moment from 'moment';
-import { openPage } from '../../Helpers/Routing';
 import { fieldStatus } from './fieldStatus';
 import uniqBy from '../../Helpers/uniqBy';
+import {rowClicked} from "../Navigation/navigation";
 
 export default {
     name: 'BlockCard',
@@ -66,7 +66,7 @@ export default {
             );
         },
         uniqueBlock() {
-            return uniqBy(this.block, 'fieldnameshort')
+            return uniqBy(this.block, 'fieldnameshort');
         }
     },
     methods: {
@@ -83,9 +83,7 @@ export default {
         removeSeconds(starttime) {
             return starttime.slice(0, starttime.lastIndexOf(':'));
         },
-        rowClicked(record) {
-            openPage(this.$router, record.fieldnameshort);
-        },
+        rowClicked,
         isNumber(num) {
             return !isNaN(num) && isFinite(num);
         }
