@@ -32,7 +32,6 @@ export const openRegatta = (
 export const openHome = ({ iframe, match, year }) => {
     if (iframe) {
         return `/iframe/${match}/${year}/`;
-    } 
+    }
     return `/`;
-    
 };
