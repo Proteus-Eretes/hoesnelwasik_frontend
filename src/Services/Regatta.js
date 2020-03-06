@@ -15,12 +15,14 @@ export class Regatta extends Service {
         this._clubs = null;
         this._fields = null;
         this.match = false;
+        this._message = '';
     }
 
     setYear(year) {
         this._year = year;
         this._clubs = null;
         this._fields = null;
+        this._message = '';
     }
 
     setMatch(match, year) {
@@ -28,6 +30,7 @@ export class Regatta extends Service {
         this._year = year;
         this._clubs = null;
         this._fields = null;
+        this._message = '';
     }
 
     async getBlocks() {
@@ -116,7 +119,7 @@ export class Regatta extends Service {
         const data = await super._fetch(url);
         this.match = !data.error;
         if ('message' in data) {
-            this.message = data.message;
+            this._message = data.message;
         }
         return data;
     }
@@ -150,9 +153,9 @@ export class Regatta extends Service {
         const regattas = await this.getEditions(this._match);
 
         return {
-            message: this.message,
+            message: this._message,
             ...this._getRegatta(regattas),
-            hasMessage: this.message.length > 0,
+            hasMessage: this._message.length > 0
         };
     }
 
