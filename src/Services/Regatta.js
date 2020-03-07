@@ -166,6 +166,6 @@ export class Regatta extends Service {
             })[0];
         }
 
-        return regattas.sort((regattaA, regattaB) => regattaA.jaar < regattaB.jaar)[0];
+        return regattas.sort((regattaA, regattaB) => regattaB.jaar - regattaA.jaar)[0];
     }
 }
