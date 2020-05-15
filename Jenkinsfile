@@ -23,9 +23,9 @@ pipeline {
             }
         }
         stage('Deploy') {
-            when {
-                branch 'master'
-            }
+//            when {
+//                branch 'master'
+//            }
             steps {
                 echo 'Deploying to master'
                 sh './node_modules/.bin/shipit live copyConfig'
