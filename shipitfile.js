@@ -32,8 +32,11 @@ module.exports = shipit => {
                 'https://github.com/Proteus-Eretes/hoesnelwasik_frontend.git'
         },
         live: {
-//             servers: 'dev@poweredbyiris.nl'
-            servers: 'dev@64.225.77.148'
+            servers: 'dev@poweredbyiris.nl'
+        },
+        dev: {
+            servers: 'dev@dev.hoesnelwasik.nl',
+            workspace: '/srv/uitslagen.poweredbyiris.nl'
         }
     });
 };
