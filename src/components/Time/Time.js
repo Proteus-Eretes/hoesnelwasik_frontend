@@ -12,7 +12,7 @@ export const getSplash = times => distance =>
     );
 
 export const getTotalTime = times =>
-    validateTime(times.find(time => time.type === 'Calculation'));
+    validateTime(times.find(time => time.type === 'Calculation' || time.type === 'Finish'));
 
 export const getRoundTime = times => distance => {
     var t = times.find(
