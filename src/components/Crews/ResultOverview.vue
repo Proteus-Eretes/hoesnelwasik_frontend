@@ -54,9 +54,10 @@ import OarImage from '@/components/Clubs/OarImage.vue';
 import TeamPopup from '@/components/Team/TeamPopup.vue';
 import FinalTime from '../Time/FinalTime';
 import ViewNavigationBar from '../Navigation/ViewNavigationBar';
-import { getFinishTime, getSplash } from '../Time/Time';
+import { getFinishTime, getSplash, getTotalTime, getRoundTime} from '../Time/Time';
 import { highLightWinner } from './highLightWinner';
 import findClockingLocations from './findClockingLocations';
+import findMultipleRounds from "./findMultipleRounds";
 
 export default {
     name: 'ResultOverview',
@@ -80,6 +81,8 @@ export default {
             this.$root.$emit('bv::show::modal', 'TeamPopup', button);
         },
         getFinishTime,
+        getTotalTime,
+        getRoundTime,
         highLightWinner,
         getSplash
     },
@@ -136,6 +139,18 @@ export default {
                     label: location.name,
                     formatter: (val, distance, crew) => {
                         const time = getSplash(crew.times[0].times)(distance);
+                        const momentTime = moment.unix(time).utc();
+                        if (momentTime.hours()) {
+                            return momentTime.format('HH:mm:ss.S');
+                        }
+                        return momentTime.format('mm:ss.S');
+                    }
+                })),
+                ...findMultipleRounds(this.crews).map(location => ({
+                    key: location.distance,
+                    label: location.name,
+                    formatter: (val, distance, crew) => {
+                        const time = getRoundTime(crew.times)(distance);
                         const momentTime = moment.unix(time).utc();
                         if (momentTime.hours()) {
                             return momentTime.format('HH:mm:ss.S');
