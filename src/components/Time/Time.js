@@ -1,7 +1,7 @@
 const validateTime = time => (time ? time.time : 0);
 
 export const getFinishTime = times =>
-    validateTime(times.find(time => time.type === 'Finish'));
+    validateTime(times.find(time => time.type === 'Calculation' || time.type === 'Finish'));
 
 export const getSplash = times => distance =>
     validateTime(
@@ -11,11 +11,8 @@ export const getSplash = times => distance =>
         )
     );
 
-export const getTotalTime = times =>
-    validateTime(times.find(time => time.type === 'Calculation' || time.type === 'Finish'));
-
 export const getRoundTime = times => distance => {
-    var t = times.find(
+    const t = times.find(
         time =>
             time.times[0].distance === distance && time.times[0].type === 'Finish'
     );
