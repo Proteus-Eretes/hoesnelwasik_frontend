@@ -19,6 +19,17 @@ describe('getFinishTime', () => {
     it('returns 0 when there is no finish time', () => {
         expect(getFinishTime([{ type: 'iets', time: 123.4 }])).toBe(0);
     });
+
+    it('returns the calculated time when there are split times', () => {
+        expect(
+            getFinishTime([
+                { type: 'Clocking location', time: 123.4 },
+                { type: 'Clocking location', time: 234.5 },
+                { type: 'Calculation', time: 345.6 },
+                { type: 'Clocking location', time: 456.7 }
+            ])
+        ).toBe(345.6);
+    });
 });
 
 describe('getSplash', () => {

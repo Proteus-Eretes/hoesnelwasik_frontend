@@ -33,6 +33,10 @@ module.exports = shipit => {
         },
         live: {
             servers: 'dev@poweredbyiris.nl'
+        },
+        dev: {
+            servers: 'dev@dev.hoesnelwasik.nl',
+            workspace: '/srv/uitslagen.poweredbyiris.nl'
         }
     });
 };
