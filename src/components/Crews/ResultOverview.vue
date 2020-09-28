@@ -35,7 +35,7 @@
                         </template>
                         <template v-slot:cell(FinishTimeSmall)="data">
                             <FinalTime
-                                :time="getFinishTime(data.item.times[0].times)"
+                                :time="getFinishTime(data.item.times[data.item.times.length - 1].times)"
                                 :bonus-seconds="data.item.times[0].bonussecond"
                                 :status="data.item.times[0].status"
                             ></FinalTime>
