@@ -3,7 +3,7 @@
         <ViewNavigationBar type="uitslagen"></ViewNavigationBar>
         <b-container v-if="crews.length" fluid>
             <div class="text-center mt-3">
-                <h3 class="text-secondary">{{ fieldName }}</h3>
+                <h3 class="text-secondary">Uitslagen {{ fieldName }}</h3>
             </div>
             <b-row>
                 <div class="table-responsive">
