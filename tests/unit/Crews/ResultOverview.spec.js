@@ -111,4 +111,119 @@ describe('ResultOverview', () => {
         expect(wrapper.html()).toMatch('>04:00.1</td>');
         expect(wrapper.html()).toMatch('05:01.2');
     });
+
+
+    it('does not return finish time when status is DNS, only returns DNS', () => {
+        const wrapper = mount(ResultOverview, {
+            localVue,
+            router,
+            propsData: {
+                crews: [
+                    {
+                        knrbid: '11e9-2fcd-3c1be544-b1c6-525400d1387d',
+                        teamname: 'Orca',
+                        fieldnameshort: 'DG 1x',
+                        fieldnameshortsub: 'DG 1x',
+                        clubname: 'Orca',
+                        clubnameshort: 'ORC',
+                        rower8: 'Piet de Test',
+                        coachnames: 'Coach van piet',
+                        times: [
+                            {
+                                knrbid: '11e9-2fcd-3c1be544-b1c6-525400d1387d',
+                                status: '8',
+                                rank: 1,
+                                backnumber: '149',
+                                bonussecond: '0',
+                                comments: '',
+                                disqualified: 0,
+                                excluded: 0,
+                                round: '11e9-17ee-922eab8e-bcfe-525400d1387d',
+                                alteredTime: 1284.945,
+                                times: [
+                                    {
+                                        time: 60.0,
+                                        distance: '1000',
+                                        name: '1000m',
+                                        type: 'Clocking location',
+                                        equal_time_correction: '0',
+                                        alteredTime: 253.679
+                                    },
+                                    {
+                                        time: 301.2,
+                                        distance: '5000',
+                                        name: 'Finish',
+                                        type: 'Finish',
+                                        equal_time_correction: '0',
+                                        alteredTime: 1284.945
+                                    }
+                                ],
+                                subRank: 1
+                            }
+                        ]
+                    }
+                ]
+            }
+        });
+
+        expect(wrapper.html()).not.toMatch('05:01.2');
+        expect(wrapper.html()).toMatch('DNS');
+    });
+
+    it('does return finish time when status is Ooc, also returns Ooc', () => {
+        const wrapper = mount(ResultOverview, {
+            localVue,
+            router,
+            propsData: {
+                crews: [
+                    {
+                        knrbid: '11e9-2fcd-3c1be544-b1c6-525400d1387d',
+                        teamname: 'Orca',
+                        fieldnameshort: 'DG 1x',
+                        fieldnameshortsub: 'DG 1x',
+                        clubname: 'Orca',
+                        clubnameshort: 'ORC',
+                        rower8: 'Piet de Test',
+                        coachnames: 'Coach van piet',
+                        times: [
+                            {
+                                knrbid: '11e9-2fcd-3c1be544-b1c6-525400d1387d',
+                                status: '4',
+                                rank: 1,
+                                backnumber: '149',
+                                bonussecond: '0',
+                                comments: '',
+                                disqualified: 0,
+                                excluded: 0,
+                                round: '11e9-17ee-922eab8e-bcfe-525400d1387d',
+                                alteredTime: 1284.945,
+                                times: [
+                                    {
+                                        time: 60.0,
+                                        distance: '1000',
+                                        name: '1000m',
+                                        type: 'Clocking location',
+                                        equal_time_correction: '0',
+                                        alteredTime: 253.679
+                                    },
+                                    {
+                                        time: 301.2,
+                                        distance: '5000',
+                                        name: 'Finish',
+                                        type: 'Finish',
+                                        equal_time_correction: '0',
+                                        alteredTime: 1284.945
+                                    }
+                                ],
+                                subRank: 1
+                            }
+                        ]
+                    }
+                ]
+            }
+        });
+
+        expect(wrapper.html()).toMatch('05:01.2');
+        expect(wrapper.html()).toMatch('Ooc');
+    });
 });
