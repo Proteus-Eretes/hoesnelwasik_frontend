@@ -54,10 +54,10 @@ import OarImage from '@/components/Clubs/OarImage.vue';
 import TeamPopup from '@/components/Team/TeamPopup.vue';
 import FinalTime from '../Time/FinalTime';
 import ViewNavigationBar from '../Navigation/ViewNavigationBar';
-import { getFinishTime, getSplash, getTotalTime, getRoundTime} from '../Time/Time';
+import { getFinishTime, getSplash, getRoundTime} from '../Time/Time';
 import { highLightWinner } from './highLightWinner';
 import findClockingLocations from './findClockingLocations';
-import findMultipleRounds from "./findMultipleRounds";
+import findMultipleRounds from './findMultipleRounds';
 
 export default {
     name: 'ResultOverview',
@@ -81,7 +81,6 @@ export default {
             this.$root.$emit('bv::show::modal', 'TeamPopup', button);
         },
         getFinishTime,
-        getTotalTime,
         getRoundTime,
         highLightWinner,
         getSplash
