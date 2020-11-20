@@ -1,7 +1,7 @@
 import uniqBy from '../../Helpers/uniqBy';
 
-export default teams =>
-    uniqBy(
+export default teams => {
+    const RoundsList = uniqBy(
         teams.reduce((timesList, team) => {
             timesList.push(
                 ...team.times
@@ -15,3 +15,7 @@ export default teams =>
         }, []),
         'distance'
     );
+    // If only 1 round in regatta
+    if (RoundsList.length === 1) return [];
+    return RoundsList;
+}
