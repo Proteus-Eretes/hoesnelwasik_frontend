@@ -1,9 +1,15 @@
 <template>
     <div>
+      <template v-if="outOfCompetition">
         <FinishTime :time="time" :bonus-seconds="bonusSeconds"></FinishTime>
-        <template v-if="inValidTime">
+        {{ displayStatus }}
+      </template>
+      <template v-else-if="inValidTime">
             {{ displayStatus }}
-        </template>
+      </template>
+      <template v-else>
+        <FinishTime :time="time" :bonus-seconds="bonusSeconds"></FinishTime>
+      </template>
     </div>
 </template>
 
@@ -22,6 +28,9 @@ export default {
     computed: {
         inValidTime() {
             return !ResultStatus.isValid(+this.status);
+        },
+        outOfCompetition() {
+            return ResultStatus.isOutsideCompetition(+this.status);
         },
         displayStatus() {
             return ResultStatus.getStatus(+this.status);
