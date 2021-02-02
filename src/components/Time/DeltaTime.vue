@@ -25,10 +25,10 @@ export default {
                 .utc();
 
             if (momentTime.utc().minutes()) {
-                return momentTime.format('M.ss.S');
-            } else if (momentTime.seconds() < 10) {
-                return momentTime.format('s.S');
+                if (momentTime.utc().minutes() < 10) return momentTime.format('M.ss.S');
+                else return momentTime.format('MM.ss.S');
             } else {
+                if (momentTime.seconds() < 10) return momentTime.format('s.S');
                 return momentTime.format('ss.S');
             }
         }
