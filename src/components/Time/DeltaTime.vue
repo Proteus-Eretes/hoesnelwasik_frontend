@@ -16,8 +16,12 @@ export default {
     },
     computed: {
         prettyTime() {
+            const firstplace = Math.floor(this.firstTime * 10);
+            const yourtime =  Math.floor(this.time * 10);
+            const delta = Math.round((yourtime - firstplace)) / 10;
+
             const momentTime = moment
-                .unix(this.time + +this.bonusSeconds - this.firstTime)
+                .unix(delta + +this.bonusSeconds)
                 .utc();
 
             if (momentTime.utc().minutes()) {
