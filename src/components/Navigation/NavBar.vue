@@ -6,7 +6,7 @@
             :editions="editions"
         ></MobileNavBar>
         <nav
-            class="navbar navbar-dark navbar-expand-sm d-none d-sm-block"
+            class="navbar navbar-dark navbar-expand-sm d-none d-md-block"
             style="background-color: black"
         >
             <div class="collapse navbar-collapse w-100" id="navbar">
