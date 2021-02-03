@@ -2,6 +2,13 @@
     <div class="d-block d-lg-none">
         <Slide>
             <ul class="pt-3 navbar list-unstyled">
+                <li class="mb-2 nav-item text-white">
+                    <h4 class=" h-50 align-items-center row text-white text-uppercase">
+                        <a class ="text-white" href ="https://hoesnelwasik.nl/">
+                            Hoe snel was ik?
+                        </a>
+                    </h4>
+                </li>
                 <li class="nav-item text-white">
                     <h3>
                         <switch-regatta
@@ -16,7 +23,7 @@
                         :editions="editions"
                     ></switch-edition>
                 </li>
-                <li class="nav-item text-white">
+                <li class="pt-4 nav-item text-white">
                     <h3>Bekijk:</h3>
                     <ul class="list-unstyled">
                         <li class="nav-item">
