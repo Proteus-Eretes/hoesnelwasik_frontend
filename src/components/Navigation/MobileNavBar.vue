@@ -1,5 +1,5 @@
 <template>
-    <div class="d-block d-sm-none">
+    <div class="d-block d-lg-none">
         <Slide>
             <ul class="pt-3 navbar list-unstyled">
                 <li class="nav-item text-white">
@@ -17,7 +17,7 @@
                     ></switch-edition>
                 </li>
                 <li class="nav-item text-white">
-                    <h3>Bekijk</h3>
+                    <h3>Bekijk:</h3>
                     <ul class="list-unstyled">
                         <li class="nav-item">
                             <h3>

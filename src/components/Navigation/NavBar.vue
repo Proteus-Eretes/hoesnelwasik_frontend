@@ -6,7 +6,7 @@
             :editions="editions"
         ></MobileNavBar>
         <nav
-            class="navbar navbar-dark navbar-expand-sm d-none d-md-block"
+            class="navbar navbar-dark navbar-expand-sm d-none d-lg-block"
             style="background-color: black"
         >
             <div class="collapse navbar-collapse w-100" id="navbar">
@@ -122,9 +122,9 @@ export default {
 <style scoped type="scss">
 .header-img {
     height: auto;
-    width: 100%;
-    max-height: 100px;
-    max-width: 100px;
+    width: auto;
+    max-height: 80px;
+    max-width: 80px;
     float: right;
 }
 </style>
