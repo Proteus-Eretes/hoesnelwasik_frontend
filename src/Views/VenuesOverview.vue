@@ -1,15 +1,15 @@
 <template>
     <div>
         <FrontpageNavBar> </FrontpageNavBar>
-        <div class="container">
+        <div class="container mt-5">
             <h2>Recente Wedstrijden</h2>
-            <b-card-group deck class="venueDeck justify-content-center">
+            <b-card-group deck class="venueDeck">
                 <b-card
                     v-for="regatta in recentRegattas"
                     :key="regatta.shortname"
-                    bg-variant="secondary"
+                    bg-variant="black"
                     text-variant="white"
-                    class="text-center"
+                    class="text-center clickable ml-1"
                     v-on:click="openEdition(regatta)"
                 >
                     <b-card-text>{{ regatta.regattaname }}</b-card-text>
@@ -17,13 +17,13 @@
             </b-card-group>
             <br />
             <h2>Archief</h2>
-            <b-card-group deck class="venueDeck justify-content-center">
+            <b-card-group deck class="venueDeck">
                 <b-card
                     v-for="regatta in regattasList"
                     :key="regatta.shortname"
-                    bg-variant="secondary"
+                    bg-variant="black"
                     text-variant="white"
-                    class="text-center"
+                    class="text-center clickable ml-1"
                     v-on:click="openEdition(regatta)"
                 >
                     <b-card-text>{{ regatta.regattaname }}</b-card-text>
@@ -35,10 +35,10 @@
 
 <script>
 import FrontpageNavBar from '@/components/Navigation/FrontpageNavBar';
-import { Service } from '../Services/Service';
+import { Service } from '@/Services/Service';
 import { sendPageView } from './analytics';
 import uniqBy from '../Helpers/uniqBy';
-import { openRegatta } from '../Helpers/Routing';
+import { openRegatta } from '@/Helpers/Routing';
 
 export default {
     name: 'VenuesOverview',
@@ -90,14 +90,14 @@ export default {
 };
 </script>
 
-<style type="scss" scoped>
+<style scoped>
 .venueDeck {
     flex-wrap: wrap !important;
     flex-grow: 1 !important;
 }
 
 .venueDeck * {
-    flex-basis: 18% !important;
+    flex-basis: 30% !important;
     margin: 15px 0 15px;
 }
 
