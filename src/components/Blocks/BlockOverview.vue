@@ -1,5 +1,5 @@
 <template>
-    <b-container class="mt-3">
+    <b-container fluid ="lg" class="mt-3">
         <b-card-group deck class="blokDeck justify-content-center">
             <block-card
                 v-for="block in blocks"

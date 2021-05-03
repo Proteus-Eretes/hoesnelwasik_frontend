@@ -1,7 +1,7 @@
 <template>
     <div>
         <nav
-            class="navbar navbar-dark navbar-expand-sm d-none d-sm-block"
+          class="navbar navbar-dark navbar-expand"
             style="background-color: black"
         >
             <div class="collapse navbar-collapse w-100" id="navbar">
@@ -14,7 +14,7 @@
                                 Hoe snel was ik?
                             </h1>
                             <h6
-                                class="h-50 align-items-center d-xl-none row text-white text-uppercase"
+                                class="h-50 align-items-center d-none d-lg-flex d-xl-none row text-white text-uppercase"
                             >
                                 Hoe snel was ik?
                             </h6>
@@ -34,7 +34,7 @@
                         <b-col cols="1" class="flex-row">
                             <img
                                 alt="logo"
-                                class="mx-auto header-img"
+                                class="d-none d-sm-flex mx-auto header-img"
                                 src="https://images.poweredbyiris.nl/100/logo.png"
                             />
                         </b-col>
@@ -56,7 +56,7 @@ export default {
 <style scoped type="scss">
 .header-img {
     height: auto;
-    width: 100%;
+    width: 56px;
     max-height: 100px;
     max-width: 100px;
     float: right;
