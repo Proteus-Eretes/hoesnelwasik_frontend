@@ -15,9 +15,8 @@
                         @row-clicked="openTeamDialog"
                         :tbody-tr-class="highLightWinner"
                     >
-                        <template v-slot:cell(smallRank)="data">
-                            {{ data.item.times[0].rank }}
-                        </template>
+                        <template v-slot:cell(rank)="data">{{ data.item.times[data.item.times.length-1].rank }}</template>
+                        <template v-slot:cell(smallRank)="data">{{ data.item.times[data.item.times.length-1].rank }}</template>
                         <template v-slot:head(OarImage)>
                             <div class="d-none d-sm-block">
                                 Blad
@@ -104,7 +103,7 @@ export default {
                     class: 'text-center'
                 },
                 {
-                    key: 'times.0.rank',
+                    key: 'rank',
                     label: 'Pos',
                     thClass: 'font-italic',
                     class: 'text-center d-none d-sm-table-cell'

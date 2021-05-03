@@ -176,6 +176,7 @@ describe('ResultOverview', () => {
                             },
                             {
                                 totaltime: 1231,
+                                rank: 1,
                                 splash1: 0,
                                 splash2: 0,
                                 splash3: 0,
