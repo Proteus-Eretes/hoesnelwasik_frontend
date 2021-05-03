@@ -5,24 +5,8 @@
 </template>
 
 <style lang="scss">
-.ploeg {
-    max-width: 150px;
-}
-@media (max-width: 400px) {
-    .table-responsive {
-        font-size: 10px !important;
-    }
-}
-@media (max-width: 350px) {
-    .ploeg {
-        max-width: 80px;
-        overflow-x: hidden;
-    }
-}
-.clickable {
-    cursor: pointer;
-}
-.nav-link strong {
-    text-decoration: underline;
-}
+@import 'assets/custom.scss';
+
+@import '~bootstrap/scss/bootstrap.scss';
+@import '~bootstrap-vue/src/index.scss';
 </style>
