@@ -66,10 +66,10 @@ describe('TeamPopup', () => {
             { key: 'backnumber', label: 'Rugnummer' },
             { key: 'fieldnameshort', label: 'Veld' },
             { key: 'fieldnameshortsub', label: 'Subveld' },
-            { key: 'rower8', label: 'Slag' },
-            { key: 'rower3', label: '3' },
-            { key: 'rower2', label: '2' },
             { key: 'rower1', label: 'Boeg' },
+            { key: 'rower2', label: '2' },
+            { key: 'rower3', label: '3' },
+            { key: 'rower8', label: 'Slag' },
             { key: 'steername', label: 'Stuur' }
         ]);
         wrapper.setProps({
@@ -95,10 +95,10 @@ describe('TeamPopup', () => {
             { key: 'times.0.backnumber', label: 'Rugnummer' },
             { key: 'fieldnameshort', label: 'Veld' },
             { key: 'fieldnameshortsub', label: 'Subveld' },
-            { key: 'rower8', label: 'Slag' },
-            { key: 'rower3', label: '3' },
-            { key: 'rower2', label: '2' },
             { key: 'rower1', label: 'Boeg' },
+            { key: 'rower2', label: '2' },
+            { key: 'rower3', label: '3' },
+            { key: 'rower8', label: 'Slag' },
             { key: 'steername', label: 'Stuur' }
         ]);
     });

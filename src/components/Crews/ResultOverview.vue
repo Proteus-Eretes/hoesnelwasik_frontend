@@ -3,7 +3,7 @@
         <ViewNavigationBar type="uitslagen"></ViewNavigationBar>
         <b-container v-if="crews.length" fluid>
             <div class="text-center mt-3">
-                <h3 class="text-secondary">{{ fieldName }}</h3>
+                <h3 class="text-secondary">Uitslagen {{ fieldName }}</h3>
             </div>
             <b-row>
                 <div class="table-responsive">
@@ -15,9 +15,8 @@
                         @row-clicked="openTeamDialog"
                         :tbody-tr-class="highLightWinner"
                     >
-                        <template v-slot:cell(smallRank)="data">
-                            {{ data.item.times[0].rank }}
-                        </template>
+                        <template v-slot:cell(rank)="data">{{ data.item.times[data.item.times.length-1].rank }}</template>
+                        <template v-slot:cell(smallRank)="data">{{ data.item.times[data.item.times.length-1].rank }}</template>
                         <template v-slot:head(OarImage)>
                             <div class="d-none d-sm-block">
                                 Blad
@@ -54,10 +53,10 @@ import OarImage from '@/components/Clubs/OarImage.vue';
 import TeamPopup from '@/components/Team/TeamPopup.vue';
 import FinalTime from '../Time/FinalTime';
 import ViewNavigationBar from '../Navigation/ViewNavigationBar';
-import { getFinishTime, getSplash, getTotalTime, getRoundTime} from '../Time/Time';
+import { getFinishTime, getSplash, getRoundTime} from '../Time/Time';
 import { highLightWinner } from './highLightWinner';
 import findClockingLocations from './findClockingLocations';
-import findMultipleRounds from "./findMultipleRounds";
+import findMultipleRounds from './findMultipleRounds';
 
 export default {
     name: 'ResultOverview',
@@ -81,7 +80,6 @@ export default {
             this.$root.$emit('bv::show::modal', 'TeamPopup', button);
         },
         getFinishTime,
-        getTotalTime,
         getRoundTime,
         highLightWinner,
         getSplash
@@ -105,7 +103,7 @@ export default {
                     class: 'text-center'
                 },
                 {
-                    key: 'times.0.rank',
+                    key: 'rank',
                     label: 'Pos',
                     thClass: 'font-italic',
                     class: 'text-center d-none d-sm-table-cell'
