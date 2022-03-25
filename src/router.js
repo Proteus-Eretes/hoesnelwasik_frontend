@@ -21,7 +21,7 @@ const customPropsFn = customProps(false);
 export default new Router({
     mode: 'history',
     base: process.env.BASE_URL,
-    api: window.location.origin.includes('localhost') ? 'https://beta.hoesnelwasik.nl/api' : window.location.origin + '/api',
+    api: window.location.origin.includes('localhost') ? 'https://hoesnelwasik.nl/api' : window.location.origin + '/api',
     routes: [
         {
             path: '/iframe/:match/:year?/:target?',
