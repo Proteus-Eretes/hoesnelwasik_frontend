@@ -75,4 +75,14 @@ describe('findRound', () => {
             ])
         ).toEqual([]);
     });
+
+    it('returns empty when no times', () => {
+        expect(
+            findMultipleRounds( [
+                {
+
+                }
+            ])
+        ).toEqual([]);
+    });
 });
