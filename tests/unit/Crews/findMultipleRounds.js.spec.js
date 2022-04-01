@@ -85,4 +85,32 @@ describe('findRound', () => {
             ])
         ).toEqual([]);
     });
+
+    it('returns empty when times empty', () => {
+        expect(
+            findMultipleRounds( [
+                {
+                    times: [
+                        {
+
+                        }
+                    ]
+                }
+            ])
+        ).toEqual([]);
+    });
+
+    it('returns empty when times.times is empty', () => {
+        expect(
+            findMultipleRounds( [
+                {
+                    times: [
+                        {
+                            times: []
+                        }
+                    ]
+                }
+            ])
+        ).toEqual([]);
+    });
 });
