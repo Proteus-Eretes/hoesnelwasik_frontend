@@ -18,8 +18,8 @@ export default {
     },
     computed: {
         prettyTime() {
-            let exact_time = this.time + +this.bonusSeconds;
-            let rounded_time = Math.round(exact_time * 10) / 10;
+            const exact_time = this.time + +this.bonusSeconds;
+            const rounded_time = Math.round(exact_time * 10) / 10;
             const momentTime = moment
                 .unix(rounded_time)
                 .utc();
