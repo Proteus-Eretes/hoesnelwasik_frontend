@@ -39,6 +39,22 @@
                                 :status="data.item.times[0].status"
                             ></FinalTime>
                         </template>
+                        <template v-slot:cell(DeltaTime)="data">
+                            <DeltaTime
+                                :time="getFinishTime(data.item.times[data.item.times.length - 1].times)"
+                                :firstTime="getFinishTime(crews[0].times[crews[0].times.length - 1].times)"
+                                :bonus-seconds="data.item.times[0].bonussecond"
+                            >
+                            </DeltaTime>
+                        </template>
+                        <template v-slot:cell(DeltaTimeSmall)="data">
+                            <DeltaTime
+                                :time="getFinishTime(data.item.times[data.item.times.length - 1].times)"
+                                :firstTime="getFinishTime(crews[0].times[crews[0].times.length - 1].times)"
+                                :bonus-seconds="data.item.times[0].bonussecond"
+                            >
+                            </DeltaTime>
+                        </template>
                     </b-table>
                 </div>
             </b-row>
@@ -52,8 +68,9 @@ import moment from 'moment';
 import OarImage from '@/components/Clubs/OarImage.vue';
 import TeamPopup from '@/components/Team/TeamPopup.vue';
 import FinalTime from '../Time/FinalTime';
+import DeltaTime from '../Time/DeltaTime';
 import ViewNavigationBar from '../Navigation/ViewNavigationBar';
-import { getFinishTime, getSplash, getRoundTime} from '../Time/Time';
+import { getFinishTime, getSplash, getRoundTime } from '../Time/Time';
 import { highLightWinner } from './highLightWinner';
 import findClockingLocations from './findClockingLocations';
 import findMultipleRounds from './findMultipleRounds';
@@ -66,6 +83,7 @@ export default {
     components: {
         ViewNavigationBar,
         FinalTime,
+        DeltaTime,
         TeamPopup,
         OarImage
     },
@@ -100,7 +118,7 @@ export default {
                     key: 'OarImage',
                     label: 'Blad',
                     thClass: 'font-italic',
-                    class: 'text-center'
+                    class: 'text-center d-none d-sm-table-cell'
                 },
                 {
                     key: 'rank',
@@ -165,6 +183,18 @@ export default {
                 {
                     key: 'FinishTimeSmall',
                     label: 'Tijd',
+                    thClass: 'font-italic',
+                    class: 'd-table-cell d-sm-none'
+                },
+                {
+                    key: 'DeltaTime',
+                    label: 'Verschil met #1',
+                    thClass: 'font-italic',
+                    class: 'd-none d-sm-table-cell'
+                },
+                {
+                    key: 'DeltaTimeSmall',
+                    label: 'Verschil',
                     thClass: 'font-italic',
                     class: 'd-table-cell d-sm-none'
                 }
